@@ -1,0 +1,7 @@
+torch>=2.0.0
+tokenizers>=0.13.0
+sacrebleu>=2.3.1
+tqdm>=4.65.0
+numpy>=1.24.0
+pyyaml>=6.0
+regex>=2022.0
