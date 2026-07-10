@@ -1,0 +1,16 @@
+# model_config.yaml
+# Architecture hyperparameters — IDENTICAL for both BPE and xVal models.
+# Loaded by training scripts via: GPT2Config(**yaml.safe_load(...))
+
+# Core GPT-2 small dimensions
+vocab_size:  16000   # BPE tokenizer vocab size (from train_tokenizer.py)
+n_positions: 256     # max sequence length (covers 99.7% of ToTTo examples)
+n_layer:     12      # number of transformer blocks
+n_head:      12      # number of attention heads (head_dim = 768/12 = 64)
+n_embd:      768     # embedding dimension
+dropout:     0.1
+bias:        true
+
+# xVal-specific (used only by GPT2XVal, ignored by GPT2BPE)
+num_token_id: 8      # token ID of [NUM] — matches tokenizer_config.json
+mse_lambda:   1.0    # weight of MSE loss: L = L_ce + mse_lambda * L_mse

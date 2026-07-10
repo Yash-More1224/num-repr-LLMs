@@ -1,0 +1,59 @@
+# train_config.yaml
+# Training hyperparameters — IDENTICAL for both BPE and xVal models.
+# This is the single source of truth. Both train_bpe.py and train_xval.py
+# read from this file, ensuring a fair comparison.
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+train_data:  "processed/train.jsonl"
+dev_data:    "processed/dev.jsonl"
+tokenizer:   "tokenizer/totto_bpe/tokenizer.json"
+max_seq_len: 256
+
+# ── Directories ───────────────────────────────────────────────────────────────
+checkpoint_dir: "checkpoints"
+log_dir:        "logs"
+
+# ── Training duration ─────────────────────────────────────────────────────────
+max_epochs: 5
+
+# ── Batch size ────────────────────────────────────────────────────────────────
+# micro_batch_size: per GPU, per forward pass
+# With 4x RTX 2080 Ti (11GB each) and seq_len=256, 32/GPU is comfortable.
+# Effective batch = micro_batch_size * num_gpus * gradient_accumulation_steps
+#                 = 32 * 4 * 1 = 128
+micro_batch_size:             32
+gradient_accumulation_steps:  1    # increase if you hit OOM
+
+# ── Optimizer ─────────────────────────────────────────────────────────────────
+optimizer:     "adamw"
+learning_rate: 3.0e-4
+weight_decay:  0.1
+beta1:         0.9
+beta2:         0.95
+grad_clip:     1.0     # gradient clipping max norm
+
+# ── Learning rate schedule ────────────────────────────────────────────────────
+lr_scheduler:  "cosine"   # cosine decay from learning_rate to lr_min
+lr_min:        3.0e-5     # final LR = 10% of peak LR (standard for cosine)
+warmup_steps:  500        # linear warmup for first 500 steps
+
+# ── Mixed precision ───────────────────────────────────────────────────────────
+# fp16 on RTX 2080 Ti is significantly faster than fp32.
+# bfloat16 is NOT supported on Turing architecture (RTX 2080 Ti) — use fp16.
+use_amp: true
+dtype: "float16"   # must be float16 for RTX 2080 Ti (not bfloat16)
+
+# ── DataLoader ────────────────────────────────────────────────────────────────
+num_workers: 4     # per GPU (DDP launches separate DataLoader per process)
+pin_memory: true   # speeds up CPU→GPU data transfer
+
+# ── Checkpointing ─────────────────────────────────────────────────────────────
+save_every_epochs: 1   # save a checkpoint after every N epochs
+keep_last_n: 3         # only keep the last N checkpoints to save disk space
+
+# ── Evaluation ────────────────────────────────────────────────────────────────
+eval_every_steps: 500  # run dev loss evaluation every N training steps
+eval_max_batches: 50   # limit dev evaluation to N batches (for speed)
+
+# ── Reproducibility ───────────────────────────────────────────────────────────
+seed: 42   # used for model init, DataLoader shuffling, and DDP sampler
