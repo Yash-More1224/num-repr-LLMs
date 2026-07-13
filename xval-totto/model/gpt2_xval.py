@@ -221,9 +221,11 @@ class GPT2XVal(nn.Module):
         number_mask:    torch.Tensor,      # (B, T_prompt) — mask for prompt
         max_new_tokens: int = 80,
         eos_token_id:   int = 2,
+        repetition_penalty: float = 1.2,
+        temperature: float = 0.8,
     ) -> tuple:
         """
-        Greedy autoregressive decoding for the xVal model.
+        Autoregressive decoding for the xVal model with sampling.
 
         For [NUM] tokens in the GENERATED output, also returns the predicted
         scalar values (after denormalization) for evaluation.
@@ -235,6 +237,8 @@ class GPT2XVal(nn.Module):
         number_mask   : (B, T_prompt) — True at [NUM] positions in prompt
         max_new_tokens : max tokens to generate
         eos_token_id  : stop when this token is produced
+        repetition_penalty: penalty > 1.0 penalizes already seen tokens
+        temperature   : sampling temperature (0.0 means greedy argmax)
 
         Returns
         -------
@@ -274,7 +278,21 @@ class GPT2XVal(nn.Module):
             logits    = self.lm_head(hidden)
 
             # Next token: greedy argmax at the last position
-            next_token = logits[:, -1, :].argmax(dim=-1, keepdim=True)   # (B, 1)
+            next_logits = logits[:, -1, :].clone()
+            
+            # Apply repetition penalty
+            if repetition_penalty != 1.0:
+                for b in range(B):
+                    unique_tokens = input_ids[b].unique()
+                    score = next_logits[b, unique_tokens]
+                    score = torch.where(score < 0, score * repetition_penalty, score / repetition_penalty)
+                    next_logits[b, unique_tokens] = score
+            
+            if temperature == 0.0:
+                next_token = next_logits.argmax(dim=-1, keepdim=True)   # (B, 1)
+            else:
+                probs = torch.softmax(next_logits / temperature, dim=-1)
+                next_token = torch.multinomial(probs, num_samples=1)
 
             # For [NUM] tokens: predict scalar value using the scalar head
             last_hidden = hidden[:, -1:, :]                               # (B, 1, n_embd)

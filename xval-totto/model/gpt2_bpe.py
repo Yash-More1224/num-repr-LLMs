@@ -130,37 +130,59 @@ class GPT2BPE(nn.Module):
         input_ids:     torch.Tensor,   # (B, T_prompt) — the prompt tokens
         max_new_tokens: int = 80,
         eos_token_id:   int = 2,       # [EOS] token ID
+        repetition_penalty: float = 1.2,
+        temperature: float = 0.8,
     ) -> torch.Tensor:
         """
-        Greedy autoregressive decoding.
+        Autoregressive decoding with repetition penalty and sampling.
 
         At each step: feed the current sequence into the model, take the
-        token with the highest logit at the last position, append it to
-        the sequence, and repeat until [EOS] or max_new_tokens is reached.
+        token with the highest logit at the last position, apply penalty,
+        sample using multinomial, append it to the sequence, and repeat 
+        until [EOS] or max_new_tokens.
 
         Parameters
         ----------
-        input_ids      : (B, T_prompt) — already tokenized prompt (up to [SEP])
-        max_new_tokens : maximum number of new tokens to generate
-        eos_token_id   : generation stops when this token is produced
+        input_ids          : (B, T_prompt) — already tokenized prompt
+        max_new_tokens     : maximum number of new tokens to generate
+        eos_token_id       : generation stops when this token is produced
+        repetition_penalty : penalty > 1.0 penalizes already seen tokens
+        temperature        : sampling temperature (0.0 means greedy argmax)
 
         Returns
         -------
         (B, T_prompt + n_generated) — full sequence including prompt
         """
         self.eval()
+        B = input_ids.size(0)
 
         for _ in range(max_new_tokens):
             # If the current sequence is longer than our context window,
             # truncate from the LEFT to keep the most recent tokens.
             if input_ids.size(1) > self.config.n_positions:
-                input_ids = input_ids[:, -self.config.n_positions:]
+                context_ids = input_ids[:, -self.config.n_positions:]
+            else:
+                context_ids = input_ids
 
-            _, logits = self.forward(input_ids)
+            _, logits = self.forward(context_ids)
 
             # Take the logits at the LAST position only (next-token prediction)
-            next_logits = logits[:, -1, :]                        # (B, vocab_size)
-            next_token  = next_logits.argmax(dim=-1, keepdim=True)  # (B, 1)
+            next_logits = logits[:, -1, :].clone()                  # (B, vocab_size)
+
+            # Apply repetition penalty
+            if repetition_penalty != 1.0:
+                for b in range(B):
+                    # Penalize all tokens generated/seen so far
+                    unique_tokens = input_ids[b].unique()
+                    score = next_logits[b, unique_tokens]
+                    score = torch.where(score < 0, score * repetition_penalty, score / repetition_penalty)
+                    next_logits[b, unique_tokens] = score
+
+            if temperature == 0.0:
+                next_token = next_logits.argmax(dim=-1, keepdim=True)  # (B, 1)
+            else:
+                probs = torch.softmax(next_logits / temperature, dim=-1)
+                next_token = torch.multinomial(probs, num_samples=1)
 
             input_ids = torch.cat([input_ids, next_token], dim=1)
 
