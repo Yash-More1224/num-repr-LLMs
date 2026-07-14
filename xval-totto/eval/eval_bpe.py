@@ -104,20 +104,21 @@ def run_evaluation(args):
     model.eval()
     print(f"Model loaded from: {args.checkpoint}")
 
-    # ── Load dev data ─────────────────────────────────────────────────────────
-    dev_examples = []
-    with open(train_cfg["dev_data"]) as f:
+    # ── Load data (train or dev split) ──────────────────────────────────────
+    data_path = train_cfg["train_data"] if args.split == "train" else train_cfg["dev_data"]
+    examples = []
+    with open(data_path) as f:
         for line in f:
-            dev_examples.append(json.loads(line))
+            examples.append(json.loads(line))
 
     if args.max_examples > 0:
-        dev_examples = dev_examples[:args.max_examples]
-    print(f"Evaluating {len(dev_examples)} dev examples ...")
+        examples = examples[:args.max_examples]
+    print(f"Evaluating {len(examples)} {args.split} examples ...")
 
     # ── Generation loop ───────────────────────────────────────────────────────
     per_example_results = []
 
-    for example in tqdm(dev_examples, desc="BPE eval"):
+    for example in tqdm(examples, desc="BPE eval"):
         reference   = example["target"]
         ref_nums    = extract_numbers(reference)
 
@@ -197,8 +198,10 @@ def main():
     parser.add_argument("--config",        required=True,  help="model_config.yaml")
     parser.add_argument("--train_config",  required=True,  help="train_config.yaml")
     parser.add_argument("--output",        default="results/bpe_results.json")
+    parser.add_argument("--split",         default="dev", choices=["train", "dev"],
+                        help="Which split to evaluate on: 'train' or 'dev' (default: dev)")
     parser.add_argument("--max_examples",  type=int, default=7700,
-                        help="Number of dev examples to evaluate (7700 = full set)")
+                        help="Number of examples to evaluate (7700 = full dev set)")
     parser.add_argument("--max_new_tokens",type=int, default=80)
     args = parser.parse_args()
     run_evaluation(args)

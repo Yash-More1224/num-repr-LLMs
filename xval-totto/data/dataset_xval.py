@@ -245,13 +245,24 @@ class ToTToDatasetXVal(Dataset):
                 # mark the mask — the value stays 0.0 (treated as 0 during forward pass)
 
         # ── Step 6: Build labels ──────────────────────────────────────────────
-        # Same as BPE dataset: -100 for input portion (0 .. sep_pos inclusive)
+        # Same fix as BPE dataset: labels are SHIFTED by 1 (next-token prediction).
+        #
+        # logits[i] = P(next_token | tokens_0..i), so it must be trained against
+        # token_ids[i+1]. Using token_ids[i] (unshifted) trivially collapses loss.
+        #
+        # Masking boundary: i < sep_pos (strict), so the [SEP] position at sep_pos
+        # correctly trains the model to predict the first target token (token_ids[sep_pos+1]).
         labels = []
-        for i, tok_id in enumerate(token_ids):
-            if i <= sep_pos:
+        for i in range(seq_len):
+            if i < sep_pos:
+                # Predicts an input token → ignore
+                labels.append(-100)
+            elif i == seq_len - 1:
+                # Last position → nothing to predict → ignore
                 labels.append(-100)
             else:
-                labels.append(tok_id)
+                # Predicts a target token → train
+                labels.append(token_ids[i + 1])
 
         # ── Step 7: Pad to max_seq_len ────────────────────────────────────────
         pad_length     = self.max_seq_len - seq_len

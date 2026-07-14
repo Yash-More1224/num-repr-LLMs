@@ -207,6 +207,7 @@ def aggregate_metrics(results: List[dict]) -> dict:
 
     Returns a dict with macro-averaged metrics.
     """
+    # pyrefly: ignore [missing-import]
     import sacrebleu
 
     n = len(results)

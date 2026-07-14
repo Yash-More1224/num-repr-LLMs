@@ -113,18 +113,32 @@ class ToTToDataset(Dataset):
         seq_len = len(token_ids)
 
         # ── Build labels ──────────────────────────────────────────────────────
-        # Labels mirror input_ids, but:
-        #   - positions 0 .. sep_pos (inclusive): set to -100 (ignore in loss)
-        #   - positions sep_pos+1 .. seq_len-1  : keep token id (compute loss)
-        #   - padding positions                  : set to -100 (ignore in loss)
+        # Labels mirror input_ids but shifted by 1 (next-token prediction objective).
+        #
+        # In a causal GPT transformer:
+        #   logits[i] = P(next_token | tokens_0..i)
+        #
+        # So logits[i] should be trained against token_ids[i+1], NOT token_ids[i].
+        # Using token_ids[i] (unshifted) would let the model trivially "copy" the
+        # current token it already sees at position i, collapsing training loss to ~0
+        # without learning anything generative.
+        #
+        # Masking boundary is i < sep_pos (strict less-than), NOT i <= sep_pos:
+        #   - Positions 0 .. sep_pos-1 : logits predict INPUT tokens → mask (-100)
+        #   - Position sep_pos ([SEP]) : logits predict FIRST target token → TRAIN
+        #   - Positions sep_pos+1 ..  : logits predict subsequent target tokens → TRAIN
+        #   - Last position (seq_len-1): nothing to predict → mask (-100)
         labels = []
-        for i, tok_id in enumerate(token_ids):
-            if i <= sep_pos:
-                # Input portion — do not compute loss here
+        for i in range(seq_len):
+            if i < sep_pos:
+                # This position predicts an input token → ignore in loss
+                labels.append(-100)
+            elif i == seq_len - 1:
+                # Last position — no next token to predict → ignore
                 labels.append(-100)
             else:
-                # Target portion — compute loss here
-                labels.append(tok_id)
+                # This position predicts a target token (or first target from [SEP])
+                labels.append(token_ids[i + 1])
 
         # ── Pad to max_seq_len ────────────────────────────────────────────────
         pad_length = self.max_seq_len - seq_len
