@@ -112,10 +112,11 @@ def make_xval_sample_fn(tokenizer, dev_dataset, device, num_token_id=8):
 
         # Splice predicted scalar values back into [NUM] placeholders
         val_idx = 0
+        scalar_vals_batch0 = gen_scalar_vals[0]
         decoded_tokens = []
         for tok in new_ids:
-            if tok == num_id and val_idx < len(gen_scalar_vals):
-                decoded_tokens.append(f"{gen_scalar_vals[val_idx]:.4g}")
+            if tok == num_id and val_idx < len(scalar_vals_batch0):
+                decoded_tokens.append(f"{scalar_vals_batch0[val_idx]:.4g}")
                 val_idx += 1
             else:
                 decoded_tokens.append(tokenizer.decode([tok]))

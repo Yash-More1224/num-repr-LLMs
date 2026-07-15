@@ -67,6 +67,7 @@ def build_xval_prompt(
     tokenizer:    Tokenizer,
     num_token_id: int,
     max_seq_len:  int,
+    sep_token_id: int,
 ) -> tuple:
     """
     Build prompt tensors for the xVal model.
@@ -77,40 +78,44 @@ def build_xval_prompt(
       number_mask    : (1, T_prompt) bool — True at [NUM] positions
     """
     linearized = example["linearized"]
-    sep_pos    = example["sep_char_pos"]
 
-    # Input portion only (up to and including [SEP])
-    prompt_text = linearized[:sep_pos + len("[SEP]")]
+    # Replace numbers with [NUM] and get their values on the FULL string
+    xval_text, num_values_ordered = replace_numbers_with_num_token(linearized)
 
-    # Replace numbers with [NUM] and get their values
-    xval_text, num_values = replace_numbers_with_num_token(prompt_text)
-
+    # Tokenize the full string first to ensure identical tokenization to training
     encoding = tokenizer.encode(xval_text)
-    ids = encoding.ids
-    T_full = len(ids)
+    token_ids = encoding.ids
 
-    # Build full number_values and number_mask tensors
-    nv_full = torch.zeros(1, T_full)
-    nm_full = torch.zeros(1, T_full, dtype=torch.bool)
+    # Find the position of [SEP]
+    try:
+        sep_pos = token_ids.index(sep_token_id)
+        prompt_ids = token_ids[:sep_pos + 1]
+    except ValueError:
+        prompt_ids = token_ids
+
+    # Build full number_values and number_mask tensors for the prompt
+    T_prompt = len(prompt_ids)
+    nv_prompt = torch.zeros(1, T_prompt)
+    nm_prompt = torch.zeros(1, T_prompt, dtype=torch.bool)
 
     num_idx = 0
-    for t, tok_id in enumerate(ids):
-        if tok_id == num_token_id and num_idx < len(num_values):
-            nv_full[0, t] = num_values[num_idx]
-            nm_full[0, t] = True
+    for t, tok_id in enumerate(prompt_ids):
+        if tok_id == num_token_id and num_idx < len(num_values_ordered):
+            nv_prompt[0, t] = num_values_ordered[num_idx]
+            nm_prompt[0, t] = True
             num_idx += 1
 
     # Truncate from the left if the prompt is too long, to keep [SEP]
     max_prompt_len = max_seq_len - 80
-    if T_full > max_prompt_len:
-        ids = ids[-max_prompt_len:]
-        nv = nv_full[:, -max_prompt_len:]
-        nm = nm_full[:, -max_prompt_len:]
+    if T_prompt > max_prompt_len:
+        prompt_ids = prompt_ids[-max_prompt_len:]
+        nv = nv_prompt[:, -max_prompt_len:]
+        nm = nm_prompt[:, -max_prompt_len:]
     else:
-        nv = nv_full
-        nm = nm_full
+        nv = nv_prompt
+        nm = nm_prompt
 
-    return torch.tensor([ids], dtype=torch.long), nv, nm
+    return torch.tensor([prompt_ids], dtype=torch.long), nv, nm
 
 
 def reconstruct_text(gen_ids: list, pred_values: list,
@@ -175,8 +180,9 @@ def run_evaluation(args):
     # ── Load tokenizer ────────────────────────────────────────────────────────
     tokenizer    = Tokenizer.from_file(train_cfg["tokenizer"])
     eos_id       = tokenizer.token_to_id("[EOS]")
+    sep_id       = tokenizer.token_to_id("[SEP]")
     num_token_id = model_cfg.get("num_token_id", 8)
-    print(f"Tokenizer loaded. EOS={eos_id}, [NUM]={num_token_id}")
+    print(f"Tokenizer loaded. EOS={eos_id}, SEP={sep_id}, [NUM]={num_token_id}")
 
     # ── Load model ────────────────────────────────────────────────────────────
     config = GPT2Config(**{k: v for k, v in model_cfg.items()
@@ -220,23 +226,25 @@ def run_evaluation(args):
 
         # Build prompt tensors
         prompt_ids, nv, nm = build_xval_prompt(
-            example, tokenizer, num_token_id, train_cfg["max_seq_len"]
+            example, tokenizer, num_token_id, train_cfg["max_seq_len"], sep_id
         )
         prompt_ids = prompt_ids.to(device)
         nv         = nv.to(device)
         nm         = nm.to(device)
         prompt_len = prompt_ids.size(1)
 
-        # Generate
-        output_ids, pred_values_per_seq = model.generate(
+        # Generate (greedy, no repetition penalty)
+        gen_ids, pred_values = model.generate(
             prompt_ids, nv, nm,
             max_new_tokens=args.max_new_tokens,
             eos_token_id=eos_id,
+            temperature=0.0,
+            repetition_penalty=1.0,
         )
-        pred_values = pred_values_per_seq[0]   # list of log-normalized floats
+        pred_values = pred_values[0]   # list of log-normalized floats
 
         # Reconstruct generated sentence
-        gen_ids = output_ids[0, prompt_len:].tolist()
+        gen_ids = gen_ids[0, prompt_len:].tolist()
         generated, gen_nums, raw_pred_vals = reconstruct_text(
             gen_ids, pred_values, tokenizer, num_token_id, eos_id
         )

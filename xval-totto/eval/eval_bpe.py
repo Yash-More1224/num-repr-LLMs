@@ -48,17 +48,24 @@ def build_prompt(example: dict, sep_token_id: int, tokenizer: Tokenizer,
     Returns: (1, T_prompt) tensor of token IDs
     """
     linearized = example["linearized"]
-    sep_pos    = example["sep_char_pos"]
 
-    # Take the input portion + [SEP] token (the model should continue from here)
-    prompt_text = linearized[:sep_pos + len("[SEP]")]
+    # Tokenize the full string first to ensure identical tokenization to training
+    encoding = tokenizer.encode(linearized)
+    token_ids = encoding.ids
 
-    encoding = tokenizer.encode(prompt_text)
-    ids = encoding.ids
+    # Find the position of [SEP]
+    try:
+        sep_pos = token_ids.index(sep_token_id)
+        prompt_ids = token_ids[:sep_pos + 1]
+    except ValueError:
+        prompt_ids = token_ids
+
+    # Truncate from the left if the prompt is too long, so we don't chop off [SEP]
     max_prompt_len = max_seq_len - 80
-    if len(ids) > max_prompt_len:
-        ids = ids[-max_prompt_len:]
-    return torch.tensor([ids], dtype=torch.long)   # (1, T)
+    if len(prompt_ids) > max_prompt_len:
+        prompt_ids = prompt_ids[-max_prompt_len:]
+
+    return torch.tensor([prompt_ids], dtype=torch.long)   # (1, T)
 
 
 def decode_generated(output_ids: torch.Tensor, prompt_len: int,
@@ -130,11 +137,13 @@ def run_evaluation(args):
                                    train_cfg["max_seq_len"]).to(device)
         prompt_len  = prompt_ids.size(1)
 
-        # Generate
+        # Generate (greedy, no repetition penalty)
         output_ids  = model.generate(
             prompt_ids,
             max_new_tokens=args.max_new_tokens,
             eos_token_id=eos_id,
+            temperature=0.0,
+            repetition_penalty=1.0,
         )
 
         # Decode generated portion
