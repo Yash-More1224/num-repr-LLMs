@@ -85,21 +85,30 @@ def build_xval_prompt(
     # Replace numbers with [NUM] and get their values
     xval_text, num_values = replace_numbers_with_num_token(prompt_text)
 
-    # Tokenize
     encoding = tokenizer.encode(xval_text)
-    ids = encoding.ids[:max_seq_len - 80]
-    T = len(ids)
+    ids = encoding.ids
+    T_full = len(ids)
 
-    # Build number_values and number_mask tensors
-    nv = torch.zeros(1, T)
-    nm = torch.zeros(1, T, dtype=torch.bool)
+    # Build full number_values and number_mask tensors
+    nv_full = torch.zeros(1, T_full)
+    nm_full = torch.zeros(1, T_full, dtype=torch.bool)
 
     num_idx = 0
     for t, tok_id in enumerate(ids):
         if tok_id == num_token_id and num_idx < len(num_values):
-            nv[0, t] = num_values[num_idx]
-            nm[0, t] = True
+            nv_full[0, t] = num_values[num_idx]
+            nm_full[0, t] = True
             num_idx += 1
+
+    # Truncate from the left if the prompt is too long, to keep [SEP]
+    max_prompt_len = max_seq_len - 80
+    if T_full > max_prompt_len:
+        ids = ids[-max_prompt_len:]
+        nv = nv_full[:, -max_prompt_len:]
+        nm = nm_full[:, -max_prompt_len:]
+    else:
+        nv = nv_full
+        nm = nm_full
 
     return torch.tensor([ids], dtype=torch.long), nv, nm
 

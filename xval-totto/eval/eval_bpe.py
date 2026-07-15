@@ -54,7 +54,10 @@ def build_prompt(example: dict, sep_token_id: int, tokenizer: Tokenizer,
     prompt_text = linearized[:sep_pos + len("[SEP]")]
 
     encoding = tokenizer.encode(prompt_text)
-    ids = encoding.ids[:max_seq_len - 80]   # leave room for generation
+    ids = encoding.ids
+    max_prompt_len = max_seq_len - 80
+    if len(ids) > max_prompt_len:
+        ids = ids[-max_prompt_len:]
     return torch.tensor([ids], dtype=torch.long)   # (1, T)
 
 
