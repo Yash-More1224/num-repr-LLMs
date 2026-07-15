@@ -55,6 +55,55 @@ def bpe_step(model, batch, device) -> tuple:
     return loss, {"ce": loss.item()}
 
 
+# ── Sample function (per-epoch qualitative check) ─────────────────────────
+
+def make_bpe_sample_fn(tokenizer, dev_dataset, device):
+    """
+    Returns a sample_fn(model_module, epoch) -> None closure.
+
+    Grabs the first dev example, builds the prompt (tokens up to and
+    including [SEP]), runs model.generate(), and prints the reference
+    sentence versus the generated one. Called at the end of every epoch
+    on rank 0 so you can visually track learning progress.
+    """
+    sep_id = tokenizer.token_to_id("[SEP]")
+    eos_id = tokenizer.token_to_id("[EOS]")
+
+    # Pull the first dev record once at startup (no repeated disk I/O)
+    first_record = dev_dataset[0]
+    reference    = first_record["target"]
+
+    def sample_fn(model_module, epoch):
+        input_ids_full = first_record["input_ids"]   # (T,) full sequence
+        ids_list = input_ids_full.tolist()
+
+        # Find [SEP] and build prompt (everything up to and including it)
+        sep_pos = ids_list.index(sep_id) if sep_id in ids_list else len(ids_list) - 1
+        prompt  = input_ids_full[:sep_pos + 1].unsqueeze(0).to(device)  # (1, T_prompt)
+
+        # Generate (sampling with temperature 0.8)
+        output_ids = model_module.generate(
+            prompt,
+            max_new_tokens=80,
+            eos_token_id=eos_id,
+            temperature=0.8,
+        )
+
+        # Decode the generated portion only
+        gen_ids = output_ids[0, sep_pos + 1:].tolist()
+        if eos_id in gen_ids:
+            gen_ids = gen_ids[:gen_ids.index(eos_id)]
+        generated = tokenizer.decode(gen_ids)
+
+        print(f"\n{'='*60}")
+        print(f"[SAMPLE] End of Epoch {epoch}")
+        print(f"  REF : {reference}")
+        print(f"  GEN : {generated}")
+        print(f"{'='*60}\n")
+
+    return sample_fn
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -129,6 +178,11 @@ def main():
     trainer.train(
         step_fn    = bpe_step,
         collate_fn = bpe_collate_fn,
+        sample_fn  = make_bpe_sample_fn(
+            tokenizer   = tokenizer,
+            dev_dataset = dev_dataset,
+            device      = torch.device("cuda", rank),
+        ) if rank == 0 else None,
     )
 
     dist.destroy_process_group()

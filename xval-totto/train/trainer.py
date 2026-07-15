@@ -263,7 +263,7 @@ class Trainer:
                           f"× {config['gradient_accumulation_steps']} accum "
                           f"= {config['micro_batch_size'] * world_size * config['gradient_accumulation_steps']}")
 
-    def train(self, step_fn, collate_fn, dev_step_fn=None):
+    def train(self, step_fn, collate_fn, dev_step_fn=None, sample_fn=None):
         """
         Run the full training loop.
 
@@ -280,6 +280,12 @@ class Trainer:
         dev_step_fn  : callable(model, batch, device) → float (optional)
                        Like step_fn but returns only a loss float, no gradients.
                        If None, dev_step_fn defaults to step_fn with torch.no_grad.
+
+        sample_fn    : callable(model_module, epoch) → None (optional)
+                       Called on rank 0 at the END of each epoch with the unwrapped
+                       model (model.module) in eval mode. Use this to generate a
+                       sample output and print it to the console for progress tracking.
+                       Other ranks will simply wait at dist.barrier() — no DDP risk.
         """
         cfg   = self.config
         rank  = self.rank
@@ -381,6 +387,18 @@ class Trainer:
                     f"Epoch {epoch} done in {epoch_time/60:.1f}m | "
                     f"step={global_step}"
                 )
+
+            # ── Sample generation (rank 0 only) ───────────────────────────────
+            # Switches to eval mode, runs generate() on one dev example, then
+            # switches back to train mode. Ranks 1-3 wait at dist.barrier() below.
+            if rank == 0 and sample_fn is not None:
+                self.model.eval()
+                try:
+                    with torch.no_grad():
+                        sample_fn(self.model.module, epoch)
+                except Exception as e:
+                    self.log.warning(f"sample_fn failed at epoch {epoch}: {e}")
+                self.model.train()
 
             # ── Checkpoint ────────────────────────────────────────────────────
             if rank == 0 and epoch % cfg["save_every_epochs"] == 0:

@@ -76,7 +76,7 @@ class ToTToDataset(Dataset):
 
         print(f"[ToTToDataset] Loaded {len(self.examples):,} examples from {data_path}")
 
-    def __len__(self) -> int:
+    def __len__(self) -> int: # special methods, magic methods, dunder methods.
         return len(self.examples)
 
     def __getitem__(self, idx: int) -> dict:

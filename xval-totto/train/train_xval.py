@@ -67,6 +67,69 @@ def xval_step(model, batch, device) -> tuple:
     }
 
 
+# ── Sample function (per-epoch qualitative check) ─────────────────────────
+
+def make_xval_sample_fn(tokenizer, dev_dataset, device, num_token_id=8):
+    """
+    Returns a sample_fn(model_module, epoch) -> None closure for xVal.
+
+    Identical in spirit to make_bpe_sample_fn but passes number_values
+    and number_mask to the xVal generate() call and splices the predicted
+    scalar values back into the decoded string for display.
+    """
+    sep_id = tokenizer.token_to_id("[SEP]")
+    eos_id = tokenizer.token_to_id("[EOS]")
+    num_id = num_token_id
+
+    first_record = dev_dataset[0]
+    reference    = first_record["target"]
+
+    def sample_fn(model_module, epoch):
+        input_ids_full = first_record["input_ids"]      # (T,)
+        num_vals_full  = first_record["number_values"]  # (T,)
+        num_mask_full  = first_record["number_mask"]    # (T,)
+        ids_list = input_ids_full.tolist()
+
+        sep_pos = ids_list.index(sep_id) if sep_id in ids_list else len(ids_list) - 1
+
+        prompt_ids  = input_ids_full[:sep_pos + 1].unsqueeze(0).to(device)
+        prompt_vals = num_vals_full[:sep_pos + 1].unsqueeze(0).to(device)
+        prompt_mask = num_mask_full[:sep_pos + 1].unsqueeze(0).to(device)
+
+        gen_ids, gen_scalar_vals = model_module.generate(
+            prompt_ids,
+            prompt_vals,
+            prompt_mask,
+            max_new_tokens=80,
+            eos_token_id=eos_id,
+            temperature=0.8,
+        )
+
+        # Decode the generated portion
+        new_ids = gen_ids[0, sep_pos + 1:].tolist()
+        if eos_id in new_ids:
+            new_ids = new_ids[:new_ids.index(eos_id)]
+
+        # Splice predicted scalar values back into [NUM] placeholders
+        val_idx = 0
+        decoded_tokens = []
+        for tok in new_ids:
+            if tok == num_id and val_idx < len(gen_scalar_vals):
+                decoded_tokens.append(f"{gen_scalar_vals[val_idx]:.4g}")
+                val_idx += 1
+            else:
+                decoded_tokens.append(tokenizer.decode([tok]))
+        generated = "".join(decoded_tokens)
+
+        print(f"\n{'='*60}")
+        print(f"[SAMPLE] End of Epoch {epoch}")
+        print(f"  REF : {reference}")
+        print(f"  GEN : {generated}")
+        print(f"{'='*60}\n")
+
+    return sample_fn
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -147,6 +210,12 @@ def main():
     trainer.train(
         step_fn    = xval_step,
         collate_fn = xval_collate_fn,
+        sample_fn  = make_xval_sample_fn(
+            tokenizer    = tokenizer,
+            dev_dataset  = dev_dataset,
+            device       = torch.device("cuda", rank),
+            num_token_id = model_cfg.get("num_token_id", 8),
+        ) if rank == 0 else None,
     )
 
     dist.destroy_process_group()
