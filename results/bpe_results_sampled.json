@@ -1,0 +1,111 @@
+{
+  "model": "bpe",
+  "checkpoint": "checkpoints/bpe/bpe_epoch05_step004715.pt",
+  "summary": {
+    "n_examples": 5,
+    "n_with_numbers": 3,
+    "bleu": 27.11,
+    "num_em": 1.0,
+    "halluc_rate": 0.3,
+    "count_match": 0.6,
+    "num_mae": 599.3333,
+    "num_mape_pct": 31.98
+  },
+  "examples": [
+    {
+      "example_id": "7391450717765563190",
+      "reference": "Daniel Henry Chamberlain was the 76th Governor of South Carolina from 1874.",
+      "generated": "Daniel Henry Pud es was the 76 th governor of South Carolina in 1874 .",
+      "ref_nums": [
+        1874.0
+      ],
+      "gen_nums": [
+        76.0,
+        1874.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1798.0,
+      "num_mape": 95.9445037353255,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Daniel Henry Chamberlain was the 76 th Governor of South Carolina from 1874 .",
+      "bleu_hyp": "Daniel Henry Pud es was the 76 th governor of South Carolina in 1874 ."
+    },
+    {
+      "example_id": "9012083751335522596",
+      "reference": "Alma Jodorowsky had the role of Evelyn in 2016 film Kids in Love.",
+      "generated": "In 2016 , Jod or ow sky acted as \" E vel yn \" in Kids in Love .",
+      "ref_nums": [
+        2016.0
+      ],
+      "gen_nums": [
+        2016.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Al ma Jod or ow sky had the role of E vel yn in 2016 film Kids in Love .",
+      "bleu_hyp": "In 2016 , Jod or ow sky acted as \" E vel yn \" in Kids in Love ."
+    },
+    {
+      "example_id": "-8764917516249435941",
+      "reference": "In his rookie season, Hawk led with 119 total tackles.",
+      "generated": "A . J . Haw k finished the season with 119 tackles .",
+      "ref_nums": [
+        119.0
+      ],
+      "gen_nums": [
+        119.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In his rookie season , Haw k led with 119 total tackles .",
+      "bleu_hyp": "A . J . Haw k finished the season with 119 tackles ."
+    },
+    {
+      "example_id": "-6915287003153277224",
+      "reference": "At the very end of his life, Arthur III became duke of Brittany, succeeding Peter II.",
+      "generated": "Arthur III , born on 14 57 and died in 14 58 was Duke of Brittany from 14 51 to his death .",
+      "ref_nums": [],
+      "gen_nums": [
+        14.0,
+        57.0,
+        14.0,
+        58.0,
+        14.0,
+        51.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 34.666666666666664,
+      "num_mape": null,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 0,
+      "bleu_ref": "At the ver y end of his life , Arthur III became du ke of Brittany , succeed ing Peter II .",
+      "bleu_hyp": "Arthur III , born on 14 57 and died in 14 58 was Duke of Brittany from 14 51 to his death ."
+    },
+    {
+      "example_id": "-3004901021745997743",
+      "reference": "Ralph J. Parker was a Minnesota politician and a Speaker of the Minnesota House of Representatives.",
+      "generated": "Ralph J . Parker is a politician , served as Speaker of the Minnesota House of Representatives .",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Ralph J . Parker was a Minnesota politician and a Speaker of the Minnesota House of Representatives .",
+      "bleu_hyp": "Ralph J . Parker is a politician , served as Speaker of the Minnesota House of Representatives ."
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "model": "xval",
+  "checkpoint": "checkpoints/xval/xval_epoch05_step004715.pt",
+  "summary": {
+    "n_examples": 5,
+    "n_with_numbers": 3,
+    "bleu": 30.95,
+    "num_em": 0.0,
+    "halluc_rate": 0.8,
+    "count_match": 0.6,
+    "num_mae": 1332.8602,
+    "num_mape_pct": 98.75,
+    "scalar_mse_lognorm": 28.960034
+  },
+  "examples": [
+    {
+      "example_id": "7391450717765563190",
+      "reference": "Daniel Henry Chamberlain was the 76th Governor of South Carolina from 1874.",
+      "generated": "Daniel Henry Archer was a member of the thir teenth Governor of South Carolina from December , to December , , , , , .",
+      "ref_nums": [
+        1874.0
+      ],
+      "gen_nums": [
+        1.8981534738617087,
+        2.3193164968512634,
+        0.6824887611917455,
+        1.3323015758250243,
+        2.1322486657083335,
+        2.869294406213721,
+        3.8734017747694494,
+        3.9350983628571132
+      ],
+      "pred_log_vals": [
+        1.0640738010406494,
+        1.1997588872909546,
+        0.5202741026878357,
+        0.8468555808067322,
+        1.1417511701583862,
+        1.353072166442871,
+        1.5837922096252441,
+        1.5963726043701172
+      ],
+      "true_log_vals": [
+        7.536363938404511
+      ],
+      "num_em": 0.0,
+      "num_mae": 1872.1018465261384,
+      "num_mape": 99.89871112732862,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Daniel Henry Chamberlain was the 76 th Governor of South Carolina from 1874 .",
+      "bleu_hyp": "Daniel Henry Archer was a member of the thir teenth Governor of South Carolina from December , to December , , , , , ."
+    },
+    {
+      "example_id": "9012083751335522596",
+      "reference": "Alma Jodorowsky had the role of Evelyn in 2016 film Kids in Love.",
+      "generated": "In , Al ma Jod or ow sky played the role of E vel yn in the film Kids in Love .",
+      "ref_nums": [
+        2016.0
+      ],
+      "gen_nums": [
+        4.442613051697019
+      ],
+      "pred_log_vals": [
+        1.6942592859268188
+      ],
+      "true_log_vals": [
+        7.6093665379542115
+      ],
+      "num_em": 0.0,
+      "num_mae": 2011.557386948303,
+      "num_mape": 99.77963228910232,
+      "halluc": 1.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Al ma Jod or ow sky had the role of E vel yn in 2016 film Kids in Love .",
+      "bleu_hyp": "In , Al ma Jod or ow sky played the role of E vel yn in the film Kids in Love ."
+    },
+    {
+      "example_id": "-8764917516249435941",
+      "reference": "In his rookie season, Hawk led with 119 total tackles.",
+      "generated": "A . J . Dur 14 s made sacks .",
+      "ref_nums": [
+        119.0
+      ],
+      "gen_nums": [
+        4.078647881542258
+      ],
+      "pred_log_vals": [
+        1.6250450611114502
+      ],
+      "true_log_vals": [
+        4.787491742782046
+      ],
+      "num_em": 0.0,
+      "num_mae": 114.92135211845775,
+      "num_mape": 96.57256480542668,
+      "halluc": 1.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In his rookie season , Haw k led with 119 total tackles .",
+      "bleu_hyp": "A . J . Dur 14 s made sacks ."
+    },
+    {
+      "example_id": "-6915287003153277224",
+      "reference": "At the very end of his life, Arthur III became duke of Brittany, succeeding Peter II.",
+      "generated": "On December , , , \" I Charles \" Guy Lincoln that was Duke of Brittany .",
+      "ref_nums": [],
+      "gen_nums": [
+        1.6889127621711093,
+        1.8817146782383476,
+        2.383629535087885
+      ],
+      "pred_log_vals": [
+        0.9891369342803955,
+        1.0583854913711548,
+        1.2189489603042603
+      ],
+      "true_log_vals": [],
+      "num_em": 1.0,
+      "num_mae": 1.9847523251657808,
+      "num_mape": null,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 0,
+      "bleu_ref": "At the ver y end of his life , Arthur III became du ke of Brittany , succeed ing Peter II .",
+      "bleu_hyp": "On December , , , \" I Charles \" Guy Lincoln that was Duke of Brittany ."
+    },
+    {
+      "example_id": "-3004901021745997743",
+      "reference": "Ralph J. Parker was a Minnesota politician and a Speaker of the Minnesota House of Representatives.",
+      "generated": "Barry Howard was a Member of the Minnesota House of Representatives .",
+      "ref_nums": [],
+      "gen_nums": [],
+      "pred_log_vals": [],
+      "true_log_vals": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Ralph J . Parker was a Minnesota politician and a Speaker of the Minnesota House of Representatives .",
+      "bleu_hyp": "Barry Howard was a Member of the Minnesota House of Representatives ."
+    }
+  ]
+}
