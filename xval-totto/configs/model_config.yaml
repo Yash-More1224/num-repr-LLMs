@@ -13,4 +13,4 @@ bias:        true
 
 # xVal-specific (used only by GPT2XVal, ignored by GPT2BPE)
 num_token_id: 8      # token ID of [NUM] — matches tokenizer_config.json
-mse_lambda:   1.0    # weight of MSE loss: L = L_ce + mse_lambda * L_mse
+mse_lambda:   0.1    # weight of MSE loss: L = L_ce + mse_lambda * L_mse

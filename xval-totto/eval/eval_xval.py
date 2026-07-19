@@ -143,13 +143,13 @@ def reconstruct_text(gen_ids: list, pred_values: list,
     if eos_id in gen_ids:
         gen_ids = gen_ids[:gen_ids.index(eos_id)]
 
-    # Walk through tokens, replace [NUM] with predicted numbers
+    # Walk through tokens to collect predicted numbers
     num_idx = 0
     gen_numbers = []
     raw_pred_values = []
-    result_tokens = []
-
-    num_token_str = tokenizer.decode([num_token_id]).strip()
+    
+    # Decode the full string to preserve BPE spacing
+    reconstructed_text = tokenizer.decode(gen_ids, skip_special_tokens=False)
 
     for tok_id in gen_ids:
         if tok_id == num_token_id and num_idx < len(pred_values):
@@ -157,12 +157,12 @@ def reconstruct_text(gen_ids: list, pred_values: list,
             actual_val = denormalize_number(log_val)
             gen_numbers.append(actual_val)
             raw_pred_values.append(log_val)
-            result_tokens.append(format_number(actual_val))
+            
+            # Splice predicted scalar values back into [NUM] placeholders
+            reconstructed_text = reconstructed_text.replace("[NUM]", format_number(actual_val), 1)
             num_idx += 1
-        else:
-            result_tokens.append(tokenizer.decode([tok_id]))
 
-    reconstructed_text = "".join(result_tokens).strip()
+    reconstructed_text = reconstructed_text.strip()
     return reconstructed_text, gen_numbers, raw_pred_values
 
 

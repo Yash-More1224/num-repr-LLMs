@@ -25,7 +25,7 @@ import yaml
 
 from model.gpt2 import GPT2Config
 from model.gpt2_xval import GPT2XVal
-from data.dataset_xval import ToTToDatasetXVal, xval_collate_fn
+from data.dataset_xval import ToTToDatasetXVal, xval_collate_fn, denormalize_number
 from tokenizers import Tokenizer
 from train.trainer import Trainer, load_checkpoint
 
@@ -110,17 +110,16 @@ def make_xval_sample_fn(tokenizer, dev_dataset, device, num_token_id=8):
         if eos_id in new_ids:
             new_ids = new_ids[:new_ids.index(eos_id)]
 
+        # Decode the whole generated string (preserves all BPE spacing)
+        # Assuming [NUM] is kept as a special token string
+        generated = tokenizer.decode(new_ids, skip_special_tokens=False)
+        
         # Splice predicted scalar values back into [NUM] placeholders
-        val_idx = 0
         scalar_vals_batch0 = gen_scalar_vals[0]
-        decoded_tokens = []
-        for tok in new_ids:
-            if tok == num_id and val_idx < len(scalar_vals_batch0):
-                decoded_tokens.append(f"{scalar_vals_batch0[val_idx]:.4g}")
-                val_idx += 1
-            else:
-                decoded_tokens.append(tokenizer.decode([tok]))
-        generated = "".join(decoded_tokens)
+        for val in scalar_vals_batch0:
+            actual_val = denormalize_number(val)
+            # Replace the first occurrence of [NUM] with the actual value
+            generated = generated.replace("[NUM]", f"{actual_val:.4g}", 1)
 
         print(f"\n{'='*60}")
         print(f"[SAMPLE] End of Epoch {epoch}")
