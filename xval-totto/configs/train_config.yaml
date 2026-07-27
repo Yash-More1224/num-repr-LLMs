@@ -15,7 +15,7 @@ log_dir:        "logs"
 
 # ── Training duration ─────────────────────────────────────────────────────────
 max_epochs: 15
-early_stopping_patience: 5  # Stop if dev loss doesn't improve for 5 evaluations
+early_stopping_patience: 3  # Stop if dev loss doesn't improve for 5 evaluations
 
 # ── Batch size ────────────────────────────────────────────────────────────────
 # micro_batch_size: per GPU, per forward pass

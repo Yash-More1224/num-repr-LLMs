@@ -316,7 +316,7 @@ class Trainer:
         # Early stopping initializations
         best_dev_loss = float("inf")
         patience_counter = 0
-        patience = cfg.get("early_stopping_patience", 5)
+        patience = cfg.get("early_stopping_patience", 3)
         early_stop = False
 
         for epoch in range(1, cfg["max_epochs"] + 1):
