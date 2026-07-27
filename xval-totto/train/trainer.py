@@ -313,6 +313,12 @@ class Trainer:
         global_step = 0
         checkpoint_dir = Path(cfg["checkpoint_dir"]) / self.run_name
 
+        # Early stopping initializations
+        best_dev_loss = float("inf")
+        patience_counter = 0
+        patience = cfg.get("early_stopping_patience", 5)
+        early_stop = False
+
         for epoch in range(1, cfg["max_epochs"] + 1):
             # Must call set_epoch() so DistributedSampler shuffles differently
             self.train_sampler.set_epoch(epoch)
@@ -378,7 +384,43 @@ class Trainer:
                                 f"  [DEV] epoch={epoch} step={global_step} "
                                 f"dev_loss={dev_loss:.4f}"
                             )
+                        
+                        # Early Stopping & Best Checkpoint Saving
+                        if dev_loss < best_dev_loss:
+                            best_dev_loss = dev_loss
+                            patience_counter = 0
+                            if rank == 0:
+                                best_ckpt_path = save_checkpoint(
+                                    checkpoint_dir=checkpoint_dir,
+                                    model=self.model,
+                                    optimizer=self.optimizer,
+                                    scaler=self.scaler,
+                                    epoch=epoch,
+                                    global_step=global_step,
+                                    config=cfg,
+                                    prefix=f"{self.run_name}_best",
+                                    keep_last_n=1,
+                                )
+                                self.log.info(f"New best dev loss! Saved checkpoint: {best_ckpt_path}")
+                        else:
+                            patience_counter += 1
+                            if rank == 0:
+                                self.log.info(
+                                    f"No improvement in dev loss. Patience: {patience_counter}/{patience}"
+                                )
+                        
+                        if patience_counter >= patience:
+                            if rank == 0:
+                                self.log.info(f"Early stopping triggered at step {global_step}. Convergence reached.")
+                            early_stop = True
+                        
                         self.model.train()
+
+                if early_stop:
+                    break
+            
+            if early_stop:
+                break
 
             # ── End of epoch ──────────────────────────────────────────────────
             epoch_time = time.time() - epoch_start
