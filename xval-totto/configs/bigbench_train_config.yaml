@@ -1,0 +1,68 @@
+# configs/bigbench_train_config.yaml
+# Training hyperparameters for BigBench Arithmetic.
+#
+# BigBench arithmetic sequences are much shorter than ToTTo (typically < 40 tokens),
+# so we can use a smaller max_seq_len and larger micro_batch_size.
+#
+# This file is shared across all 4 model types when training on BigBench.
+# The model_type is specified at the command line (--model_type bpe/xval/fone/digit).
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+train_data: "../data/bigbench_arithmetic/train.jsonl"
+dev_data:   "../data/bigbench_arithmetic/dev.jsonl"
+test_data:  "../data/bigbench_arithmetic/test.jsonl"
+
+# BPE tokenizer (default; digit model overrides via `digit_tokenizer` below)
+tokenizer:       "tokenizer/totto_bpe/tokenizer.json"
+digit_tokenizer: "tokenizer/totto_digit/tokenizer.json"
+
+# Sequence lengths
+# BigBench arithmetic questions fit easily in 128 tokens.
+# Digit model sequences are slightly longer (digits expanded), use 200.
+max_seq_len:       128   # used by BPE, xVal, FoNE
+digit_max_seq_len: 200   # used by Digit model only
+
+# ── Directories ───────────────────────────────────────────────────────────────
+checkpoint_dir: "checkpoints"
+log_dir:        "logs"
+
+# ── Training duration ─────────────────────────────────────────────────────────
+max_epochs:               30    # BigBench is small; more epochs needed
+early_stopping_patience:   5    # stop if dev loss doesn't improve for 5 evals
+
+# ── Batch size ────────────────────────────────────────────────────────────────
+# BigBench is a small dataset, smaller batches = more gradient updates per epoch.
+micro_batch_size:            64   # per GPU (larger than ToTTo since seq is shorter)
+gradient_accumulation_steps:  1
+
+# ── Optimizer ─────────────────────────────────────────────────────────────────
+optimizer:     "adamw"
+learning_rate: 1.0e-4    # lower LR for fine-tuning / arithmetic specialization
+weight_decay:  0.1
+beta1:         0.9
+beta2:         0.95
+grad_clip:     1.0
+
+# ── Learning rate schedule ────────────────────────────────────────────────────
+lr_scheduler: "cosine"
+lr_min:       1.0e-5
+warmup_steps: 100         # BigBench is small; shorter warmup
+
+# ── Mixed precision ───────────────────────────────────────────────────────────
+use_amp: true
+dtype:   "float16"   # RTX 2080 Ti supports fp16 not bfloat16
+
+# ── DataLoader ────────────────────────────────────────────────────────────────
+num_workers: 4
+pin_memory:  true
+
+# ── Checkpointing ─────────────────────────────────────────────────────────────
+save_every_epochs: 5    # BigBench trains fast; checkpoint less often
+keep_last_n:       3
+
+# ── Evaluation ────────────────────────────────────────────────────────────────
+eval_every_steps:  50   # evaluate every 50 steps (BigBench is small)
+eval_max_batches:  20
+
+# ── Reproducibility ───────────────────────────────────────────────────────────
+seed: 42
