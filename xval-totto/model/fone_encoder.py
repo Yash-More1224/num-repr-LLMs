@@ -168,9 +168,11 @@ class FoNEEncoder(nn.Module):
                              dtype=number_values.dtype)
 
         if number_mask.any():
-            flat_vals = number_values[number_mask]         # (N,)
-            fone_embs = self.encode(flat_vals)             # (N, n_embd)
-            output[number_mask] = fone_embs
+            flat_vals = number_values[number_mask]              # (N,)
+            fone_embs = self.encode(flat_vals)                  # (N, n_embd)
+            # Cast to match output dtype — necessary under AMP where autocast
+            # runs the encoder in fp16 but output is created in fp32.
+            output[number_mask] = fone_embs.to(output.dtype)
 
         return output   # (B, T, n_embd)
 
