@@ -34,8 +34,8 @@ Architecture:
        ↓
   GPT2Backbone (12 transformer layers — IDENTICAL to BPE model)
        ↓
-  LM Head: Linear(768, vocab_size)  [CE loss — same as BPE]
-  (No scalar head — number values decoded at inference via FoNE inverse)
+  LM Head:      Linear(768, vocab_size)  [CE loss]
+  FoNE Decoder: hidden vs target  [FoNE digit-wise CE loss at [NUM] positions]
 
 Usage
 -----
@@ -66,19 +66,22 @@ class GPT2FoNE(nn.Module):
     int_digit_len  : int        — max integer digits in numbers (default 7)
     frac_digit_len : int        — max fractional digits in numbers (default 2)
     add_linear     : bool       — add linear projection inside FoNEEncoder (default True)
+    num_loss_weight: float      — weight for FoNE regression loss (default 1.0)
     """
 
     def __init__(
         self,
         config:         GPT2Config,
-        num_token_id:   int  = 8,
-        int_digit_len:  int  = 7,
-        frac_digit_len: int  = 2,
-        add_linear:     bool = True,
+        num_token_id:   int   = 8,
+        int_digit_len:  int   = 7,
+        frac_digit_len: int   = 2,
+        add_linear:     bool  = True,
+        num_loss_weight: float = 1.0,
     ):
         super().__init__()
-        self.config       = config
-        self.num_token_id = num_token_id
+        self.config          = config
+        self.num_token_id    = num_token_id
+        self.num_loss_weight = num_loss_weight
 
         # ── Embedding layers (same as BPE) ────────────────────────────────────
         self.wte = nn.Embedding(config.vocab_size, config.n_embd)
@@ -115,6 +118,7 @@ class GPT2FoNE(nn.Module):
         number_values: torch.Tensor,           # (B, T) float32 — raw values at [NUM]
         number_mask:   torch.Tensor,           # (B, T) bool — True at [NUM] positions
         labels:        torch.Tensor = None,    # (B, T) int64, -100 where ignored
+        target_values: torch.Tensor = None,    # (B, T) float32 — target numbers at [NUM] label positions
     ) -> tuple:
         """
         Forward pass with FoNE number embedding.
@@ -125,12 +129,14 @@ class GPT2FoNE(nn.Module):
         number_values : (B, T) — raw number values at [NUM] positions (0.0 elsewhere)
         number_mask   : (B, T) — True wherever input_ids == [NUM]
         labels        : (B, T) — -100 for input and padding; target token IDs elsewhere
+        target_values : (B, T) — target numeric values at [NUM] label positions (0.0 elsewhere).
+                        Used for the FoNE regression loss. If None, regression loss is skipped.
 
         Returns
         -------
-        If labels is not None: (loss, logits)
-          loss   : scalar CE loss tensor
-          logits : (B, T, vocab_size)
+        If labels is not None: (total_loss, logits)
+          total_loss : CE loss + num_loss_weight * FoNE digit-wise CE loss
+          logits     : (B, T, vocab_size)
         If labels is None: (None, logits)
         """
         B, T = input_ids.shape
@@ -141,36 +147,61 @@ class GPT2FoNE(nn.Module):
         tok_emb   = self.wte(input_ids)                           # (B, T, n_embd)
         pos_emb   = self.wpe(positions)                           # (1, T, n_embd)
 
-        # ── Step 2: FoNE addition at [NUM] positions (THE KEY DIFFERENCE) ─────
-        #
-        # Compute FoNE embeddings for all positions (zeros at non-[NUM] positions).
-        # Add them to the token embeddings at [NUM] positions only.
-        #
-        # This is the key architectural difference from both:
-        #   - BPE: no special number handling
-        #   - xVal: multiplicative scaling of the [NUM] embedding
-        #
-        # FoNE is ADDITIVE: the number's value is encoded in a separate
-        # Fourier embedding that is added on top of the [NUM] token embedding.
+        # ── Step 2: FoNE addition at [NUM] positions ──────────────────────────
         fone_emb = self.fone.encode_sequence(number_values, number_mask)  # (B, T, n_embd)
-
-        # Combined embedding: BPE + FoNE (additive at [NUM] positions)
         x = tok_emb + pos_emb + fone_emb   # (B, T, n_embd)
 
-        # ── Step 3: Transformer (identical to BPE) ────────────────────────────
+        # ── Step 3: Transformer ───────────────────────────────────────────────
         hidden = self.backbone(x)   # (B, T, n_embd)
 
-        # ── Step 4: LM head (identical to BPE) ───────────────────────────────
+        # ── Step 4: LM head ───────────────────────────────────────────────────
         logits = self.lm_head(hidden)   # (B, T, vocab_size)
 
-        # ── Step 5: Loss (CE only — same as BPE, no MSE) ─────────────────────
+        # ── Step 5: Loss ──────────────────────────────────────────────────────
         loss = None
         if labels is not None:
-            loss = F.cross_entropy(
-                logits.view(-1, logits.size(-1)),
-                labels.view(-1),
+            # 5a. CE loss over token sequence (shifted)
+            shift_logits = logits[:, :-1, :].contiguous()
+            shift_labels = labels[:, 1:].contiguous()
+            ce_loss = F.cross_entropy(
+                shift_logits.view(-1, shift_logits.size(-1)),
+                shift_labels.view(-1),
                 ignore_index=-100,
             )
+
+            # 5b. FoNE numeric digit-wise CE loss.
+            #
+            # At positions in the TARGET sequence where the label is [NUM],
+            # the hidden state should encode the Fourier features of the target number.
+            # We compute a digit-wise cross-entropy loss against the ground truth digits.
+            #
+            # This gives the model a gradient signal to encode the right numeric
+            # value — without this, CE → 0 immediately but generated numbers
+            # are arbitrary (the hidden state has no training pressure to encode
+            # any particular value in FoNE space).
+            #
+            # We use the SHIFTED labels (labels[:, 1:]) to align with the shifted
+            # logits, so the label at shifted position t corresponds to hidden[t].
+            num_loss = torch.tensor(0.0, device=device)
+            if target_values is not None and self.num_loss_weight > 0:
+                # Identify positions where the target token is [NUM]
+                # Use shifted labels to align with hidden states at prediction positions
+                num_label_mask = (shift_labels == self.num_token_id)  # (B, T-1)
+
+                if num_label_mask.any():
+                    # Hidden states at [NUM] label positions (from teacher-forced input)
+                    hidden_shifted = hidden[:, :-1, :]                    # (B, T-1, n_embd)
+                    num_hidden     = hidden_shifted[num_label_mask]        # (N, n_embd)
+
+                    # Target FoNE embeddings for those positions
+                    # target_values is (B, T); shift to align with labels[:, 1:]
+                    tgt_vals_shifted = target_values[:, 1:]               # (B, T-1)
+                    tgt_vals_at_num  = tgt_vals_shifted[num_label_mask]   # (N,)
+
+                    # Compute FoNE digit-wise CE loss
+                    num_loss = self.fone.compute_loss(num_hidden, tgt_vals_at_num)
+
+            loss = ce_loss + self.num_loss_weight * num_loss
 
         return loss, logits
 

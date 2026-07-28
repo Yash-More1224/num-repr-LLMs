@@ -74,12 +74,21 @@ def xval_step(model, batch, device):
 
 
 def fone_step(model, batch, device):
-    """CE-only step for FoNE (number_values used on input side, not as targets)."""
+    """CE + FoNE numeric regression step.
+
+    number_values contains the raw target numbers at [NUM] positions for both
+    the input and target portions of the sequence. We pass it as target_values
+    so the model's forward pass can supervise the FoNE hidden-state regression.
+    """
     input_ids     = batch["input_ids"].to(device)
     labels        = batch["labels"].to(device)
     number_values = batch["number_values"].to(device)
     number_mask   = batch["number_mask"].to(device)
-    loss, _       = model(input_ids, number_values, number_mask, labels=labels)
+    loss, _       = model(
+        input_ids, number_values, number_mask,
+        labels=labels,
+        target_values=number_values,   # same tensor — used for regression at [NUM] label positions
+    )
     return loss, {"ce": loss.item()}
 
 
