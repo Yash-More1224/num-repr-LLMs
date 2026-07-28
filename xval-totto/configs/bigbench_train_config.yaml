@@ -27,7 +27,7 @@ checkpoint_dir: "checkpoints"
 log_dir:        "logs"
 
 # ── Training duration ─────────────────────────────────────────────────────────
-max_epochs:               30    # BigBench is small; more epochs needed
+max_epochs:               10000 # Train until convergence
 early_stopping_patience:   5    # stop if dev loss doesn't improve for 5 evals
 
 # ── Batch size ────────────────────────────────────────────────────────────────

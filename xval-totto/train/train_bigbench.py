@@ -99,6 +99,13 @@ def make_sample_fn(model_type: str, tokenizer, dev_dataset,
     Picks the first dev example, feeds the question as a prompt,
     generates the answer, and prints REF vs GEN for progress tracking.
     """
+    # Guard: if dataset is empty (bad data path), return a no-op
+    if len(dev_dataset) == 0:
+        print("[WARNING] dev_dataset is empty — sample_fn disabled.")
+        print("[WARNING] Check that the data paths in bigbench_train_config.yaml")
+        print("[WARNING] point to the correct location of train.jsonl / dev.jsonl")
+        return lambda model_module, epoch: None
+
     sep_id = tokenizer.token_to_id("[SEP]")
     eos_id = tokenizer.token_to_id("[EOS]")
     num_id = tokenizer.token_to_id("[NUM]")

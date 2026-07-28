@@ -1,111 +1,104 @@
 """
 data/download_bigbench.py
 ==========================
-Download and prepare the BigBench Arithmetic dataset.
+Generate the BigBench Arithmetic dataset locally.
 
-The BigBench main arithmetic task tests all four basic arithmetic operations
-(+, -, *, /) using natural language questions with numerical answers.
+NOTE: The BigBench arithmetic task is PROGRAMMATICALLY GENERATED — its task.json
+has "examples": [] because examples are produced by running the task's Python code.
+This script generates equivalent arithmetic examples following the same format and
+number ranges as the original BigBench task.
 
-Format of raw task.json:
-  {
-    "examples": [
-      {"input": "What is 3 + 4?", "target_scores": {"7": 1, "6": 0, "8": 0}},
-      {"input": "What is 12 * 12?", "target_scores": {"144": 1, "143": 0, ...}},
-      ...
-    ]
-  }
-
-We convert this to three JSONL files:
-  - train.jsonl  (80%)
-  - dev.jsonl    (10%)
-  - test.jsonl   (10%)
+Arithmetic operations covered:
+  - Addition       : "What is X plus Y?"      → X + Y
+  - Subtraction    : "What is X minus Y?"     → X - Y   (result ≥ 0)
+  - Multiplication : "What is X times Y?"     → X * Y
+  - Division       : "What is X divided by Y?" → X / Y  (integer, divisible pairs)
 
 Each JSONL line:
-  {"id": "arith_00001", "input": "What is 3 + 4?", "target": "7"}
+  {"id": "arith_00001", "input": "What is 3 plus 4?", "target": "7"}
 
-Output location: numeric-eval/data/bigbench_arithmetic/
-  (parent directory of xval-totto, as requested by user)
+Output: ../data/bigbench_arithmetic/  (parent directory of xval-totto)
 
 Usage
 -----
-  python data/download_bigbench.py \\
-      --output_dir ../data/bigbench_arithmetic \\
-      --seed 42
+  cd ~/numeric-eval/xval-totto
+  python data/download_bigbench.py --output_dir ../data/bigbench_arithmetic --n_examples 5000
 """
 
 import argparse
 import json
 import random
-import sys
-import urllib.request
 from pathlib import Path
 
-BIGBENCH_ARITHMETIC_URL = (
-    "https://raw.githubusercontent.com/google/BIG-bench/main/"
-    "bigbench/benchmark_tasks/arithmetic/task.json"
-)
+
+# ── Arithmetic generators ─────────────────────────────────────────────────────
+
+def gen_addition(rng: random.Random) -> dict:
+    a = rng.randint(0, 1000)
+    b = rng.randint(0, 1000)
+    return {"input": f"What is {a} plus {b}?", "target": str(a + b)}
 
 
-def download_task(url: str) -> dict:
-    """Download and parse the BigBench arithmetic task.json."""
-    print(f"Downloading: {url}")
-    try:
-        with urllib.request.urlopen(url, timeout=60) as resp:
-            raw = resp.read().decode("utf-8")
-    except Exception as e:
-        print(f"[ERROR] Download failed: {e}", file=sys.stderr)
-        print("Please download manually from:", file=sys.stderr)
-        print(f"  {url}", file=sys.stderr)
-        sys.exit(1)
-
-    data = json.loads(raw)
-    print(f"Downloaded task: '{data.get('name', '?')}'")
-    print(f"Description    : {data.get('description', '?')}")
-    return data
+def gen_subtraction(rng: random.Random) -> dict:
+    a = rng.randint(0, 1000)
+    b = rng.randint(0, 1000)
+    a, b = max(a, b), min(a, b)   # ensure non-negative result
+    return {"input": f"What is {a} minus {b}?", "target": str(a - b)}
 
 
-def extract_examples(data: dict) -> list:
+def gen_multiplication(rng: random.Random) -> dict:
+    a = rng.randint(0, 100)
+    b = rng.randint(0, 100)
+    return {"input": f"What is {a} times {b}?", "target": str(a * b)}
+
+
+def gen_division(rng: random.Random) -> dict:
+    """Integer division only — b ≠ 0, a always divisible by b."""
+    b = rng.randint(1, 100)
+    quotient = rng.randint(0, 100)
+    a = b * quotient
+    return {"input": f"What is {a} divided by {b}?", "target": str(quotient)}
+
+
+GENERATORS = [gen_addition, gen_subtraction, gen_multiplication, gen_division]
+
+
+# ── Generate examples ─────────────────────────────────────────────────────────
+
+def generate_examples(n: int, seed: int) -> list:
     """
-    Extract (input, target) pairs from BigBench task.json.
-
-    Handles both formats:
-      - {"input": "...", "target": "7"}              (text-to-text)
-      - {"input": "...", "target_scores": {"7": 1}}  (multiple choice)
+    Generate n unique arithmetic examples, balanced across 4 operations.
+    De-duplicates on the input question to avoid repeated prompts.
     """
-    examples = data.get("examples", [])
-    records  = []
-    skipped  = 0
+    rng     = random.Random(seed)
+    seen    = set()
+    records = []
 
-    for ex in examples:
-        inp = ex.get("input", "").strip()
-        if not inp:
-            skipped += 1
-            continue
+    max_attempts = n * 20
+    attempts     = 0
 
-        # Text-to-text format
-        if "target" in ex:
-            target = str(ex["target"]).strip()
-        # Multiple-choice format: pick the key with score == 1
-        elif "target_scores" in ex:
-            scores = ex["target_scores"]
-            correct = [k for k, v in scores.items() if v == 1]
-            if not correct:
-                skipped += 1
-                continue
-            target = correct[0].strip()
-        else:
-            skipped += 1
-            continue
+    while len(records) < n and attempts < max_attempts:
+        attempts += 1
+        gen_fn = rng.choice(GENERATORS)
+        rec    = gen_fn(rng)
+        key    = rec["input"]
+        if key not in seen:
+            seen.add(key)
+            records.append(rec)
 
-        records.append({"input": inp, "target": target})
+    if len(records) < n:
+        print(f"[WARN] Only generated {len(records):,} unique examples "
+              f"(requested {n}). Increase max_val ranges if you need more.")
 
-    print(f"Extracted {len(records):,} examples  ({skipped} skipped)")
+    print(f"Generated {len(records):,} unique arithmetic examples  (seed={seed})")
     return records
 
 
+# ── Split and save ────────────────────────────────────────────────────────────
+
 def split_and_save(records: list, output_dir: Path, seed: int):
-    """Shuffle and split records into train/dev/test, then save as JSONL."""
-    rng = random.Random(seed)
+    """Shuffle and split 80/10/10, then write JSONL files."""
+    rng = random.Random(seed + 1)
     rng.shuffle(records)
 
     n       = len(records)
@@ -124,26 +117,30 @@ def split_and_save(records: list, output_dir: Path, seed: int):
         path = output_dir / f"{split_name}.jsonl"
         with open(path, "w", encoding="utf-8") as f:
             for i, rec in enumerate(split_records):
-                rec_out = {
+                out = {
                     "id":     f"arith_{i:05d}",
                     "input":  rec["input"],
                     "target": rec["target"],
                 }
-                f.write(json.dumps(rec_out) + "\n")
-        print(f"  {split_name:5s}: {len(split_records):5,} examples -> {path}")
+                f.write(json.dumps(out) + "\n")
+        print(f"  {split_name:5s}: {len(split_records):5,} examples → {path}")
 
-    # Also save the raw task.json for reference
-    return splits
 
+# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Download and prepare BigBench Arithmetic dataset."
+        description="Generate BigBench-style Arithmetic dataset (locally)."
     )
     parser.add_argument(
         "--output_dir",
         default="../data/bigbench_arithmetic",
         help="Where to save the JSONL splits (default: ../data/bigbench_arithmetic)",
+    )
+    parser.add_argument(
+        "--n_examples", type=int, default=5000,
+        help="Total number of arithmetic examples to generate (default: 5000). "
+             "Split 80/10/10 into train/dev/test.",
     )
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
@@ -151,30 +148,22 @@ def main():
     output_dir = Path(args.output_dir)
 
     print("=" * 60)
-    print("BigBench Arithmetic Dataset Downloader")
+    print("BigBench Arithmetic Dataset Generator")
     print("=" * 60)
+    print(f"  Generating   : {args.n_examples:,} examples")
+    print(f"  Operations   : addition, subtraction, multiplication, division")
+    print(f"  Output dir   : {output_dir.resolve()}")
+    print(f"  Seed         : {args.seed}")
+    print()
 
-    # Download
-    data = download_task(BIGBENCH_ARITHMETIC_URL)
+    records = generate_examples(args.n_examples, seed=args.seed)
 
-    # Save raw task.json
-    output_dir.mkdir(parents=True, exist_ok=True)
-    raw_path = output_dir / "task.json"
-    with open(raw_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
-    print(f"Raw task.json   -> {raw_path}")
-
-    # Extract examples
-    records = extract_examples(data)
-
-    # Print a few examples for sanity check
     print("\nSample examples:")
-    for rec in records[:5]:
+    for rec in records[:4]:
         print(f"  IN : {rec['input']}")
         print(f"  OUT: {rec['target']}")
-        print()
+    print()
 
-    # Split and save
     print("Splitting and saving ...")
     split_and_save(records, output_dir, seed=args.seed)
 
@@ -182,8 +171,8 @@ def main():
     print(f"Done. Dataset saved to: {output_dir.resolve()}")
     print("=" * 60)
     print("\nNext steps:")
-    print("  1. Train models on ToTTo  (train_bpe.py, train_xval.py, etc.)")
-    print("  2. Evaluate on BigBench   (eval/eval_bigbench.py)")
+    print("  PYTHONPATH=. torchrun --nproc_per_node=4 train/train_bigbench.py --model_type bpe ...")
+    print("  python eval/eval_bigbench.py --model_type bpe ...")
 
 
 if __name__ == "__main__":
