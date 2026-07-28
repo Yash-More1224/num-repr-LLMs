@@ -35,6 +35,34 @@ from eval.metrics import (extract_numbers, numeric_exact_match, numeric_mae,
                            numeric_mape, hallucination_rate, aggregate_metrics)
 
 
+def rejoin_digit_tokens(text: str) -> str:
+    """
+    Reverse the digit-splitting applied at training time.
+
+    The digit tokenizer separates each digit with a space:
+      "84"   → "8 4"    (training)
+      "8 4"  → "84"    (this function, applied after decoding)
+
+    Only consecutive single-character digit tokens are merged;
+    non-digit tokens break the run.
+    """
+    parts = text.split(" ")
+    out   = []
+    buf   = []
+    for part in parts:
+        if len(part) == 1 and part.isdigit():
+            buf.append(part)
+        else:
+            if buf:
+                out.append("".join(buf))
+                buf = []
+            if part:
+                out.append(part)
+    if buf:
+        out.append("".join(buf))
+    return " ".join(out)
+
+
 def build_digit_prompt(example: dict, sep_id: int, tokenizer: Tokenizer,
                        max_seq_len: int) -> torch.Tensor:
     """
@@ -132,10 +160,10 @@ def run_evaluation(args):
         if eos_id in gen_ids:
             gen_ids = gen_ids[:gen_ids.index(eos_id)]
 
-        # Decode: the tokenizer was trained on digit-split text, so decoding
-        # produces "1 8 7 4" style output. This is fine — metrics extract numbers
-        # using a regex that handles single digits too.
-        generated = tokenizer.decode(gen_ids)
+        # Decode, then rejoin space-separated digits into complete numbers.
+        # e.g. tokenizer produces "1 8 7 4" → rejoin gives "1874"
+        raw_text  = tokenizer.decode(gen_ids)
+        generated = rejoin_digit_tokens(raw_text)
 
         gen_nums  = extract_numbers(generated)
         em        = numeric_exact_match(ref_nums, gen_nums)

@@ -164,12 +164,58 @@ def build_prompt_fone(inp: str, tokenizer: Tokenizer, num_id: int) -> dict:
 
 # ── Output decoders ───────────────────────────────────────────────────────────
 
+def rejoin_digit_tokens(text: str) -> str:
+    """
+    Reverse the digit-splitting preprocessing applied at training time.
+
+    The digit tokenizer was trained on text where each digit character is
+    separated by a space, e.g. "84" → "8 4", "3108" → "3 1 0 8".
+    After decoding the generated token IDs, this function joins consecutive
+    single-digit tokens back into complete numbers.
+
+    Examples:
+      "8 4"        → "84"
+      "3 1 0 8"    → "3108"
+      "What is 8 4 plus 3?" → "What is 84 plus 3?"
+    """
+    parts = text.split(" ")
+    out   = []
+    buf   = []
+    for part in parts:
+        if len(part) == 1 and part.isdigit():
+            buf.append(part)
+        else:
+            if buf:
+                out.append("".join(buf))
+                buf = []
+            if part:          # skip empty strings from consecutive spaces
+                out.append(part)
+    if buf:
+        out.append("".join(buf))
+    return " ".join(out)
+
+
 def decode_bpe_digit(output, prompt_len: int, tokenizer: Tokenizer, eos_id: int) -> str:
-    """Decode BPE / Digit output (output is a single tensor)."""
+    """Decode BPE output (output is a single tensor)."""
     gen_ids = output[0, prompt_len:].tolist()
     if eos_id in gen_ids:
         gen_ids = gen_ids[:gen_ids.index(eos_id)]
     return tokenizer.decode(gen_ids)
+
+
+def decode_digit(output, prompt_len: int, tokenizer: Tokenizer, eos_id: int) -> str:
+    """
+    Decode Digit model output.
+
+    Step 1: Standard token decoding (produces "8 4" for the number 84).
+    Step 2: rejoin_digit_tokens() collapses space-separated digits back into
+            complete numbers ("8 4" → "84").
+    """
+    gen_ids = output[0, prompt_len:].tolist()
+    if eos_id in gen_ids:
+        gen_ids = gen_ids[:gen_ids.index(eos_id)]
+    raw_text = tokenizer.decode(gen_ids)
+    return rejoin_digit_tokens(raw_text)
 
 
 def decode_xval(output, prompt_len: int, tokenizer: Tokenizer,
@@ -312,8 +358,9 @@ def run_evaluation(args):
         if args.model_type == "bpe":
             generated = decode_bpe_digit(output, prompt_len, tokenizer, eos_id)
         elif args.model_type == "digit":
-            # output is a tensor for GPT2Digit (inherits from GPT2BPE.generate)
-            generated = decode_bpe_digit(output, prompt_len, tokenizer, eos_id)
+            # Digit model generates digits space-separated ("8 4" for 84).
+            # decode_digit() joins them back into complete numbers.
+            generated = decode_digit(output, prompt_len, tokenizer, eos_id)
         elif args.model_type == "xval":
             generated = decode_xval(output, prompt_len, tokenizer, eos_id, num_id)
         elif args.model_type == "fone":
