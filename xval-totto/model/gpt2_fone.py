@@ -160,43 +160,45 @@ class GPT2FoNE(nn.Module):
         # ── Step 5: Loss ──────────────────────────────────────────────────────
         loss = None
         if labels is not None:
-            # 5a. CE loss over token sequence (shifted)
-            shift_logits = logits[:, :-1, :].contiguous()
-            shift_labels = labels[:, 1:].contiguous()
+            # 5a. CE loss over token sequence.
+            #
+            # IMPORTANT: The dataset (dataset_bigbench.py) pre-shifts labels so
+            # that labels[t] = token_ids[t+1] (the next token to predict).
+            # Positions in the input and padding are set to -100 (ignored).
+            # We must NOT shift again here — doing so would be a double-shift
+            # that skips supervising the [SEP] → [NUM] prediction entirely.
+            #
+            # This matches the BPE model (gpt2_bpe.py) which also does NOT shift.
             ce_loss = F.cross_entropy(
-                shift_logits.view(-1, shift_logits.size(-1)),
-                shift_labels.view(-1),
+                logits.view(-1, logits.size(-1)),   # (B*T, vocab_size)
+                labels.view(-1),                    # (B*T,) — already shifted
                 ignore_index=-100,
             )
 
             # 5b. FoNE numeric digit-wise CE loss.
             #
-            # At positions in the TARGET sequence where the label is [NUM],
-            # the hidden state should encode the Fourier features of the target number.
-            # We compute a digit-wise cross-entropy loss against the ground truth digits.
+            # At positions t where labels[t] == [NUM], the hidden state hidden[t]
+            # should encode the Fourier features of the number at that target position.
+            # We identify these positions using the (pre-shifted) labels tensor.
             #
-            # This gives the model a gradient signal to encode the right numeric
-            # value — without this, CE → 0 immediately but generated numbers
-            # are arbitrary (the hidden state has no training pressure to encode
-            # any particular value in FoNE space).
-            #
-            # We use the SHIFTED labels (labels[:, 1:]) to align with the shifted
-            # logits, so the label at shifted position t corresponds to hidden[t].
+            # Note: target_values[t] holds the raw value corresponding to
+            # labels[t] (i.e. the value of the [NUM] token at the next position).
+            # This is correct because dataset_bigbench.py populates number_values
+            # at each actual [NUM] token position, and labels[t] = token_ids[t+1],
+            # so when labels[t] == [NUM], target_values is used to get that number's
+            # value via the number_values tensor passed in as target_values.
             num_loss = torch.tensor(0.0, device=device)
             if target_values is not None and self.num_loss_weight > 0:
-                # Identify positions where the target token is [NUM]
-                # Use shifted labels to align with hidden states at prediction positions
-                num_label_mask = (shift_labels == self.num_token_id)  # (B, T-1)
+                # Positions where the LABEL (i.e. the next token to predict) is [NUM]
+                num_label_mask = (labels == self.num_token_id)  # (B, T) bool
 
                 if num_label_mask.any():
-                    # Hidden states at [NUM] label positions (from teacher-forced input)
-                    hidden_shifted = hidden[:, :-1, :]                    # (B, T-1, n_embd)
-                    num_hidden     = hidden_shifted[num_label_mask]        # (N, n_embd)
+                    # Hidden states at positions predicting [NUM]
+                    num_hidden = hidden[num_label_mask]         # (N, n_embd)
 
-                    # Target FoNE embeddings for those positions
-                    # target_values is (B, T); shift to align with labels[:, 1:]
-                    tgt_vals_shifted = target_values[:, 1:]               # (B, T-1)
-                    tgt_vals_at_num  = tgt_vals_shifted[num_label_mask]   # (N,)
+                    # The target values at those same positions
+                    # (target_values is aligned with the pre-shifted labels tensor)
+                    tgt_vals_at_num = target_values[num_label_mask]  # (N,)
 
                     # Compute FoNE digit-wise CE loss
                     num_loss = self.fone.compute_loss(num_hidden, tgt_vals_at_num)

@@ -178,6 +178,7 @@ class GPT2XVal(nn.Module):
             return None, logits
 
         # Cross-entropy loss (same as BPE — on all target tokens, -100 ignored)
+        # Note: labels is already shifted in the dataset (labels[t] = token_ids[t+1])
         ce_loss = F.cross_entropy(
             logits.view(-1, logits.size(-1)),
             labels.view(-1),
@@ -186,20 +187,29 @@ class GPT2XVal(nn.Module):
 
         # MSE loss (NEW — only at [NUM] tokens in the TARGET portion)
         #
-        # We want to compute MSE only where:
-        #   (a) The token IS a [NUM] token (number_mask is True)
-        #   (b) The position IS in the target (labels != -100)
+        # We want to train hidden[t] (which has seen tokens 0..t) to predict
+        # the scalar value of the NEXT token, token_ids[t+1], if it is a [NUM].
         #
-        # This means the model's scalar head is trained to predict the
-        # value of numbers that appear in the OUTPUT SENTENCE only —
-        # not the input table cells (which are given, not predicted).
-        target_num_mask = number_mask & (labels != -100)   # (B, T) bool
+        # Because labels[t] = token_ids[t+1] from the dataset, we can identify
+        # positions where the NEXT token is [NUM] by checking: labels == [NUM].
+        # The true target scalar for position t is number_values[t+1], since 
+        # number_values is aligned with token_ids.
+        #
+        # This matches the xVal paper: hidden state t predicts token and value t+1.
+        target_num_mask = (labels == self.num_token_id)   # (B, T) bool
 
         if target_num_mask.any():
-            # hidden states at target [NUM] positions: (N, n_embd)
-            # where N = total number of target [NUM] tokens in the batch
-            pred_scalars = self.scalar_head(hidden)[target_num_mask].squeeze(-1)  # (N,)
-            true_scalars = number_values[target_num_mask]                         # (N,)
+            # For each t where target_num_mask[t] is True, we want hidden[t]
+            # to predict number_values[t+1]. Wait, let's align things explicitly:
+            # We shift number_values so that shift_targets[t] = number_values[t+1]
+            # We slice target_num_mask and hidden up to T-1 to match.
+            
+            shift_hidden  = hidden[:, :-1, :]                 # (B, T-1, n_embd)
+            shift_targets = number_values[:, 1:]              # (B, T-1)
+            shift_mask    = target_num_mask[:, :-1]           # (B, T-1)
+            
+            pred_scalars = self.scalar_head(shift_hidden)[shift_mask].squeeze(-1)  # (N,)
+            true_scalars = shift_targets[shift_mask]                               # (N,)
             mse_loss = F.mse_loss(pred_scalars, true_scalars)
         else:
             # No numbers in the target for this batch — MSE loss is 0

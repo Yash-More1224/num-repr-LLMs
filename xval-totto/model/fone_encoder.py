@@ -11,7 +11,7 @@ How it works
 ------------
 For a number `x` with `int_digit_len` integer digits and `frac_digit_len`
 fractional digits, the FoNE embedding captures the modular arithmetic 
-at each digit position by scaling periods by basis [2, 5].
+at each digit position by scaling periods by basis [10].
 
 Integration with GPT-2
 ----------------------
@@ -48,7 +48,7 @@ class FoNEEncoder(nn.Module):
         int_digit_len:  int  = 7,
         frac_digit_len: int  = 2,
         add_linear:     bool = True,
-        period_base_list: list = [2, 5],
+        period_base_list: list = [10],
     ):
         super().__init__()
         self.n_embd         = n_embd
@@ -70,6 +70,7 @@ class FoNEEncoder(nn.Module):
         self.register_buffer("precomputed_cos_sin_matrix", precomputed_cos_sin_matrix)
 
         # Precompute the cosine/sine frequencies and register as a buffer
+        # buffers are used to save tensors (which are part of the model's state, but not to be update during bprop)
         period_tensor = torch.tensor(self.period_list, dtype=torch.float64)
         self.register_buffer("period_tensor", period_tensor)
         frequencies = (2 * math.pi / period_tensor)
