@@ -36,6 +36,7 @@ from tqdm import tqdm
 import torch
 import yaml
 from tokenizers import Tokenizer
+from tokenizers.decoders import Metaspace as MetaspaceDecoder
 
 from model.gpt2 import GPT2Config
 from model.gpt2_xval import GPT2XVal
@@ -179,6 +180,9 @@ def run_evaluation(args):
 
     # ── Load tokenizer ────────────────────────────────────────────────────────
     tokenizer    = Tokenizer.from_file(train_cfg["tokenizer"])
+    if tokenizer.decoder is None:
+        from tokenizers.decoders import Metaspace as MetaspaceDecoder
+        tokenizer.decoder = MetaspaceDecoder(replacement=" ", add_prefix_space=False)
     eos_id       = tokenizer.token_to_id("[EOS]")
     sep_id       = tokenizer.token_to_id("[SEP]")
     num_token_id = model_cfg.get("num_token_id", 8)

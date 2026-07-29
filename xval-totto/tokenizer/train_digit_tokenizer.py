@@ -34,7 +34,8 @@ from pathlib import Path
 from tokenizers import Tokenizer
 from tokenizers.models import BPE
 from tokenizers.trainers import BpeTrainer
-from tokenizers.pre_tokenizers import Whitespace
+from tokenizers.pre_tokenizers import Metaspace
+from tokenizers.decoders import Metaspace as MetaspaceDecoder
 from tokenizers.processors import TemplateProcessing
 
 # Reuse the same special tokens (and their IDs 0-8) as the BPE tokenizer.
@@ -106,7 +107,8 @@ def train_digit_tokenizer(corpus_path: Path, output_dir: Path, vocab_size: int):
     print(f"  Output  : {output_dir}")
 
     tokenizer = Tokenizer(BPE(unk_token="[UNK]"))
-    tokenizer.pre_tokenizer = Whitespace()
+    tokenizer.pre_tokenizer = Metaspace(replacement=" ", add_prefix_space=False)
+    tokenizer.decoder       = MetaspaceDecoder(replacement=" ", add_prefix_space=False)
 
     trainer = BpeTrainer(
         vocab_size     = vocab_size,

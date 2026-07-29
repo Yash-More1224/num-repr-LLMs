@@ -43,7 +43,8 @@ from pathlib import Path
 from tokenizers import Tokenizer, AddedToken
 from tokenizers.models import BPE
 from tokenizers.trainers import BpeTrainer
-from tokenizers.pre_tokenizers import Whitespace
+from tokenizers.pre_tokenizers import Metaspace
+from tokenizers.decoders import Metaspace as MetaspaceDecoder
 from tokenizers.processors import TemplateProcessing
 
 
@@ -87,12 +88,11 @@ def train_tokenizer(corpus_path: Path, output_dir: Path, vocab_size: int):
     # unk_token is required by BPE — used for characters unseen during training.
     tokenizer = Tokenizer(BPE(unk_token=UNK_TOKEN))
 
-    # ── 2. Pre-tokenizer ──────────────────────────────────────────────────────
-    # Whitespace splits on whitespace boundaries before BPE merges are applied.
-    # This means BPE merges never cross whitespace, keeping word-level structure.
-    # Our special tokens (e.g. [TITLE]) are single space-separated words, so
-    # they will be handled correctly by the trainer's special_tokens list.
-    tokenizer.pre_tokenizer = Whitespace()
+    # ── 2. Pre-tokenizer & Decoder ───────────────────────────────────────────
+    # Metaspace replaces spaces with ' ' before BPE merges and restores them during
+    # decoding with MetaspaceDecoder. This preserves exact word spacing in generated text.
+    tokenizer.pre_tokenizer = Metaspace(replacement=" ", add_prefix_space=False)
+    tokenizer.decoder       = MetaspaceDecoder(replacement=" ", add_prefix_space=False)
 
     # ── 3. Trainer ────────────────────────────────────────────────────────────
     trainer = BpeTrainer(
