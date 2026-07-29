@@ -107,8 +107,8 @@ def train_digit_tokenizer(corpus_path: Path, output_dir: Path, vocab_size: int):
     print(f"  Output  : {output_dir}")
 
     tokenizer = Tokenizer(BPE(unk_token="[UNK]"))
-    tokenizer.pre_tokenizer = Metaspace(replacement=" ", add_prefix_space=False)
-    tokenizer.decoder       = MetaspaceDecoder(replacement=" ", add_prefix_space=False)
+    tokenizer.pre_tokenizer = Metaspace(replacement=" ")
+    tokenizer.decoder       = MetaspaceDecoder(replacement=" ")
 
     trainer = BpeTrainer(
         vocab_size     = vocab_size,

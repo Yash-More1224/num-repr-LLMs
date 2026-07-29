@@ -91,8 +91,8 @@ def train_tokenizer(corpus_path: Path, output_dir: Path, vocab_size: int):
     # ── 2. Pre-tokenizer & Decoder ───────────────────────────────────────────
     # Metaspace replaces spaces with ' ' before BPE merges and restores them during
     # decoding with MetaspaceDecoder. This preserves exact word spacing in generated text.
-    tokenizer.pre_tokenizer = Metaspace(replacement=" ", add_prefix_space=False)
-    tokenizer.decoder       = MetaspaceDecoder(replacement=" ", add_prefix_space=False)
+    tokenizer.pre_tokenizer = Metaspace(replacement=" ")
+    tokenizer.decoder       = MetaspaceDecoder(replacement=" ")
 
     # ── 3. Trainer ────────────────────────────────────────────────────────────
     trainer = BpeTrainer(

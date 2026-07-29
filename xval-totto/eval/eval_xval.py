@@ -182,7 +182,7 @@ def run_evaluation(args):
     tokenizer    = Tokenizer.from_file(train_cfg["tokenizer"])
     if tokenizer.decoder is None:
         from tokenizers.decoders import Metaspace as MetaspaceDecoder
-        tokenizer.decoder = MetaspaceDecoder(replacement=" ", add_prefix_space=False)
+        tokenizer.decoder = MetaspaceDecoder(replacement=" ")
     eos_id       = tokenizer.token_to_id("[EOS]")
     sep_id       = tokenizer.token_to_id("[SEP]")
     num_token_id = model_cfg.get("num_token_id", 8)

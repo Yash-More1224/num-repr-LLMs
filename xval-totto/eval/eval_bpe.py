@@ -99,6 +99,9 @@ def run_evaluation(args):
 
     # ── Load tokenizer ────────────────────────────────────────────────────────
     tokenizer = Tokenizer.from_file(train_cfg["tokenizer"])
+    if tokenizer.decoder is None:
+        from tokenizers.decoders import Metaspace as MetaspaceDecoder
+        tokenizer.decoder = MetaspaceDecoder(replacement=" ")
     eos_id    = tokenizer.token_to_id("[EOS]")
     sep_id    = tokenizer.token_to_id("[SEP]")
     print(f"Tokenizer loaded. EOS={eos_id}, SEP={sep_id}")
