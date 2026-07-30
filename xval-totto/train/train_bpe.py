@@ -81,12 +81,12 @@ def make_bpe_sample_fn(tokenizer, dev_dataset, device):
         sep_pos = ids_list.index(sep_id) if sep_id in ids_list else len(ids_list) - 1
         prompt  = input_ids_full[:sep_pos + 1].unsqueeze(0).to(device)  # (1, T_prompt)
 
-        # Generate (sampling with temperature 0.8)
+        # Generate (greedy decoding)
         output_ids = model_module.generate(
             prompt,
             max_new_tokens=80,
             eos_token_id=eos_id,
-            temperature=0.8,
+            temperature=0.0,
         )
 
         # Decode the generated portion only

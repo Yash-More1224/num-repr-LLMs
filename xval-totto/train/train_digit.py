@@ -72,17 +72,15 @@ def make_digit_sample_fn(tokenizer, dev_dataset, device):
             prompt,
             max_new_tokens=120,   # digit sequences are longer
             eos_token_id=eos_id,
-            temperature=0.8,
+            temperature=0.0,
         )
 
         gen_ids = output_ids[0, sep_pos + 1:].tolist()
         if eos_id in gen_ids:
             gen_ids = gen_ids[:gen_ids.index(eos_id)]
 
-        # Decode normally — digit tokens will show as individual digits
-        # The tokenizer was trained on digit-split text, so decoding
-        # will produce strings like "1 8 7 4" for number 1874
-        generated = tokenizer.decode(gen_ids)
+        from eval.eval_digit import rejoin_digit_tokens
+        generated = rejoin_digit_tokens(tokenizer.decode(gen_ids))
 
         print(f"\n{'='*60}")
         print(f"[SAMPLE] End of Epoch {epoch}")

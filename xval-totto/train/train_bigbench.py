@@ -138,19 +138,22 @@ def make_sample_fn(model_type: str, tokenizer, dev_dataset,
 
             if model_type in ["bpe", "digit"]:
                 output = model_module.generate(
-                    prompt_ids, max_new_tokens=40, eos_token_id=eos_id, temperature=0.8
+                    prompt_ids, max_new_tokens=40, eos_token_id=eos_id, temperature=0.0
                 )
                 gen_ids = output[0, sep_pos + 1:].tolist()
                 if eos_id in gen_ids:
                     gen_ids = gen_ids[:gen_ids.index(eos_id)]
                 generated = tokenizer.decode(gen_ids)
+                if model_type == "digit":
+                    from eval.eval_digit import rejoin_digit_tokens
+                    generated = rejoin_digit_tokens(generated)
 
             elif model_type == "xval":
                 nv = first_example["number_values"][:sep_pos + 1].unsqueeze(0).to(device)
                 nm = first_example["number_mask"][:sep_pos + 1].unsqueeze(0).to(device)
                 gen_ids, pred_vals = model_module.generate(
                     prompt_ids, nv, nm, max_new_tokens=40,
-                    eos_token_id=eos_id, temperature=0.8
+                    eos_token_id=eos_id, temperature=0.0
                 )
                 from data.dataset_xval import denormalize_number
                 raw_ids = gen_ids[0, sep_pos + 1:].tolist()
@@ -172,7 +175,7 @@ def make_sample_fn(model_type: str, tokenizer, dev_dataset,
                 nm = first_example["number_mask"][:sep_pos + 1].unsqueeze(0).to(device)
                 gen_ids, pred_vals = model_module.generate(
                     prompt_ids, nv, nm, max_new_tokens=40,
-                    eos_token_id=eos_id, temperature=0.8
+                    eos_token_id=eos_id, temperature=0.0
                 )
                 raw_ids = gen_ids[0, sep_pos + 1:].tolist()
                 if eos_id in raw_ids:

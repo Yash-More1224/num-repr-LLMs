@@ -102,7 +102,7 @@ def make_xval_sample_fn(tokenizer, dev_dataset, device, num_token_id=8):
             prompt_mask,
             max_new_tokens=80,
             eos_token_id=eos_id,
-            temperature=0.8,
+            temperature=0.0,
         )
 
         # Decode the generated portion
