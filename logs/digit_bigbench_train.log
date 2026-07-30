@@ -1,0 +1,126 @@
+2026-07-30 21:24:31 | INFO | Run name       : digit_bigbench
+2026-07-30 21:24:31 | INFO | Train examples : 4,000
+2026-07-30 21:24:31 | INFO | Dev examples   : 500
+2026-07-30 21:24:31 | INFO | Steps/epoch    : 16
+2026-07-30 21:24:31 | INFO | Total steps    : 160,000
+2026-07-30 21:24:31 | INFO | Effective batch: 64 × 4 GPUs × 1 accum = 256
+2026-07-30 21:24:36 | INFO | Epoch 1 done in 0.1m | step=15
+2026-07-30 21:24:40 | INFO | Epoch 2 done in 0.1m | step=30
+2026-07-30 21:24:45 | INFO | Epoch 3 done in 0.1m | step=45
+2026-07-30 21:24:46 | INFO | epoch=4 step=00050 lr=4.90e-05 | ce=2.4892 | loss_avg=0.2514
+2026-07-30 21:24:46 | INFO |   [DEV] epoch=4 step=50 dev_loss=2.3895
+2026-07-30 21:24:58 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch04_step000050.pt
+2026-07-30 21:25:01 | INFO | Epoch 4 done in 0.3m | step=60
+2026-07-30 21:25:05 | INFO | Epoch 5 done in 0.1m | step=75
+2026-07-30 21:25:17 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch05_step000075.pt
+2026-07-30 21:25:21 | INFO | Epoch 6 done in 0.1m | step=90
+2026-07-30 21:25:24 | INFO | epoch=7 step=00100 lr=9.90e-05 | ce=1.3840 | loss_avg=0.2825
+2026-07-30 21:25:25 | INFO |   [DEV] epoch=7 step=100 dev_loss=1.3844
+2026-07-30 21:25:36 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch07_step000100.pt
+2026-07-30 21:25:38 | INFO | Epoch 7 done in 0.3m | step=105
+2026-07-30 21:25:42 | INFO | Epoch 8 done in 0.1m | step=120
+2026-07-30 21:25:46 | INFO | Epoch 9 done in 0.1m | step=135
+2026-07-30 21:25:51 | INFO | epoch=10 step=00150 lr=1.00e-04 | ce=1.2282 | loss_avg=0.3759
+2026-07-30 21:25:51 | INFO |   [DEV] epoch=10 step=150 dev_loss=1.2302
+2026-07-30 21:26:03 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch10_step000150.pt
+2026-07-30 21:26:03 | INFO | Epoch 10 done in 0.3m | step=150
+2026-07-30 21:26:14 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch10_step000150.pt
+2026-07-30 21:26:19 | INFO | Epoch 11 done in 0.1m | step=165
+2026-07-30 21:26:23 | INFO | Epoch 12 done in 0.1m | step=180
+2026-07-30 21:26:27 | INFO | Epoch 13 done in 0.1m | step=195
+2026-07-30 21:26:29 | INFO | epoch=14 step=00200 lr=1.00e-04 | ce=1.1290 | loss_avg=0.1114
+2026-07-30 21:26:29 | INFO |   [DEV] epoch=14 step=200 dev_loss=1.1488
+2026-07-30 21:26:41 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch14_step000200.pt
+2026-07-30 21:26:44 | INFO | Epoch 14 done in 0.3m | step=210
+2026-07-30 21:26:48 | INFO | Epoch 15 done in 0.1m | step=225
+2026-07-30 21:27:00 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch15_step000225.pt
+2026-07-30 21:27:04 | INFO | Epoch 16 done in 0.1m | step=240
+2026-07-30 21:27:07 | INFO | epoch=17 step=00250 lr=1.00e-04 | ce=1.0879 | loss_avg=0.2117
+2026-07-30 21:27:08 | INFO |   [DEV] epoch=17 step=250 dev_loss=1.0908
+2026-07-30 21:27:19 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch17_step000250.pt
+2026-07-30 21:27:21 | INFO | Epoch 17 done in 0.3m | step=255
+2026-07-30 21:27:25 | INFO | Epoch 18 done in 0.1m | step=270
+2026-07-30 21:27:30 | INFO | Epoch 19 done in 0.1m | step=285
+2026-07-30 21:27:34 | INFO | epoch=20 step=00300 lr=1.00e-04 | ce=0.9190 | loss_avg=0.2953
+2026-07-30 21:27:34 | INFO |   [DEV] epoch=20 step=300 dev_loss=1.0309
+2026-07-30 21:27:46 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch20_step000300.pt
+2026-07-30 21:27:46 | INFO | Epoch 20 done in 0.3m | step=300
+2026-07-30 21:27:58 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch20_step000300.pt
+2026-07-30 21:28:02 | INFO | Epoch 21 done in 0.1m | step=315
+2026-07-30 21:28:07 | INFO | Epoch 22 done in 0.1m | step=330
+2026-07-30 21:28:11 | INFO | Epoch 23 done in 0.1m | step=345
+2026-07-30 21:28:13 | INFO | epoch=24 step=00350 lr=1.00e-04 | ce=0.9276 | loss_avg=0.0925
+2026-07-30 21:28:13 | INFO |   [DEV] epoch=24 step=350 dev_loss=0.9947
+2026-07-30 21:28:25 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch24_step000350.pt
+2026-07-30 21:28:28 | INFO | Epoch 24 done in 0.3m | step=360
+2026-07-30 21:28:32 | INFO | Epoch 25 done in 0.1m | step=375
+2026-07-30 21:28:44 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch25_step000375.pt
+2026-07-30 21:28:48 | INFO | Epoch 26 done in 0.1m | step=390
+2026-07-30 21:28:51 | INFO | epoch=27 step=00400 lr=1.00e-04 | ce=0.9118 | loss_avg=0.1755
+2026-07-30 21:28:51 | INFO |   [DEV] epoch=27 step=400 dev_loss=1.0136
+2026-07-30 21:28:51 | INFO | No improvement in dev loss. Patience: 1/5
+2026-07-30 21:28:53 | INFO | Epoch 27 done in 0.1m | step=405
+2026-07-30 21:28:57 | INFO | Epoch 28 done in 0.1m | step=420
+2026-07-30 21:29:02 | INFO | Epoch 29 done in 0.1m | step=435
+2026-07-30 21:29:06 | INFO | epoch=30 step=00450 lr=1.00e-04 | ce=0.8439 | loss_avg=0.2486
+2026-07-30 21:29:06 | INFO |   [DEV] epoch=30 step=450 dev_loss=0.9583
+2026-07-30 21:29:18 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch30_step000450.pt
+2026-07-30 21:29:18 | INFO | Epoch 30 done in 0.3m | step=450
+2026-07-30 21:29:30 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch30_step000450.pt
+2026-07-30 21:29:34 | INFO | Epoch 31 done in 0.1m | step=465
+2026-07-30 21:29:39 | INFO | Epoch 32 done in 0.1m | step=480
+2026-07-30 21:29:43 | INFO | Epoch 33 done in 0.1m | step=495
+2026-07-30 21:29:45 | INFO | epoch=34 step=00500 lr=1.00e-04 | ce=0.8087 | loss_avg=0.0771
+2026-07-30 21:29:45 | INFO |   [DEV] epoch=34 step=500 dev_loss=0.9713
+2026-07-30 21:29:45 | INFO | No improvement in dev loss. Patience: 1/5
+2026-07-30 21:29:48 | INFO | Epoch 34 done in 0.1m | step=510
+2026-07-30 21:29:52 | INFO | Epoch 35 done in 0.1m | step=525
+2026-07-30 21:30:04 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch35_step000525.pt
+2026-07-30 21:30:08 | INFO | Epoch 36 done in 0.1m | step=540
+2026-07-30 21:30:11 | INFO | epoch=37 step=00550 lr=1.00e-04 | ce=0.6184 | loss_avg=0.1394
+2026-07-30 21:30:11 | INFO |   [DEV] epoch=37 step=550 dev_loss=0.9526
+2026-07-30 21:30:23 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch37_step000550.pt
+2026-07-30 21:30:25 | INFO | Epoch 37 done in 0.3m | step=555
+2026-07-30 21:30:29 | INFO | Epoch 38 done in 0.1m | step=570
+2026-07-30 21:30:33 | INFO | Epoch 39 done in 0.1m | step=585
+2026-07-30 21:30:38 | INFO | epoch=40 step=00600 lr=1.00e-04 | ce=0.6112 | loss_avg=0.1969
+2026-07-30 21:30:38 | INFO |   [DEV] epoch=40 step=600 dev_loss=0.9324
+2026-07-30 21:30:50 | INFO | New best dev loss! Saved checkpoint: checkpoints/digit_bigbench/digit_bigbench_best_epoch40_step000600.pt
+2026-07-30 21:30:50 | INFO | Epoch 40 done in 0.3m | step=600
+2026-07-30 21:31:02 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch40_step000600.pt
+2026-07-30 21:31:06 | INFO | Epoch 41 done in 0.1m | step=615
+2026-07-30 21:31:11 | INFO | Epoch 42 done in 0.1m | step=630
+2026-07-30 21:31:15 | INFO | Epoch 43 done in 0.1m | step=645
+2026-07-30 21:31:17 | INFO | epoch=44 step=00650 lr=1.00e-04 | ce=0.5473 | loss_avg=0.0583
+2026-07-30 21:31:17 | INFO |   [DEV] epoch=44 step=650 dev_loss=0.9884
+2026-07-30 21:31:17 | INFO | No improvement in dev loss. Patience: 1/5
+2026-07-30 21:31:20 | INFO | Epoch 44 done in 0.1m | step=660
+2026-07-30 21:31:24 | INFO | Epoch 45 done in 0.1m | step=675
+2026-07-30 21:31:36 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch45_step000675.pt
+2026-07-30 21:31:40 | INFO | Epoch 46 done in 0.1m | step=690
+2026-07-30 21:31:43 | INFO | epoch=47 step=00700 lr=1.00e-04 | ce=0.5434 | loss_avg=0.1014
+2026-07-30 21:31:43 | INFO |   [DEV] epoch=47 step=700 dev_loss=0.9703
+2026-07-30 21:31:43 | INFO | No improvement in dev loss. Patience: 2/5
+2026-07-30 21:31:45 | INFO | Epoch 47 done in 0.1m | step=705
+2026-07-30 21:31:49 | INFO | Epoch 48 done in 0.1m | step=720
+2026-07-30 21:31:54 | INFO | Epoch 49 done in 0.1m | step=735
+2026-07-30 21:31:58 | INFO | epoch=50 step=00750 lr=1.00e-04 | ce=0.5626 | loss_avg=0.1296
+2026-07-30 21:31:58 | INFO |   [DEV] epoch=50 step=750 dev_loss=0.9669
+2026-07-30 21:31:58 | INFO | No improvement in dev loss. Patience: 3/5
+2026-07-30 21:31:58 | INFO | Epoch 50 done in 0.1m | step=750
+2026-07-30 21:32:10 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch50_step000750.pt
+2026-07-30 21:32:14 | INFO | Epoch 51 done in 0.1m | step=765
+2026-07-30 21:32:19 | INFO | Epoch 52 done in 0.1m | step=780
+2026-07-30 21:32:23 | INFO | Epoch 53 done in 0.1m | step=795
+2026-07-30 21:32:25 | INFO | epoch=54 step=00800 lr=1.00e-04 | ce=0.3973 | loss_avg=0.0356
+2026-07-30 21:32:25 | INFO |   [DEV] epoch=54 step=800 dev_loss=1.1050
+2026-07-30 21:32:25 | INFO | No improvement in dev loss. Patience: 4/5
+2026-07-30 21:32:28 | INFO | Epoch 54 done in 0.1m | step=810
+2026-07-30 21:32:32 | INFO | Epoch 55 done in 0.1m | step=825
+2026-07-30 21:32:44 | INFO | Checkpoint saved: checkpoints/digit_bigbench/digit_bigbench_epoch55_step000825.pt
+2026-07-30 21:32:49 | INFO | Epoch 56 done in 0.1m | step=840
+2026-07-30 21:32:52 | INFO | epoch=57 step=00850 lr=1.00e-04 | ce=0.3302 | loss_avg=0.0642
+2026-07-30 21:32:52 | INFO |   [DEV] epoch=57 step=850 dev_loss=1.0197
+2026-07-30 21:32:52 | INFO | No improvement in dev loss. Patience: 5/5
+2026-07-30 21:32:52 | INFO | Early stopping triggered at step 850. Convergence reached.
+2026-07-30 21:32:52 | INFO | Training complete.

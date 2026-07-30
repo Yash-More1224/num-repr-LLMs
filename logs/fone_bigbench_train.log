@@ -1,0 +1,168 @@
+2026-07-30 21:06:58 | INFO | Run name       : fone_bigbench
+2026-07-30 21:06:58 | INFO | Train examples : 4,000
+2026-07-30 21:06:58 | INFO | Dev examples   : 500
+2026-07-30 21:06:58 | INFO | Steps/epoch    : 16
+2026-07-30 21:06:58 | INFO | Total steps    : 160,000
+2026-07-30 21:06:58 | INFO | Effective batch: 64 × 4 GPUs × 1 accum = 256
+2026-07-30 21:07:02 | INFO | Epoch 1 done in 0.1m | step=15
+2026-07-30 21:07:05 | INFO | Epoch 2 done in 0.1m | step=30
+2026-07-30 21:07:08 | INFO | Epoch 3 done in 0.1m | step=45
+2026-07-30 21:07:09 | INFO | epoch=4 step=00050 lr=4.90e-05 | ce=1.0433 | loss_avg=0.1042
+2026-07-30 21:07:10 | INFO |   [DEV] epoch=4 step=50 dev_loss=1.0506
+2026-07-30 21:07:21 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch04_step000050.pt
+2026-07-30 21:07:23 | INFO | Epoch 4 done in 0.3m | step=60
+2026-07-30 21:07:26 | INFO | Epoch 5 done in 0.1m | step=75
+2026-07-30 21:07:38 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch05_step000075.pt
+2026-07-30 21:07:41 | INFO | Epoch 6 done in 0.1m | step=90
+2026-07-30 21:07:43 | INFO | epoch=7 step=00100 lr=9.90e-05 | ce=0.9622 | loss_avg=0.1938
+2026-07-30 21:07:44 | INFO |   [DEV] epoch=7 step=100 dev_loss=0.9491
+2026-07-30 21:07:56 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch07_step000100.pt
+2026-07-30 21:07:57 | INFO | Epoch 7 done in 0.3m | step=105
+2026-07-30 21:08:00 | INFO | Epoch 8 done in 0.1m | step=120
+2026-07-30 21:08:03 | INFO | Epoch 9 done in 0.1m | step=135
+2026-07-30 21:08:06 | INFO | epoch=10 step=00150 lr=1.00e-04 | ce=0.8700 | loss_avg=0.2623
+2026-07-30 21:08:06 | INFO |   [DEV] epoch=10 step=150 dev_loss=0.8540
+2026-07-30 21:08:18 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch10_step000150.pt
+2026-07-30 21:08:18 | INFO | Epoch 10 done in 0.3m | step=150
+2026-07-30 21:08:30 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch10_step000150.pt
+2026-07-30 21:08:33 | INFO | Epoch 11 done in 0.1m | step=165
+2026-07-30 21:08:36 | INFO | Epoch 12 done in 0.1m | step=180
+2026-07-30 21:08:39 | INFO | Epoch 13 done in 0.1m | step=195
+2026-07-30 21:08:41 | INFO | epoch=14 step=00200 lr=1.00e-04 | ce=0.8034 | loss_avg=0.0789
+2026-07-30 21:08:41 | INFO |   [DEV] epoch=14 step=200 dev_loss=0.7776
+2026-07-30 21:08:53 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch14_step000200.pt
+2026-07-30 21:08:55 | INFO | Epoch 14 done in 0.3m | step=210
+2026-07-30 21:08:58 | INFO | Epoch 15 done in 0.1m | step=225
+2026-07-30 21:09:10 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch15_step000225.pt
+2026-07-30 21:09:13 | INFO | Epoch 16 done in 0.1m | step=240
+2026-07-30 21:09:15 | INFO | epoch=17 step=00250 lr=1.00e-04 | ce=0.7159 | loss_avg=0.1463
+2026-07-30 21:09:15 | INFO |   [DEV] epoch=17 step=250 dev_loss=0.7331
+2026-07-30 21:09:27 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch17_step000250.pt
+2026-07-30 21:09:28 | INFO | Epoch 17 done in 0.3m | step=255
+2026-07-30 21:09:31 | INFO | Epoch 18 done in 0.1m | step=270
+2026-07-30 21:09:35 | INFO | Epoch 19 done in 0.1m | step=285
+2026-07-30 21:09:38 | INFO | epoch=20 step=00300 lr=1.00e-04 | ce=0.6384 | loss_avg=0.2055
+2026-07-30 21:09:38 | INFO |   [DEV] epoch=20 step=300 dev_loss=0.6736
+2026-07-30 21:09:50 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch20_step000300.pt
+2026-07-30 21:09:50 | INFO | Epoch 20 done in 0.3m | step=300
+2026-07-30 21:10:02 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch20_step000300.pt
+2026-07-30 21:10:05 | INFO | Epoch 21 done in 0.1m | step=315
+2026-07-30 21:10:08 | INFO | Epoch 22 done in 0.1m | step=330
+2026-07-30 21:10:12 | INFO | Epoch 23 done in 0.1m | step=345
+2026-07-30 21:10:13 | INFO | epoch=24 step=00350 lr=1.00e-04 | ce=0.5949 | loss_avg=0.0622
+2026-07-30 21:10:13 | INFO |   [DEV] epoch=24 step=350 dev_loss=0.6327
+2026-07-30 21:10:25 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch24_step000350.pt
+2026-07-30 21:10:27 | INFO | Epoch 24 done in 0.3m | step=360
+2026-07-30 21:10:30 | INFO | Epoch 25 done in 0.1m | step=375
+2026-07-30 21:10:42 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch25_step000375.pt
+2026-07-30 21:10:45 | INFO | Epoch 26 done in 0.1m | step=390
+2026-07-30 21:10:47 | INFO | epoch=27 step=00400 lr=1.00e-04 | ce=0.6110 | loss_avg=0.1236
+2026-07-30 21:10:48 | INFO |   [DEV] epoch=27 step=400 dev_loss=0.6179
+2026-07-30 21:11:00 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch27_step000400.pt
+2026-07-30 21:11:01 | INFO | Epoch 27 done in 0.3m | step=405
+2026-07-30 21:11:04 | INFO | Epoch 28 done in 0.1m | step=420
+2026-07-30 21:11:07 | INFO | Epoch 29 done in 0.1m | step=435
+2026-07-30 21:11:10 | INFO | epoch=30 step=00450 lr=1.00e-04 | ce=0.5421 | loss_avg=0.1760
+2026-07-30 21:11:10 | INFO |   [DEV] epoch=30 step=450 dev_loss=0.5962
+2026-07-30 21:11:22 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch30_step000450.pt
+2026-07-30 21:11:22 | INFO | Epoch 30 done in 0.3m | step=450
+2026-07-30 21:11:34 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch30_step000450.pt
+2026-07-30 21:11:37 | INFO | Epoch 31 done in 0.1m | step=465
+2026-07-30 21:11:40 | INFO | Epoch 32 done in 0.1m | step=480
+2026-07-30 21:11:43 | INFO | Epoch 33 done in 0.1m | step=495
+2026-07-30 21:11:45 | INFO | epoch=34 step=00500 lr=1.00e-04 | ce=0.5726 | loss_avg=0.0553
+2026-07-30 21:11:45 | INFO |   [DEV] epoch=34 step=500 dev_loss=0.5736
+2026-07-30 21:11:57 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch34_step000500.pt
+2026-07-30 21:11:59 | INFO | Epoch 34 done in 0.3m | step=510
+2026-07-30 21:12:02 | INFO | Epoch 35 done in 0.1m | step=525
+2026-07-30 21:12:13 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch35_step000525.pt
+2026-07-30 21:12:17 | INFO | Epoch 36 done in 0.1m | step=540
+2026-07-30 21:12:19 | INFO | epoch=37 step=00550 lr=1.00e-04 | ce=0.5407 | loss_avg=0.1054
+2026-07-30 21:12:19 | INFO |   [DEV] epoch=37 step=550 dev_loss=0.5488
+2026-07-30 21:12:31 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch37_step000550.pt
+2026-07-30 21:12:32 | INFO | Epoch 37 done in 0.3m | step=555
+2026-07-30 21:12:35 | INFO | Epoch 38 done in 0.1m | step=570
+2026-07-30 21:12:38 | INFO | Epoch 39 done in 0.1m | step=585
+2026-07-30 21:12:41 | INFO | epoch=40 step=00600 lr=1.00e-04 | ce=0.5506 | loss_avg=0.1519
+2026-07-30 21:12:42 | INFO |   [DEV] epoch=40 step=600 dev_loss=0.5160
+2026-07-30 21:12:54 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch40_step000600.pt
+2026-07-30 21:12:54 | INFO | Epoch 40 done in 0.3m | step=600
+2026-07-30 21:13:05 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch40_step000600.pt
+2026-07-30 21:13:08 | INFO | Epoch 41 done in 0.1m | step=615
+2026-07-30 21:13:12 | INFO | Epoch 42 done in 0.1m | step=630
+2026-07-30 21:13:15 | INFO | Epoch 43 done in 0.1m | step=645
+2026-07-30 21:13:16 | INFO | epoch=44 step=00650 lr=1.00e-04 | ce=0.4577 | loss_avg=0.0464
+2026-07-30 21:13:16 | INFO |   [DEV] epoch=44 step=650 dev_loss=0.5189
+2026-07-30 21:13:16 | INFO | No improvement in dev loss. Patience: 1/5
+2026-07-30 21:13:18 | INFO | Epoch 44 done in 0.1m | step=660
+2026-07-30 21:13:21 | INFO | Epoch 45 done in 0.1m | step=675
+2026-07-30 21:13:33 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch45_step000675.pt
+2026-07-30 21:13:37 | INFO | Epoch 46 done in 0.1m | step=690
+2026-07-30 21:13:39 | INFO | epoch=47 step=00700 lr=1.00e-04 | ce=0.5029 | loss_avg=0.0955
+2026-07-30 21:13:39 | INFO |   [DEV] epoch=47 step=700 dev_loss=0.5108
+2026-07-30 21:13:51 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch47_step000700.pt
+2026-07-30 21:13:52 | INFO | Epoch 47 done in 0.3m | step=705
+2026-07-30 21:13:55 | INFO | Epoch 48 done in 0.1m | step=720
+2026-07-30 21:13:58 | INFO | Epoch 49 done in 0.1m | step=735
+2026-07-30 21:14:01 | INFO | epoch=50 step=00750 lr=1.00e-04 | ce=0.4589 | loss_avg=0.1365
+2026-07-30 21:14:02 | INFO |   [DEV] epoch=50 step=750 dev_loss=0.4998
+2026-07-30 21:14:14 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch50_step000750.pt
+2026-07-30 21:14:14 | INFO | Epoch 50 done in 0.3m | step=750
+2026-07-30 21:14:25 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch50_step000750.pt
+2026-07-30 21:14:28 | INFO | Epoch 51 done in 0.1m | step=765
+2026-07-30 21:14:32 | INFO | Epoch 52 done in 0.1m | step=780
+2026-07-30 21:14:35 | INFO | Epoch 53 done in 0.1m | step=795
+2026-07-30 21:14:36 | INFO | epoch=54 step=00800 lr=1.00e-04 | ce=0.4349 | loss_avg=0.0434
+2026-07-30 21:14:36 | INFO |   [DEV] epoch=54 step=800 dev_loss=0.5033
+2026-07-30 21:14:36 | INFO | No improvement in dev loss. Patience: 1/5
+2026-07-30 21:14:38 | INFO | Epoch 54 done in 0.1m | step=810
+2026-07-30 21:14:41 | INFO | Epoch 55 done in 0.1m | step=825
+2026-07-30 21:14:53 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch55_step000825.pt
+2026-07-30 21:14:57 | INFO | Epoch 56 done in 0.1m | step=840
+2026-07-30 21:14:59 | INFO | epoch=57 step=00850 lr=1.00e-04 | ce=0.4211 | loss_avg=0.0843
+2026-07-30 21:14:59 | INFO |   [DEV] epoch=57 step=850 dev_loss=0.5031
+2026-07-30 21:14:59 | INFO | No improvement in dev loss. Patience: 2/5
+2026-07-30 21:15:00 | INFO | Epoch 57 done in 0.1m | step=855
+2026-07-30 21:15:03 | INFO | Epoch 58 done in 0.1m | step=870
+2026-07-30 21:15:06 | INFO | Epoch 59 done in 0.1m | step=885
+2026-07-30 21:15:09 | INFO | epoch=60 step=00900 lr=1.00e-04 | ce=0.4593 | loss_avg=0.1286
+2026-07-30 21:15:10 | INFO |   [DEV] epoch=60 step=900 dev_loss=0.4951
+2026-07-30 21:15:22 | INFO | New best dev loss! Saved checkpoint: checkpoints/fone_bigbench/fone_bigbench_best_epoch60_step000900.pt
+2026-07-30 21:15:22 | INFO | Epoch 60 done in 0.3m | step=900
+2026-07-30 21:15:33 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch60_step000900.pt
+2026-07-30 21:15:37 | INFO | Epoch 61 done in 0.1m | step=915
+2026-07-30 21:15:40 | INFO | Epoch 62 done in 0.1m | step=930
+2026-07-30 21:15:43 | INFO | Epoch 63 done in 0.1m | step=945
+2026-07-30 21:15:44 | INFO | epoch=64 step=00950 lr=1.00e-04 | ce=0.4202 | loss_avg=0.0428
+2026-07-30 21:15:44 | INFO |   [DEV] epoch=64 step=950 dev_loss=0.5069
+2026-07-30 21:15:44 | INFO | No improvement in dev loss. Patience: 1/5
+2026-07-30 21:15:46 | INFO | Epoch 64 done in 0.1m | step=960
+2026-07-30 21:15:50 | INFO | Epoch 65 done in 0.1m | step=975
+2026-07-30 21:16:01 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch65_step000975.pt
+2026-07-30 21:16:04 | INFO | Epoch 66 done in 0.1m | step=990
+2026-07-30 21:16:07 | INFO | epoch=67 step=01000 lr=1.00e-04 | ce=0.4068 | loss_avg=0.0825
+2026-07-30 21:16:07 | INFO |   [DEV] epoch=67 step=1000 dev_loss=0.5089
+2026-07-30 21:16:07 | INFO | No improvement in dev loss. Patience: 2/5
+2026-07-30 21:16:08 | INFO | Epoch 67 done in 0.1m | step=1005
+2026-07-30 21:16:11 | INFO | Epoch 68 done in 0.1m | step=1020
+2026-07-30 21:16:14 | INFO | Epoch 69 done in 0.1m | step=1035
+2026-07-30 21:16:17 | INFO | epoch=70 step=01050 lr=1.00e-04 | ce=0.3996 | loss_avg=0.1156
+2026-07-30 21:16:18 | INFO |   [DEV] epoch=70 step=1050 dev_loss=0.5159
+2026-07-30 21:16:18 | INFO | No improvement in dev loss. Patience: 3/5
+2026-07-30 21:16:18 | INFO | Epoch 70 done in 0.1m | step=1050
+2026-07-30 21:16:30 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch70_step001050.pt
+2026-07-30 21:16:33 | INFO | Epoch 71 done in 0.1m | step=1065
+2026-07-30 21:16:36 | INFO | Epoch 72 done in 0.1m | step=1080
+2026-07-30 21:16:39 | INFO | Epoch 73 done in 0.1m | step=1095
+2026-07-30 21:16:40 | INFO | epoch=74 step=01100 lr=1.00e-04 | ce=0.3920 | loss_avg=0.0371
+2026-07-30 21:16:41 | INFO |   [DEV] epoch=74 step=1100 dev_loss=0.5210
+2026-07-30 21:16:41 | INFO | No improvement in dev loss. Patience: 4/5
+2026-07-30 21:16:43 | INFO | Epoch 74 done in 0.1m | step=1110
+2026-07-30 21:16:46 | INFO | Epoch 75 done in 0.1m | step=1125
+2026-07-30 21:16:58 | INFO | Checkpoint saved: checkpoints/fone_bigbench/fone_bigbench_epoch75_step001125.pt
+2026-07-30 21:17:01 | INFO | Epoch 76 done in 0.1m | step=1140
+2026-07-30 21:17:03 | INFO | epoch=77 step=01150 lr=1.00e-04 | ce=0.3724 | loss_avg=0.0758
+2026-07-30 21:17:03 | INFO |   [DEV] epoch=77 step=1150 dev_loss=0.5162
+2026-07-30 21:17:03 | INFO | No improvement in dev loss. Patience: 5/5
+2026-07-30 21:17:03 | INFO | Early stopping triggered at step 1150. Convergence reached.
+2026-07-30 21:17:03 | INFO | Training complete.

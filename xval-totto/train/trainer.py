@@ -128,8 +128,8 @@ def save_checkpoint(
         filepath,
     )
 
-    # Clean up old checkpoints (keep only the last N)
-    existing = sorted(checkpoint_dir.glob(f"{prefix}_epoch*.pt"))
+    # Clean up old checkpoints (keep only the last N by creation/modification time)
+    existing = sorted(checkpoint_dir.glob(f"{prefix}_epoch*.pt"), key=lambda p: p.stat().st_mtime)
     for old in existing[:-keep_last_n]:
         old.unlink()
 

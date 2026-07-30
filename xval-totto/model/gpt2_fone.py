@@ -189,16 +189,16 @@ class GPT2FoNE(nn.Module):
             # value via the number_values tensor passed in as target_values.
             num_loss = torch.tensor(0.0, device=device)
             if target_values is not None and self.num_loss_weight > 0:
-                # Positions where the LABEL (i.e. the next token to predict) is [NUM]
-                num_label_mask = (labels == self.num_token_id)  # (B, T) bool
+                # Positions where the LABEL (i.e. next token at t+1) is [NUM]
+                # hidden[t] predicts token_ids[t+1] and its scalar value target_values[t+1]
+                target_num_mask = (labels[:, :-1] == self.num_token_id)  # (B, T-1) bool
 
-                if num_label_mask.any():
-                    # Hidden states at positions predicting [NUM]
-                    num_hidden = hidden[num_label_mask]         # (N, n_embd)
+                if target_num_mask.any():
+                    shift_hidden  = hidden[:, :-1, :]            # (B, T-1, n_embd)
+                    shift_targets = target_values[:, 1:]         # (B, T-1)
 
-                    # The target values at those same positions
-                    # (target_values is aligned with the pre-shifted labels tensor)
-                    tgt_vals_at_num = target_values[num_label_mask]  # (N,)
+                    num_hidden      = shift_hidden[target_num_mask]      # (N, n_embd)
+                    tgt_vals_at_num = shift_targets[target_num_mask]     # (N,)
 
                     # Compute FoNE digit-wise CE loss
                     num_loss = self.fone.compute_loss(num_hidden, tgt_vals_at_num)

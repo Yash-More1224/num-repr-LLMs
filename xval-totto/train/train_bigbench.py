@@ -123,6 +123,9 @@ def make_sample_fn(model_type: str, tokenizer, dev_dataset,
     target        = first_example["target"]
 
     def sample_fn(model_module, epoch):
+        if epoch % 5 != 0:
+            return
+
         with torch.no_grad():
             # All model types have "input_ids" in the dataset
             input_ids_full = first_example["input_ids"]  # (T,)
@@ -168,7 +171,7 @@ def make_sample_fn(model_type: str, tokenizer, dev_dataset,
                     else:
                         buf.append(tid)
                 if buf: parts.append(tokenizer.decode(buf))
-                generated = " ".join(parts)
+                generated = "".join(parts)
 
             elif model_type == "fone":
                 nv = first_example["number_values"][:sep_pos + 1].unsqueeze(0).to(device)
@@ -189,7 +192,7 @@ def make_sample_fn(model_type: str, tokenizer, dev_dataset,
                     else:
                         buf.append(tid)
                 if buf: parts.append(tokenizer.decode(buf))
-                generated = " ".join(parts)
+                generated = "".join(parts)
 
         print(f"\n{'='*60}")
         print(f"[SAMPLE] End of Epoch {epoch}  (BigBench/{model_type})")

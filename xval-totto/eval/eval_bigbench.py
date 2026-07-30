@@ -240,7 +240,7 @@ def decode_xval(output, prompt_len: int, tokenizer: Tokenizer,
             buf.append(tid)
     if buf:
         parts.append(tokenizer.decode(buf))
-    return " ".join(parts)
+    return "".join(parts)
 
 
 def decode_fone(output, prompt_len: int, tokenizer: Tokenizer,
@@ -263,7 +263,7 @@ def decode_fone(output, prompt_len: int, tokenizer: Tokenizer,
             buf.append(tid)
     if buf:
         parts.append(tokenizer.decode(buf))
-    return " ".join(parts)
+    return "".join(parts)
 
 
 # ── Main evaluation loop ──────────────────────────────────────────────────────
