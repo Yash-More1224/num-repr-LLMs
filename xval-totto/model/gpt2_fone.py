@@ -160,6 +160,9 @@ class GPT2FoNE(nn.Module):
         # ── Step 5: Loss ──────────────────────────────────────────────────────
         loss = None
         if labels is not None:
+            if target_values is None:
+                target_values = number_values
+
             # 5a. CE loss over token sequence.
             #
             # IMPORTANT: The dataset (dataset_bigbench.py) pre-shifts labels so

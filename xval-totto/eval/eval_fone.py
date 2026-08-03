@@ -139,26 +139,15 @@ def run_evaluation(args):
             repetition_penalty=1.0,
         )
 
-        # Decode generated portion: replace [NUM] tokens with predicted values
+        # Decode generated portion: decode full string with special tokens to preserve spaces around [NUM]
         gen_token_list = gen_ids[0, prompt_len:].tolist()
         if eos_id in gen_token_list:
             gen_token_list = gen_token_list[:gen_token_list.index(eos_id)]
 
-        pred_val_iter = iter(pred_values[0])
-        output_parts  = []
-        non_num_buf   = []
-        for tid in gen_token_list:
-            if tid == num_id:
-                if non_num_buf:
-                    output_parts.append(tokenizer.decode(non_num_buf))
-                    non_num_buf = []
-                val = next(pred_val_iter, 0.0)
-                output_parts.append(f"{val:.4g}")
-            else:
-                non_num_buf.append(tid)
-        if non_num_buf:
-            output_parts.append(tokenizer.decode(non_num_buf))
-        generated = " ".join(output_parts)
+        reconstructed_text = tokenizer.decode(gen_token_list, skip_special_tokens=False)
+        for val in pred_values[0]:
+            reconstructed_text = reconstructed_text.replace("[NUM]", f"{val:.4g}", 1)
+        generated = reconstructed_text.replace("[EOS]", "").strip()
 
         gen_nums = extract_numbers(generated)
 

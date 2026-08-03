@@ -48,7 +48,7 @@ def fone_step(model, batch, device) -> tuple:
     number_values  = batch["number_values"].to(device)
     number_mask    = batch["number_mask"].to(device)
 
-    loss, logits = model(input_ids, number_values, number_mask, labels=labels)
+    loss, logits = model(input_ids, number_values, number_mask, labels=labels, target_values=number_values)
 
     return loss, {"ce": loss.item()}
 
@@ -93,23 +93,11 @@ def make_fone_sample_fn(tokenizer, dev_dataset, device):
         if eos_id in gen_token_list:
             gen_token_list = gen_token_list[:gen_token_list.index(eos_id)]
 
-        # Build output string: decode non-NUM tokens normally, insert values at NUM
-        pred_val_iter = iter(pred_values[0])
-        output_parts  = []
-        non_num_buf   = []
-        for tid in gen_token_list:
-            if tid == num_id:
-                if non_num_buf:
-                    output_parts.append(tokenizer.decode(non_num_buf))
-                    non_num_buf = []
-                val = next(pred_val_iter, 0.0)
-                output_parts.append(f"{val:.4g}")
-            else:
-                non_num_buf.append(tid)
-        if non_num_buf:
-            output_parts.append(tokenizer.decode(non_num_buf))
-
-        generated = " ".join(output_parts)
+        # Build output string: decode full string with special tokens to preserve spaces around [NUM]
+        reconstructed_text = tokenizer.decode(gen_token_list, skip_special_tokens=False)
+        for val in pred_values[0]:
+            reconstructed_text = reconstructed_text.replace("[NUM]", f"{val:.4g}", 1)
+        generated = reconstructed_text.replace("[EOS]", "").strip()
 
         print(f"\n{'='*60}")
         print(f"[SAMPLE] End of Epoch {epoch}")

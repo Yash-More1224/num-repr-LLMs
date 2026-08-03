@@ -251,19 +251,10 @@ def decode_fone(output, prompt_len: int, tokenizer: Tokenizer,
     if eos_id in gen_ids:
         gen_ids = gen_ids[:gen_ids.index(eos_id)]
 
-    v_iter = iter(pred_values[0])
-    parts, buf = [], []
-    for tid in gen_ids:
-        if tid == num_id:
-            if buf:
-                parts.append(tokenizer.decode(buf)); buf = []
-            val = next(v_iter, 0.0)
-            parts.append(f"{val:.4g}")
-        else:
-            buf.append(tid)
-    if buf:
-        parts.append(tokenizer.decode(buf))
-    return "".join(parts)
+    reconstructed_text = tokenizer.decode(gen_ids, skip_special_tokens=False)
+    for val in pred_values[0]:
+        reconstructed_text = reconstructed_text.replace("[NUM]", f"{val:.4g}", 1)
+    return reconstructed_text.replace("[EOS]", "").strip()
 
 
 # ── Main evaluation loop ──────────────────────────────────────────────────────
