@@ -161,10 +161,9 @@ def run_evaluation(args):
 
         output_ids = model.generate(
             prompt_ids,
-            max_new_tokens=min(args.max_new_tokens, available_tokens),
+            max_new_tokens=120,
             eos_token_id=eos_id,
             temperature=0.0,
-            repetition_penalty=1.0,
         )
 
         gen_ids = output_ids[0, prompt_len:].tolist()

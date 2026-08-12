@@ -115,7 +115,7 @@ def main():
 
     # Digit tokenizer path can be overridden in train_config or use default
     tokenizer_path = train_cfg.get("digit_tokenizer",
-                                   train_cfg.get("tokenizer", "tokenizer/totto_bpe/tokenizer.json"))
+                                   "tokenizer/totto_digit/tokenizer.json")
     tokenizer = Tokenizer.from_file(tokenizer_path)
 
     train_dataset = ToTToDatasetDigit(
