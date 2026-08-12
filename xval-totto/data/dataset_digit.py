@@ -41,7 +41,7 @@ class ToTToDatasetDigit(Dataset):
     max_seq_len : int  — digit sequences are longer than BPE (more tokens per number)
     """
 
-    def __init__(self, data_path: str, tokenizer: Tokenizer, max_seq_len: int = 512):
+    def __init__(self, data_path: str, tokenizer: Tokenizer, max_seq_len: int = 256):
         self.tokenizer   = tokenizer
         self.max_seq_len = max_seq_len
 
@@ -51,13 +51,25 @@ class ToTToDatasetDigit(Dataset):
         self.eos_id = vocab["[EOS]"]
 
         self.examples = []
+        self.skipped_count = 0
+        total_raw = 0
+
         with open(data_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if line:
-                    self.examples.append(json.loads(line))
+                    total_raw += 1
+                    record = json.loads(line)
+                    linearized = record["linearized"]
+                    digit_text = split_numbers_to_digits(linearized)
+                    encoding = tokenizer.encode(digit_text)
+                    if len(encoding.ids) > max_seq_len:
+                        self.skipped_count += 1
+                        continue
+                    self.examples.append(record)
 
-        print(f"[ToTToDatasetDigit] Loaded {len(self.examples):,} examples from {data_path}")
+        print(f"[ToTToDatasetDigit] Loaded {len(self.examples):,} / {total_raw:,} examples from {data_path} "
+              f"(Skipped {self.skipped_count:,} examples exceeding max_seq_len={max_seq_len})")
 
     def __len__(self) -> int:
         return len(self.examples)
@@ -78,8 +90,7 @@ class ToTToDatasetDigit(Dataset):
         except ValueError:
             sep_pos = -1
 
-        token_ids = token_ids[:self.max_seq_len]
-        seq_len   = len(token_ids)
+        seq_len = len(token_ids)
 
         # Labels: next-token prediction, mask input portion
         labels = []

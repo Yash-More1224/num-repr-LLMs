@@ -86,9 +86,9 @@ def build_digit_prompt(example: dict, sep_id: int, tokenizer: Tokenizer,
         prompt_ids = token_ids
 
     # Digit sequences can be 1.5–2× longer than BPE; use a tighter cap
-    max_prompt_len = max_seq_len - 120   # leave room for generation
-    if len(prompt_ids) > max_prompt_len:
-        prompt_ids = prompt_ids[-max_prompt_len:]
+    # max_prompt_len = max_seq_len - 120   # leave room for generation
+    if len(prompt_ids) >= max_seq_len:
+        return None
 
     return torch.tensor([prompt_ids], dtype=torch.long)   # (1, T)
 
@@ -101,7 +101,7 @@ def run_evaluation(args):
     with open(args.config) as f:
         model_cfg = yaml.safe_load(f)
     with open(args.train_config) as f:
-        train_cfg = yaml.safe_load(f)
+        train_cfg = yaml.safe_load(f) # convert to a dict.
 
     # Digit tokenizer is stored separately from BPE tokenizer
     tokenizer_path = train_cfg.get("digit_tokenizer",
@@ -137,20 +137,31 @@ def run_evaluation(args):
     print(f"Evaluating {len(examples)} {args.split} examples ...")
 
     per_example_results = []
+    skipped_count = 0
 
     for example in tqdm(examples, desc="Digit eval"):
         reference = example["target"]
         ref_nums  = extract_numbers(reference)
 
-        prompt_ids = build_digit_prompt(
+        prompt_tensor = build_digit_prompt(
             example, sep_id, tokenizer,
-            train_cfg.get("digit_max_seq_len", train_cfg["max_seq_len"])
-        ).to(device)
+            train_cfg.get("digit_max_seq_len", config.n_positions)
+        )
+        if prompt_tensor is None:
+            skipped_count += 1
+            continue
+
+        prompt_ids = prompt_tensor.to(device)
         prompt_len = prompt_ids.size(1)
+
+        available_tokens = config.n_positions - prompt_len
+        if available_tokens <= 0:
+            skipped_count += 1
+            continue
 
         output_ids = model.generate(
             prompt_ids,
-            max_new_tokens=args.max_new_tokens,
+            max_new_tokens=min(args.max_new_tokens, available_tokens),
             eos_token_id=eos_id,
             temperature=0.0,
             repetition_penalty=1.0,
@@ -188,11 +199,13 @@ def run_evaluation(args):
         })
 
     summary = aggregate_metrics(per_example_results)
+    summary["skipped_count"] = skipped_count
 
     print(f"\n{'='*60}")
     print(f"Digit-GPT2 Evaluation Results")
     print(f"{'='*60}")
     print(f"  Examples evaluated    : {summary['n_examples']}")
+    print(f"  Examples skipped      : {skipped_count}")
     print(f"  BLEU                  : {summary['bleu']:.2f}")
     print(f"  Numeric Exact Match   : {summary['num_em']:.4f}  ({summary['num_em']*100:.1f}%)")
     print(f"  Hallucination Rate    : {summary['halluc_rate']:.4f}  ({summary['halluc_rate']*100:.1f}%)")
