@@ -21,7 +21,18 @@ st.markdown("""
     .sub-header {
         font-size: 1rem;
         color: #64748B;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .id-badge {
+        display: inline-block;
+        background-color: #E2E8F0;
+        color: #334155;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
     }
     .ref-box {
         background-color: #F8FAFC;
@@ -31,7 +42,7 @@ st.markdown("""
         font-size: 1.15rem;
         font-weight: 500;
         color: #0F172A;
-        margin-bottom: 1.8rem;
+        margin-bottom: 1.5rem;
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .model-card {
@@ -84,69 +95,82 @@ def load_all_results():
         else:
             data[key] = {}
             
-    # Base ordering on BPE examples list
+    # Partition into examples with numbers vs without numbers based on BPE list
     bpe_path = files["bpe"]
-    ordered_ids = []
+    ids_with_numbers = []
+    ids_without_numbers = []
+    
     if os.path.exists(bpe_path):
         with open(bpe_path, "r", encoding="utf-8") as f:
             content = json.load(f)
-            ordered_ids = [ex["example_id"] for ex in content.get("examples", [])]
+            for ex in content.get("examples", []):
+                eid = ex["example_id"]
+                ref_nums = ex.get("ref_nums", [])
+                if len(ref_nums) > 0:
+                    ids_with_numbers.append(eid)
+                else:
+                    ids_without_numbers.append(eid)
 
-    return data, ordered_ids
+    return data, ids_with_numbers, ids_without_numbers
 
-data, ordered_ids = load_all_results()
+data, ids_with_numbers, ids_without_numbers = load_all_results()
 
-# Session state initialization for index
-if "example_idx" not in st.session_state:
-    st.session_state.example_idx = 0
+# Header
+st.markdown('<div class="main-header">ToTTo Model Output Comparison</div>', unsafe_allow_html=True)
 
-total_examples = len(ordered_ids)
+tab1, tab2 = st.tabs([
+    f"🔢 Examples with Numbers ({len(ids_with_numbers)})",
+    f"📝 Examples without Numbers ({len(ids_without_numbers)})"
+])
 
-# Sidebar navigation
-with st.sidebar:
-    st.title("⚙️ Navigation")
-    
-    # Navigation Buttons
-    col_prev, col_next = st.columns(2)
+def render_example_viewer(target_ids, session_key_prefix):
+    total = len(target_ids)
+    if total == 0:
+        st.info("No examples in this category.")
+        return
+        
+    idx_key = f"{session_key_prefix}_idx"
+    if idx_key not in st.session_state:
+        st.session_state[idx_key] = 0
+
+    # Navigation controls
+    col_prev, col_idx, col_next = st.columns([1, 2, 1])
     with col_prev:
-        if st.button("⬅️ Previous", use_container_width=True):
-            if st.session_state.example_idx > 0:
-                st.session_state.example_idx -= 1
-                st.rerun()
+        if st.button("⬅️ Previous", key=f"{session_key_prefix}_prev", use_container_width=True):
+            if st.session_state[idx_key] > 0:
+                st.session_state[idx_key] -= 1
+
     with col_next:
-        if st.button("Next ➡️", use_container_width=True):
-            if st.session_state.example_idx < total_examples - 1:
-                st.session_state.example_idx += 1
-                st.rerun()
-                
-    st.session_state.example_idx = st.number_input(
-        "Example Index:",
-        min_value=0,
-        max_value=max(0, total_examples - 1),
-        value=st.session_state.example_idx,
-        step=1
-    )
-    
-    if total_examples > 0:
-        st.slider(
-            "Progress",
+        if st.button("Next ➡️", key=f"{session_key_prefix}_next", use_container_width=True):
+            if st.session_state[idx_key] < total - 1:
+                st.session_state[idx_key] += 1
+
+    with col_idx:
+        st.number_input(
+            "Example Index",
             min_value=0,
-            max_value=total_examples - 1,
-            value=st.session_state.example_idx,
-            key="slider_idx",
-            on_change=lambda: st.session_state.update({"example_idx": st.session_state.slider_idx})
+            max_value=total - 1,
+            step=1,
+            key=idx_key
         )
 
-# Main Content
-st.markdown('<div class="main-header">ToTTo Model Output Comparison</div>', unsafe_allow_html=True)
-st.markdown(f'<div class="sub-header">Example <b>{st.session_state.example_idx + 1}</b> of <b>{total_examples}</b></div>', unsafe_allow_html=True)
+    # Draggable Slider
+    st.slider(
+        "Drag to jump to example:",
+        min_value=0,
+        max_value=total - 1,
+        key=f"{session_key_prefix}_slider",
+        value=st.session_state[idx_key],
+        on_change=lambda key=idx_key, s_key=f"{session_key_prefix}_slider": st.session_state.update({key: st.session_state[s_key]})
+    )
 
-if total_examples > 0:
-    current_id = ordered_ids[st.session_state.example_idx]
-    
-    # Get reference text from any model that has this example
+    current_index = st.session_state[idx_key]
+    current_id = target_ids[current_index]
+
+    st.markdown(f'<div class="sub-header">Showing Example <b>{current_index + 1}</b> of <b>{total}</b> &nbsp;|&nbsp; Example ID: <span class="id-badge">{current_id}</span></div>', unsafe_allow_html=True)
+
     sample_ex = next((data[k][current_id] for k in ["bpe", "digit", "fone", "xval"] if current_id in data[k]), None)
-    
+
     if sample_ex:
         ref_text = sample_ex.get("reference", sample_ex.get("bleu_ref", ""))
         
@@ -183,5 +207,9 @@ if total_examples > 0:
                     <div class="gen-text" style="color: #94A3B8; font-style: italic;">Skipped / Exceeded max length for this example</div>
                 </div>
                 """, unsafe_allow_html=True)
-else:
-    st.error("No example results found in results directory!")
+
+with tab1:
+    render_example_viewer(ids_with_numbers, "num")
+
+with tab2:
+    render_example_viewer(ids_without_numbers, "no_num")
