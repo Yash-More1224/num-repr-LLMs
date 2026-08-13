@@ -1,0 +1,31 @@
+# model_config_fone_dp.yaml
+# Architecture hyperparameters for the FoNE-DP model.
+# Extends model_config.yaml with FoNE-DP-specific settings.
+# Loaded by train/train_fone_dp.py and eval/eval_fone_dp.py.
+
+# ── Core GPT-2 small dimensions (identical to all other models) ───────────────
+vocab_size:  16000   # BPE tokenizer vocab size
+n_positions: 256     # max sequence length
+n_layer:     12      # number of transformer blocks
+n_head:      12      # number of attention heads (head_dim = 768/12 = 64)
+n_embd:      768     # embedding dimension
+dropout:     0.1
+bias:        true
+
+# ── Shared [NUM] token id ─────────────────────────────────────────────────────
+num_token_id: 8      # token ID of [NUM] — matches tokenizer_config.json
+
+# ── FoNE encoder settings (input-side, unchanged from standard FoNE) ─────────
+fone_int_digits:  7   # max integer digits (covers up to 9,999,999)
+fone_frac_digits: 2   # max fractional digits (e.g. 3.14)
+
+# ── FoNE-DP projection head ───────────────────────────────────────────────────
+# The detached MLP: Linear(768, num_proj_hidden) → GELU → Linear(num_proj_hidden, 768)
+# Only this head trains from FoNE digit-CE loss; backbone is shielded via detach().
+num_proj_hidden: 64   # bottleneck dimension (~98K params total, 0.12% of model)
+
+# ── FoNE-DP loss weight ───────────────────────────────────────────────────────
+# total_loss = ce_loss + num_loss_weight * fone_dp_loss
+# Since detach() isolates the two losses, this weight ONLY affects num_proj
+# training speed, not backbone stability. Start at 1.0 (equal weighting).
+num_loss_weight: 1.0

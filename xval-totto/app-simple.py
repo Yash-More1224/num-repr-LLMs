@@ -55,6 +55,7 @@ st.markdown("""
     .model-digit { border-left: 5px solid #3B82F6; }
     .model-fone { border-left: 5px solid #F59E0B; }
     .model-xval { border-left: 5px solid #EF4444; }
+    .model-fone-dp { border-left: 5px solid #8B5CF6; }
     
     .model-title {
         font-weight: 700;
@@ -65,6 +66,7 @@ st.markdown("""
     .text-digit { color: #2563EB; }
     .text-fone { color: #D97706; }
     .text-xval { color: #DC2626; }
+    .text-fone-dp { color: #7C3AED; }
     
     .gen-text {
         font-size: 1.1rem;
@@ -83,6 +85,7 @@ def load_all_results():
         "digit": os.path.join(RESULTS_DIR, "digit_totto-200.json"),
         "fone": os.path.join(RESULTS_DIR, "fone_totto-200.json"),
         "xval": os.path.join(RESULTS_DIR, "xval_totto-200.json"),
+        "fone_dp": os.path.join(RESULTS_DIR, "fone_dp_totto-200.json"),
     }
     
     data = {}
@@ -168,7 +171,7 @@ def render_example_viewer(target_ids, session_key_prefix):
 
     st.markdown(f'<div class="sub-header">Showing Example <b>{current_index + 1}</b> of <b>{total}</b> &nbsp;|&nbsp; Example ID: <span class="id-badge">{current_id}</span></div>', unsafe_allow_html=True)
 
-    sample_ex = next((data[k][current_id] for k in ["bpe", "digit", "fone", "xval"] if current_id in data[k]), None)
+    sample_ex = next((data[k][current_id] for k in ["bpe", "digit", "fone", "xval", "fone_dp"] if current_id in data[k]), None)
 
     if sample_ex:
         ref_text = sample_ex.get("reference", sample_ex.get("bleu_ref", ""))
@@ -187,6 +190,7 @@ def render_example_viewer(target_ids, session_key_prefix):
             ("digit", "2. Digit Model", "model-digit", "text-digit"),
             ("fone", "3. FoNE Model", "model-fone", "text-fone"),
             ("xval", "4. xVal Model", "model-xval", "text-xval"),
+            ("fone_dp", "5. FoNE-DP Model", "model-fone-dp", "text-fone-dp"),
         ]
         
         for m_key, m_name, card_class, text_class in models_info:
