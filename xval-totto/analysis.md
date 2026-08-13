@@ -14,11 +14,10 @@
 | Model | BLEU ↑ | Num-EM ↑ | Hallucination Rate ↓ | Count-Match ↑ | Num-MAE ↓ |
 |-------|--------|----------|----------------------|---------------|-----------|
 | **BPE** | **33.41** | **0.9064** (90.6%) | **0.1056** (10.6%) | **0.7000** (70.0%) | 126,703.19 |
-| **Digit** | 25.88 | 0.7245 (72.5%) | 0.2632 (26.3%) | 0.6162 (61.6%) | **14,136.65** |
-| **FoNE** | 18.41 | 0.7224 (72.2%) | 0.5348 (53.5%) | 0.2600 (26.0%) | $3.16 \times 10^{129}$ * |
-| **xVal** | 15.12 | 0.2127 (21.3%) | 0.8200 (82.0%) | 0.3300 (33.0%) | 10,458.71 |
+| **Digit** | 25.88 | 0.7245 (72.5%) | 0.2632 (26.3%) | 0.6162 (61.6%) | 14,136.65 |
+| **FoNE (Fixed)** | 31.29 | 0.8388 (83.9%) | 0.1782 (17.8%) | 0.6750 (67.5%) | **7,513.49** |
+| **xVal (Fixed)** | 22.27 | 0.0670 (6.7%) | 0.8384 (83.8%) | 0.6900 (69.0%) | 9,791.97 |
 
-*\* FoNE Num-MAE is inflated by runaway unconstrained number concatenation on multi-number sentences.*  
 *\* Digit model strictly skipped 2 examples that exceeded the 256 token context limit.*
 
 ### 1b. BigBench Arithmetic — Mathematical Reasoning *(n=500 test set)*
@@ -36,8 +35,8 @@
 |-------|--------------|----------------|----------------------|--------------------------------|
 | **BPE** | **33.41** | **0.9064** | 0.0200 | 🟢 Best at text fluency & copying; 🔴 Cannot compute arithmetic |
 | **Digit** | 25.88 | 0.7245 | 0.1000 | 🟡 Balanced middle-ground; 🔴 Longer sequence lengths & digit drift |
-| **FoNE** | 18.41 | 0.7224 | **0.4460** | 🟢 Dominates arithmetic; 🔴 High hallucination & poor BLEU on text |
-| **xVal** | 15.12 | 0.2127 | 0.0020 | 🔴 Fails on exact values; continuous scalar head degrades LM decoding |
+| **FoNE (Fixed)** | 31.29 | 0.8388 | **0.4460** | 🟢 Dominates arithmetic & strong LM generation; 🟡 Slight representation conflict during training |
+| **xVal (Fixed)** | 22.27 | 0.0670 | *Requires Retrain* | 🟡 Text decoding fixed; 🔴 Continuous head still fails on exact integer numbers |
 
 ---
 
