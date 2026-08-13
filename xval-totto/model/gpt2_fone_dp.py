@@ -15,22 +15,16 @@ Fourier features (for FoNE loss). Because the gradients from both losses
 update the same backbone weights, the FoNE gradient overwrites linguistic
 context, causing hallucination loops of repeated [NUM] tokens.
 
-## The Fix: Detached Projection Head
+## The Fix: Multi-Task Projection Head
 
 We add a small bottleneck MLP that branches off the backbone hidden states
 AT [NUM] positions:
 
     num_proj = Linear(768, 64) → GELU → Linear(64, 768)
 
-The key change is a single .detach() call before this branch:
-
-    h_detached = hidden.detach()               # WALL: no grad passes through
-    proj_out   = num_proj(h_detached[num_mask])  # (N, 768)
-    fone_loss  = fone.compute_loss(proj_out, values)  # digit-wise CE
-
-Result:
-  - CE backward  : updates all 85M backbone params (unchanged from standard FoNE)
-  - FoNE backward: updates only the ~98K num_proj params; backbone is untouched
+This projection head absorbs the complex geometric transformation of the 
+digit-wise cross-entropy loss, softening the representation conflict 
+without blinding the backbone to the exact numeric values.
 
 At generation time (inside torch.no_grad()), the same num_proj projects the
 last hidden state, and fone.decode() reads digit-by-digit argmax from it.
@@ -46,8 +40,8 @@ last hidden state, and fone.decode() reads digit-by-digit argmax from it.
     GPT2Backbone (12 transformer layers — IDENTICAL to standard FoNE)
          ↓
     LM Head: Linear(768, vocab_size)    [CE loss — standard, backbone trains]
-    ┌──────────── detach() ────────────┐
-    │  num_proj: Linear(768→64→768)    │ [FoNE digit-CE — ONLY num_proj trains]
+    ┌─────────── Projection ───────────┐
+    │  num_proj: Linear(768→64→768)    │ [FoNE digit-CE — num_proj & backbone train]
     └──────────────────────────────────┘
 
 Usage
@@ -74,7 +68,7 @@ from model.fone_encoder import FoNEEncoder
 
 class GPT2FoNeDP(nn.Module):
     """
-    GPT-2 with FoNE input encoding and a Detached Projection head for
+    GPT-2 with FoNE input encoding and a Multi-Task Projection head for
     digit-wise CE supervision (FoNE-DP).
 
     Parameters
@@ -235,11 +229,8 @@ class GPT2FoNeDP(nn.Module):
                 shift_hidden  = hidden[:, :-1, :]        # (B, T-1, n_embd)
                 shift_targets = target_values[:, 1:]     # (B, T-1) — value at t+1
 
-                # *** THE KEY CHANGE: detach before branching ***
-                h_detached = shift_hidden.detach()        # gradient wall here
-
                 # Gather only the [NUM] positions to save memory
-                num_hidden = h_detached[target_num_mask]  # (N, n_embd)
+                num_hidden = shift_hidden[target_num_mask]  # (N, n_embd)
                 tgt_vals   = shift_targets[target_num_mask]  # (N,)
 
                 # Project to 768-dim FoNE-decodable space
@@ -338,10 +329,16 @@ class GPT2FoNeDP(nn.Module):
                     pred_val = self.fone.decode(proj_out[b])
                     predicted_values[b].append(pred_val)
 
-            # Append next token; new position gets value=0.0 and mask=False
+            # Append next token; inject correct value and mask for [NUM] tokens
             input_ids     = torch.cat([input_ids, next_token], dim=1)
             new_nv        = torch.zeros(B, 1, device=input_ids.device)
             new_nm        = torch.zeros(B, 1, dtype=torch.bool, device=input_ids.device)
+            
+            for b in range(B):
+                if next_token[b, 0].item() == self.num_token_id:
+                    new_nv[b, 0] = predicted_values[b][-1]
+                    new_nm[b, 0] = True
+                    
             number_values = torch.cat([number_values, new_nv], dim=1)
             number_mask   = torch.cat([number_mask,   new_nm], dim=1)
 
@@ -439,39 +436,26 @@ if __name__ == "__main__":
     print(f"  fone_dp_loss     : {fone_dp_loss.item():.4f}")
     print()
 
-    # ── Gradient isolation test ───────────────────────────────────────────────
+    # ── Gradient flow test ────────────────────────────────────────────────────
     # Run a backward pass seeded with ONLY the fone_dp_loss
-    # to verify that backbone weights are NOT updated by it.
-    print("Gradient isolation test ...")
+    # to verify that backbone weights ARE updated by it.
+    print("Gradient flow test ...")
     model.zero_grad()
     fone_dp_loss.backward()
 
-    # num_proj SHOULD have gradients (it is downstream of detach())
+    # num_proj MUST have gradients
     num_proj_grad = model.num_proj[0].weight.grad
     assert num_proj_grad is not None, "FAIL: num_proj[0].weight has no grad!"
     assert num_proj_grad.abs().max().item() > 0, "FAIL: num_proj[0].weight grad is all zero!"
     print(f"  num_proj[0].weight.grad : max={num_proj_grad.abs().max().item():.6f}  ✓")
 
-    # wte (backbone embedding) should have ZERO gradient from fone_dp_loss alone
+    # wte (backbone embedding) MUST have gradients from fone_dp_loss
     wte_grad = model.wte.weight.grad
-    if wte_grad is None:
-        print(f"  wte.weight.grad         : None (no gradient reached backbone)  ✓")
-    else:
-        max_wte_grad = wte_grad.abs().max().item()
-        assert max_wte_grad < 1e-9, f"FAIL: wte gradient {max_wte_grad:.2e} leaked through detach()!"
-        print(f"  wte.weight.grad         : max={max_wte_grad:.2e} (effectively zero)  ✓")
-
-    # fone.linear (input-side FoNE encoder) should also have no gradient
-    fone_linear_grad = model.fone.linear.weight.grad
-    if fone_linear_grad is None:
-        print(f"  fone.linear.weight.grad : None (no gradient reached FoNE encoder)  ✓")
-    else:
-        max_fone_grad = fone_linear_grad.abs().max().item()
-        assert max_fone_grad < 1e-9, f"FAIL: fone.linear gradient {max_fone_grad:.2e} leaked!"
-        print(f"  fone.linear.weight.grad : max={max_fone_grad:.2e} (effectively zero)  ✓")
+    assert wte_grad is not None and wte_grad.abs().max().item() > 1e-9, "FAIL: no gradient reached backbone!"
+    print(f"  wte.weight.grad         : max={wte_grad.abs().max().item():.2e}  ✓")
 
     print()
-    print("Gradient isolation: ✓  (FoNE-DP loss cannot reach the backbone)")
+    print("Gradient flow: ✓  (FoNE-DP loss now correctly reaches the backbone)")
     print()
 
     # ── Weight tying check ────────────────────────────────────────────────────

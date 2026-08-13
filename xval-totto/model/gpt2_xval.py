@@ -96,6 +96,10 @@ class GPT2XVal(nn.Module):
         # This adds only 768 + 1 = 769 parameters — essentially nothing.
         self.scalar_head = nn.Linear(config.n_embd, 1, bias=True)
 
+        # ── Multi-scale Embeddings ───────────────────────────────────────────
+        self.num_scales = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6]
+        self.num_embds = nn.Parameter(torch.randn(len(self.num_scales), config.n_embd) * 0.02)
+
         # ── Weight initialization (same procedure as BPE) ─────────────────────
         self.apply(lambda m: init_weights(m, config.n_layer))
 
@@ -142,28 +146,21 @@ class GPT2XVal(nn.Module):
         tok_emb   = self.wte(input_ids)                           # (B, T, n_embd)
         pos_emb   = self.wpe(positions)                           # (1, T, n_embd)
 
-        # ── Step 2: xVal scaling (THE ONLY DIFFERENCE FROM BPE) ──────────────
-        #
-        # For every [NUM] token, we scale its embedding vector by the actual
-        # number value. For all other tokens, we multiply by 1.0 (no change).
-        #
-        # Why this works:
-        #   - The model learns a "direction" for [NUM] in embedding space.
-        #   - The magnitude of the [NUM] embedding encodes the number's value.
-        #   - For non-number tokens, behavior is identical to the BPE model.
-        #
-        # Formula:
-        #   scale[b, t] = number_values[b, t]  if number_mask[b, t] else 1.0
-        #   tok_emb[b, t, :] *= scale[b, t]
-        #
-        # torch.where picks from number_values or ones element-wise:
-        scale   = torch.where(
-            number_mask,                    # condition: (B, T) bool
-            number_values,                  # value where True (the number)
-            torch.ones_like(number_values), # value where False (1.0 = no change)
-        ).unsqueeze(-1)                     # (B, T, 1) for broadcasting over n_embd
-
-        tok_emb = tok_emb * scale           # (B, T, n_embd) — [NUM] scaled, rest unchanged
+        # ── Step 2: xVal scaling (Multi-Scale Tanh Embeddings) ───────────────
+        # Denormalize log-normalized values back to raw values for the embedding
+        raw_values = torch.sign(number_values) * torch.expm1(torch.abs(number_values))
+        
+        num_embd_sum = torch.zeros_like(tok_emb)
+        for idx, scale_power in enumerate(self.num_scales):
+            val_scaled = torch.tanh(raw_values * (10 ** scale_power)) # (B, T)
+            num_embd_sum += val_scaled.unsqueeze(-1) * self.num_embds[idx]
+            
+        # Replace the wte([NUM]) with num_embd_sum where number_mask is True
+        tok_emb = torch.where(
+            number_mask.unsqueeze(-1),
+            num_embd_sum,
+            tok_emb
+        )
 
         x = tok_emb + pos_emb
 
@@ -281,8 +278,15 @@ class GPT2XVal(nn.Module):
             # Forward pass (no labels — just get logits and hidden states)
             positions = torch.arange(idx.size(1), device=idx.device).unsqueeze(0)
             tok_emb   = self.wte(idx)
-            scale     = torch.where(nm, nv, torch.ones_like(nv)).unsqueeze(-1)
-            tok_emb   = tok_emb * scale
+            
+            raw_values = torch.sign(nv) * torch.expm1(torch.abs(nv))
+            num_embd_sum = torch.zeros_like(tok_emb)
+            for scale_idx, scale_power in enumerate(self.num_scales):
+                val_scaled = torch.tanh(raw_values * (10 ** scale_power)) # (B, T)
+                num_embd_sum += val_scaled.unsqueeze(-1) * self.num_embds[scale_idx]
+                
+            tok_emb = torch.where(nm.unsqueeze(-1), num_embd_sum, tok_emb)
+            
             x         = tok_emb + self.wpe(positions)
             hidden    = self.backbone(x)
             logits    = self.lm_head(hidden)
@@ -314,9 +318,14 @@ class GPT2XVal(nn.Module):
 
             # Append next token to sequence
             input_ids     = torch.cat([input_ids, next_token], dim=1)
-            # New positions get value=0.0 and mask=False (they are regular tokens)
             new_nv        = torch.zeros(B, 1, device=input_ids.device)
             new_nm        = torch.zeros(B, 1, dtype=torch.bool, device=input_ids.device)
+
+            for b in range(B):
+                if next_token[b, 0].item() == self.num_token_id:
+                    new_nv[b, 0] = predicted_values[b][-1]
+                    new_nm[b, 0] = True
+
             number_values = torch.cat([number_values, new_nv], dim=1)
             number_mask   = torch.cat([number_mask,   new_nm], dim=1)
 
@@ -397,28 +406,33 @@ if __name__ == "__main__":
     print(f"  ce_loss            : {ce_loss.item():.4f}")
     print(f"  mse_loss           : {mse_loss.item():.4f}")
 
-    # ── Verify [NUM] positions get scaled embeddings ──────────────────────────
-    # A [NUM] token with value 0.0 should produce a zero embedding
-    # A [NUM] token with value 1.0 should produce the base [NUM] embedding
+    # ── Verify [NUM] positions get multi-scale embeddings ─────────────────────
+    # Re-run the forward pass logic manually to test it
     positions = torch.arange(T).unsqueeze(0)
     tok_emb   = model.wte(input_ids)
-    scale     = torch.where(number_mask, number_values, torch.ones_like(number_values)).unsqueeze(-1)
-    scaled    = tok_emb * scale
+    
+    raw_values = torch.sign(number_values) * torch.expm1(torch.abs(number_values))
+    num_embd_sum = torch.zeros_like(tok_emb)
+    for idx, scale_power in enumerate(model.num_scales):
+        val_scaled = torch.tanh(raw_values * (10 ** scale_power)) # (B, T)
+        num_embd_sum += val_scaled.unsqueeze(-1) * model.num_embds[idx]
+        
+    scaled = torch.where(number_mask.unsqueeze(-1), num_embd_sum, tok_emb)
 
-    # At non-NUM positions, scale is 1.0 → embeddings unchanged
+    # At non-NUM positions, embedding is unchanged
     non_num_pos = (~number_mask).nonzero(as_tuple=False)[0]
     b0, t0 = non_num_pos[0].item(), non_num_pos[1].item()
     assert torch.allclose(scaled[b0, t0], tok_emb[b0, t0]), "Non-NUM embeddings should be unchanged"
 
-    # At NUM positions, embedding is scaled by number_values
+    # At NUM positions, embedding is the multi-scale sum
     num_pos = number_mask.nonzero(as_tuple=False)[0]
     b1, t1 = num_pos[0].item(), num_pos[1].item()
-    expected = tok_emb[b1, t1] * number_values[b1, t1]
-    assert torch.allclose(scaled[b1, t1], expected), "NUM embeddings should be scaled"
+    expected = num_embd_sum[b1, t1]
+    assert torch.allclose(scaled[b1, t1], expected, atol=1e-5), "NUM embeddings should be multi-scale sum"
 
     print(f"\nEmbedding scaling: ✓")
-    print(f"  Non-[NUM] embeddings: unchanged (scale=1.0)")
-    print(f"  [NUM] embeddings    : scaled by number_values")
+    print(f"  Non-[NUM] embeddings: unchanged")
+    print(f"  [NUM] embeddings    : multi-scale tanh sum")
 
     # ── Weight tying check ────────────────────────────────────────────────────
     assert model.lm_head.weight.data_ptr() == model.wte.weight.data_ptr()
