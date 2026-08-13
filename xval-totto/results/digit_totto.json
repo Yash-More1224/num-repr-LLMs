@@ -4,54 +4,52 @@
   "summary": {
     "n_examples": 10,
     "n_with_numbers": 7,
-    "bleu": 27.99,
-    "num_em": 0.2357,
-    "halluc_rate": 0.6357,
-    "count_match": 0.3,
-    "num_mae": 1155.6571,
-    "num_mape_pct": 80.37,
+    "bleu": 32.65,
+    "num_em": 0.8357,
+    "halluc_rate": 0.1857,
+    "count_match": 0.7,
+    "num_mae": 2.05,
+    "num_mape_pct": 22.15,
     "skipped_count": 0
   },
   "examples": [
     {
       "example_id": "7391450717765563190",
       "reference": "Daniel Henry Chamberlain was the 76th Governor of South Carolina from 1874.",
-      "generated": "Daniel Henry Chamberlain was the 76th governor of South Carolina from 187 4.",
+      "generated": "Daniel Henry Chamberlain was the 76th governor of South Carolina from 1874.",
       "ref_nums": [
         1874.0
       ],
       "gen_nums": [
-        187.0,
-        4.0
+        1874.0
       ],
-      "num_em": 0.0,
-      "num_mae": 1687.0,
-      "num_mape": 90.0213447171825,
-      "halluc": 1.0,
-      "count_match": false,
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
       "n_ref_nums": 1,
       "bleu_ref": "Daniel Henry Chamberlain was the 76th Governor of South Carolina from 1874.",
-      "bleu_hyp": "Daniel Henry Chamberlain was the 76th governor of South Carolina from 187 4."
+      "bleu_hyp": "Daniel Henry Chamberlain was the 76th governor of South Carolina from 1874."
     },
     {
       "example_id": "9012083751335522596",
       "reference": "Alma Jodorowsky had the role of Evelyn in 2016 film Kids in Love.",
-      "generated": "In 201 6, Jodorowsky played the role of Evelyn in Kids in Love.",
+      "generated": "In 2016, Jodorowsky played the role of Evelyn in Kids in Love.",
       "ref_nums": [
         2016.0
       ],
       "gen_nums": [
-        201.0,
-        6.0
+        2016.0
       ],
-      "num_em": 0.0,
-      "num_mae": 1815.0,
-      "num_mape": 90.02976190476191,
-      "halluc": 1.0,
-      "count_match": false,
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
       "n_ref_nums": 1,
       "bleu_ref": "Alma Jodorowsky had the role of Evelyn in 2016 film Kids in Love.",
-      "bleu_hyp": "In 201 6, Jodorowsky played the role of Evelyn in Kids in Love."
+      "bleu_hyp": "In 2016, Jodorowsky played the role of Evelyn in Kids in Love."
     },
     {
       "example_id": "-8764917516249435941",
@@ -75,24 +73,23 @@
     {
       "example_id": "-6915287003153277224",
       "reference": "At the very end of his life, Arthur III became duke of Brittany, succeeding Peter II.",
-      "generated": "Arthur III (1 450 \u2013 26 December 145 8) was Duke of Brittany from 1457 until his death.",
+      "generated": "Arthur III (1 450 \u2013 26 December 1458) was Duke of Brittany from 1457 until his death.",
       "ref_nums": [],
       "gen_nums": [
         1.0,
         450.0,
         26.0,
-        145.0,
-        8.0,
+        1458.0,
         1457.0
       ],
       "num_em": 1.0,
-      "num_mae": 347.8333333333333,
+      "num_mae": 678.4,
       "num_mape": null,
       "halluc": 1.0,
       "count_match": false,
       "n_ref_nums": 0,
       "bleu_ref": "At the very end of his life, Arthur III became duke of Brittany, succeeding Peter II.",
-      "bleu_hyp": "Arthur III (1 450 \u2013 26 December 145 8) was Duke of Brittany from 1457 until his death."
+      "bleu_hyp": "Arthur III (1 450 \u2013 26 December 1458) was Duke of Brittany from 1457 until his death."
     },
     {
       "example_id": "-3004901021745997743",
@@ -112,7 +109,7 @@
     {
       "example_id": "9095314032876340546",
       "reference": "The last Asian Beach Games was held in Danang, Vietnam from 24 September to 3 October 2016, while the next will be held in 2020 in Sanya, China, the first to breakaway from the 2-year cycle.",
-      "generated": "The first Asian Beach Games were held in Da Nang, Japan from 24 September to 3 October 201 6, and China was held at Sanyu.",
+      "generated": "The first Asian Beach Games were held in Da Nang, Japan from 24 September to 3 October 2016, and China was held at Sanyu.",
       "ref_nums": [
         24.0,
         3.0,
@@ -123,57 +120,54 @@
       "gen_nums": [
         24.0,
         3.0,
-        201.0,
-        6.0
+        2016.0
       ],
-      "num_em": 0.4,
-      "num_mae": 957.25,
-      "num_mape": 47.43318305044791,
-      "halluc": 0.5,
+      "num_em": 0.6,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
       "count_match": false,
       "n_ref_nums": 5,
       "bleu_ref": "The last Asian Beach Games was held in Danang, Vietnam from 24 September to 3 October 2016, while the next will be held in 2020 in Sanya, China, the first to breakaway from the 2-year cycle.",
-      "bleu_hyp": "The first Asian Beach Games were held in Da Nang, Japan from 24 September to 3 October 201 6, and China was held at Sanyu."
+      "bleu_hyp": "The first Asian Beach Games were held in Da Nang, Japan from 24 September to 3 October 2016, and China was held at Sanyu."
     },
     {
       "example_id": "6803794595179672650",
       "reference": "In 2012, Julian Sands played as Alistair Wesley in the episode of the Person of Interest.",
-      "generated": "In 201 2, Julian Sands appeared as Alistair Wesley in the series Person of Interest.",
+      "generated": "In 2012, Julian Sands appeared as Alistair Wesley in the series Person of Interest.",
       "ref_nums": [
         2012.0
       ],
       "gen_nums": [
-        201.0,
-        2.0
+        2012.0
       ],
-      "num_em": 0.0,
-      "num_mae": 1811.0,
-      "num_mape": 90.00994035785288,
-      "halluc": 1.0,
-      "count_match": false,
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
       "n_ref_nums": 1,
       "bleu_ref": "In 2012, Julian Sands played as Alistair Wesley in the episode of the Person of Interest.",
-      "bleu_hyp": "In 201 2, Julian Sands appeared as Alistair Wesley in the series Person of Interest."
+      "bleu_hyp": "In 2012, Julian Sands appeared as Alistair Wesley in the series Person of Interest."
     },
     {
       "example_id": "-2706081572458524575",
       "reference": "In 2005, Adrienne Bailon starred in Coach Carter as Dominique.",
-      "generated": "In 200 5, Bailon played as Dominique in the film Coach Carter.",
+      "generated": "In 2005, Bailon played as Dominique in the film Coach Carter.",
       "ref_nums": [
         2005.0
       ],
       "gen_nums": [
-        200.0,
-        5.0
+        2005.0
       ],
-      "num_em": 0.0,
-      "num_mae": 1805.0,
-      "num_mape": 90.02493765586036,
-      "halluc": 1.0,
-      "count_match": false,
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
       "n_ref_nums": 1,
       "bleu_ref": "In 2005, Adrienne Bailon starred in Coach Carter as Dominique.",
-      "bleu_hyp": "In 200 5, Bailon played as Dominique in the film Coach Carter."
+      "bleu_hyp": "In 2005, Bailon played as Dominique in the film Coach Carter."
     },
     {
       "example_id": "3877051823034175640",

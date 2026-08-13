@@ -39,27 +39,55 @@ def rejoin_digit_tokens(text: str) -> str:
     """
     Reverse the digit-splitting applied at training time.
 
-    The digit tokenizer separates each digit with a space:
-      "84"   → "8 4"    (training)
-      "8 4"  → "84"    (this function, applied after decoding)
+    The digit tokenizer (Metaspace BPE) guarantees that each digit 0-9 is its
+    own token — digits are never merged by BPE.  However, the MetaspaceDecoder
+    may attach trailing punctuation to the last digit in a sequence, producing
+    chunks like "4." or "2," rather than "4" + ".".
 
-    Only consecutive single-character digit tokens are merged;
-    non-digit tokens break the run.
+    This function handles both cases:
+      1. Pure digit chunks: "1", "8", "7", "4" → buffered and joined → "1874"
+      2. Digit+punctuation chunks: "4." → digit part "4" buffered, suffix "."
+         re-attached after the number is joined → "1874."
+
+    Examples:
+      "1 8 7 4"   → "1874"
+      "1 8 7 4."  → "1874."
+      "2 0 1 6,"  → "2016,"
+      "In 3 2 games" → "In 32 games"   (non-digit tokens break the run)
+      "2 3 . 5"   → "23 . 5"   (decimal point is a non-digit, so breaks run)
     """
+    import string
+    PUNCT = string.punctuation
+
     parts = text.split(" ")
     out   = []
-    buf   = []
+    buf   = []           # accumulates consecutive digit-only chunks
+
+    def flush_buf(suffix=""):
+        if buf:
+            out.append("".join(buf) + suffix)
+            buf.clear()
+        elif suffix:
+            out.append(suffix)
+
     for part in parts:
-        if len(part) == 1 and part.isdigit():
-            buf.append(part)
+        if not part:
+            continue
+        # Strip any trailing punctuation to find the digit core
+        core   = part.rstrip(PUNCT)
+        suffix = part[len(core):]   # e.g. "4." → core="4", suffix="."
+        if core.isdigit():
+            if suffix:
+                # digit followed by punctuation: buffer digit, then flush
+                buf.append(core)
+                flush_buf(suffix)
+            else:
+                buf.append(core)
         else:
-            if buf:
-                out.append("".join(buf))
-                buf = []
-            if part:
-                out.append(part)
-    if buf:
-        out.append("".join(buf))
+            flush_buf()             # flush accumulated digits first
+            out.append(part)        # then emit the non-digit part as-is
+
+    flush_buf()   # flush any trailing digits
     return " ".join(out)
 
 

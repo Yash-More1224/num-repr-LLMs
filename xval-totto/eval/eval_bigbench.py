@@ -168,30 +168,53 @@ def rejoin_digit_tokens(text: str) -> str:
     """
     Reverse the digit-splitting preprocessing applied at training time.
 
-    The digit tokenizer was trained on text where each digit character is
-    separated by a space, e.g. "84" → "8 4", "3108" → "3 1 0 8".
-    After decoding the generated token IDs, this function joins consecutive
-    single-digit tokens back into complete numbers.
+    The digit tokenizer (Metaspace BPE) guarantees that each digit 0-9 is its
+    own token — digits are never merged by BPE.  However, the MetaspaceDecoder
+    may attach trailing punctuation to the last digit in a sequence, producing
+    chunks like "4." or "2," rather than "4" + ".".
+
+    This function handles both cases:
+      1. Pure digit chunks: "1", "8", "7", "4" → buffered and joined → "1874"
+      2. Digit+punctuation chunks: "4." → digit part "4" buffered, suffix "."
+         re-attached after the number is joined → "1874."
 
     Examples:
       "8 4"        → "84"
       "3 1 0 8"    → "3108"
+      "1 8 7 4."   → "1874."
+      "2 0 1 6,"   → "2016,"
       "What is 8 4 plus 3?" → "What is 84 plus 3?"
     """
+    import string
+    PUNCT = string.punctuation
+
     parts = text.split(" ")
     out   = []
-    buf   = []
+    buf   = []           # accumulates consecutive digit-only chunks
+
+    def flush_buf(suffix=""):
+        if buf:
+            out.append("".join(buf) + suffix)
+            buf.clear()
+        elif suffix:
+            out.append(suffix)
+
     for part in parts:
-        if len(part) == 1 and part.isdigit():
-            buf.append(part)
+        if not part:
+            continue
+        core   = part.rstrip(PUNCT)
+        suffix = part[len(core):]
+        if core.isdigit():
+            if suffix:
+                buf.append(core)
+                flush_buf(suffix)
+            else:
+                buf.append(core)
         else:
-            if buf:
-                out.append("".join(buf))
-                buf = []
-            if part:          # skip empty strings from consecutive spaces
-                out.append(part)
-    if buf:
-        out.append("".join(buf))
+            flush_buf()
+            out.append(part)
+
+    flush_buf()
     return " ".join(out)
 
 

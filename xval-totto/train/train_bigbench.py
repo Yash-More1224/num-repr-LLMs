@@ -69,8 +69,12 @@ def xval_step(model, batch, device):
     labels         = batch["labels"].to(device)
     number_values  = batch["number_values"].to(device)
     number_mask    = batch["number_mask"].to(device)
-    loss, log_dict = model(input_ids, number_values, number_mask, labels=labels)
-    return loss, log_dict
+    total_loss, logits, ce_loss, mse_loss = model(input_ids, number_values, number_mask, labels=labels)
+    return total_loss, {
+        "ce":    ce_loss.item(),
+        "mse":   mse_loss.item(),
+        "total": total_loss.item(),
+    }
 
 
 def fone_step(model, batch, device):
