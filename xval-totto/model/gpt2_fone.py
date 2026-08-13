@@ -299,10 +299,16 @@ class GPT2FoNE(nn.Module):
                     pred_val = self.fone.decode(last_hidden[b])
                     predicted_values[b].append(pred_val)
 
-            # Append next token; new position has value=0 and mask=False
+            # Append next token; inject predicted value if [NUM] token
             input_ids     = torch.cat([input_ids, next_token], dim=1)
             new_nv        = torch.zeros(B, 1, device=input_ids.device)
             new_nm        = torch.zeros(B, 1, dtype=torch.bool, device=input_ids.device)
+            
+            for b in range(B):
+                if next_token[b, 0].item() == self.num_token_id:
+                    new_nv[b, 0] = predicted_values[b][-1]
+                    new_nm[b, 0] = True
+            
             number_values = torch.cat([number_values, new_nv], dim=1)
             number_mask   = torch.cat([number_mask,   new_nm], dim=1)
 

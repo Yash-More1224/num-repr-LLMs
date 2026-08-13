@@ -1,0 +1,4238 @@
+{
+  "model": "fone_dp",
+  "checkpoint": "checkpoints/fone_dp/fone_dp_best_epoch08_step007500.pt",
+  "summary": {
+    "n_examples": 200,
+    "n_with_numbers": 179,
+    "bleu": 31.88,
+    "num_em": 0.8233,
+    "halluc_rate": 0.1747,
+    "count_match": 0.62,
+    "num_mae": 7455.8919,
+    "num_mape_pct": 1799.9
+  },
+  "examples": [
+    {
+      "example_id": "7391450717765563190",
+      "reference": "Daniel Henry Chamberlain was the 76th Governor of South Carolina from 1874.",
+      "generated": "Daniel Henry Chamberlain was the 66th Governor of South Carolina, serving until 1874 .",
+      "ref_nums": [
+        1874.0
+      ],
+      "gen_nums": [
+        1874.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Daniel Henry Chamberlain was the 76th Governor of South Carolina from 1874.",
+      "bleu_hyp": "Daniel Henry Chamberlain was the 66th Governor of South Carolina, serving until 1874 ."
+    },
+    {
+      "example_id": "9012083751335522596",
+      "reference": "Alma Jodorowsky had the role of Evelyn in 2016 film Kids in Love.",
+      "generated": "In 2016 , Alma Jodorowsky played Evelyn in Kids in Love.",
+      "ref_nums": [
+        2016.0
+      ],
+      "gen_nums": [
+        2016.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Alma Jodorowsky had the role of Evelyn in 2016 film Kids in Love.",
+      "bleu_hyp": "In 2016 , Alma Jodorowsky played Evelyn in Kids in Love."
+    },
+    {
+      "example_id": "-8764917516249435941",
+      "reference": "In his rookie season, Hawk led with 119 total tackles.",
+      "generated": "Hawk made 119 tackles.",
+      "ref_nums": [
+        119.0
+      ],
+      "gen_nums": [
+        119.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In his rookie season, Hawk led with 119 total tackles.",
+      "bleu_hyp": "Hawk made 119 tackles."
+    },
+    {
+      "example_id": "-6915287003153277224",
+      "reference": "At the very end of his life, Arthur III became duke of Brittany, succeeding Peter II.",
+      "generated": "Arthur III the Justicier (1450 \u2013 26 December 1458 ) was Duke of Brittany from 1458 until his death in 1458 .",
+      "ref_nums": [],
+      "gen_nums": [
+        1450.0,
+        26.0,
+        1458.0,
+        1458.0,
+        1458.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1170.0,
+      "num_mape": null,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 0,
+      "bleu_ref": "At the very end of his life, Arthur III became duke of Brittany, succeeding Peter II.",
+      "bleu_hyp": "Arthur III the Justicier (1450 \u2013 26 December 1458 ) was Duke of Brittany from 1458 until his death in 1458 ."
+    },
+    {
+      "example_id": "-3004901021745997743",
+      "reference": "Ralph J. Parker was a Minnesota politician and a Speaker of the Minnesota House of Representatives.",
+      "generated": "Ralph J. Parker served as Speaker of the Minnesota House of Representatives.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Ralph J. Parker was a Minnesota politician and a Speaker of the Minnesota House of Representatives.",
+      "bleu_hyp": "Ralph J. Parker served as Speaker of the Minnesota House of Representatives."
+    },
+    {
+      "example_id": "9095314032876340546",
+      "reference": "The last Asian Beach Games was held in Danang, Vietnam from 24 September to 3 October 2016, while the next will be held in 2020 in Sanya, China, the first to breakaway from the 2-year cycle.",
+      "generated": "The Asian Beach Games were held in Da Nang, China from 24 September 2016 to 3 October 2020 in Sanya and the second Asian Beach Games were held in Sanya in Sanya in China.",
+      "ref_nums": [
+        24.0,
+        3.0,
+        2016.0,
+        2020.0,
+        2.0
+      ],
+      "gen_nums": [
+        24.0,
+        2016.0,
+        3.0,
+        2020.0
+      ],
+      "num_em": 0.8,
+      "num_mae": 1006.5,
+      "num_mape": 16799.962797619046,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 5,
+      "bleu_ref": "The last Asian Beach Games was held in Danang, Vietnam from 24 September to 3 October 2016, while the next will be held in 2020 in Sanya, China, the first to breakaway from the 2-year cycle.",
+      "bleu_hyp": "The Asian Beach Games were held in Da Nang, China from 24 September 2016 to 3 October 2020 in Sanya and the second Asian Beach Games were held in Sanya in Sanya in China."
+    },
+    {
+      "example_id": "6803794595179672650",
+      "reference": "In 2012, Julian Sands played as Alistair Wesley in the episode of the Person of Interest.",
+      "generated": "In 2012 , Julian Sands played as Alistair Wesley in the Person of Interest.",
+      "ref_nums": [
+        2012.0
+      ],
+      "gen_nums": [
+        2012.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2012, Julian Sands played as Alistair Wesley in the episode of the Person of Interest.",
+      "bleu_hyp": "In 2012 , Julian Sands played as Alistair Wesley in the Person of Interest."
+    },
+    {
+      "example_id": "-2706081572458524575",
+      "reference": "In 2005, Adrienne Bailon starred in Coach Carter as Dominique.",
+      "generated": "In 2005 , Adrienne Bailon played as Dominique in the film Coach Carter.",
+      "ref_nums": [
+        2005.0
+      ],
+      "gen_nums": [
+        2005.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2005, Adrienne Bailon starred in Coach Carter as Dominique.",
+      "bleu_hyp": "In 2005 , Adrienne Bailon played as Dominique in the film Coach Carter."
+    },
+    {
+      "example_id": "3877051823034175640",
+      "reference": "John Learie Estrada is the United States Ambassador to Trinidad and Tobago.",
+      "generated": "John L. Estrada was the United States Ambassador to Trinidad and Tobaga.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "John Learie Estrada is the United States Ambassador to Trinidad and Tobago.",
+      "bleu_hyp": "John L. Estrada was the United States Ambassador to Trinidad and Tobaga."
+    },
+    {
+      "example_id": "6364030237891034315",
+      "reference": "Trey Johnson averaged 23.5 points, 4.8 rebounds, and 2.3 assists in 32 games.",
+      "generated": "Trey Johnson averaged 23.5 points, 4.8 assists and 3.7 rebounds in 32 games.",
+      "ref_nums": [
+        23.5,
+        4.8,
+        2.3,
+        32.0
+      ],
+      "gen_nums": [
+        23.5,
+        4.8,
+        3.7,
+        32.0
+      ],
+      "num_em": 0.75,
+      "num_mae": 0.3500000000000001,
+      "num_mape": 15.21739130434783,
+      "halluc": 0.25,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "Trey Johnson averaged 23.5 points, 4.8 rebounds, and 2.3 assists in 32 games.",
+      "bleu_hyp": "Trey Johnson averaged 23.5 points, 4.8 assists and 3.7 rebounds in 32 games."
+    },
+    {
+      "example_id": "3642579282991847187",
+      "reference": "\"Don Fulgencio\" is a 1950 Argentinian film.",
+      "generated": "Don Fulgencio is a 1950 Argentine film.",
+      "ref_nums": [
+        1950.0
+      ],
+      "gen_nums": [
+        1950.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "\"Don Fulgencio\" is a 1950 Argentinian film.",
+      "bleu_hyp": "Don Fulgencio is a 1950 Argentine film."
+    },
+    {
+      "example_id": "7600294688870422187",
+      "reference": "In 1956, George Washington Colonials scored 13\u20130 against Texas Western at the Sun Bowl.",
+      "generated": "In 1956 , Colonials won over Texas Western by 13 \u20130 .",
+      "ref_nums": [
+        1956.0,
+        13.0,
+        0.0
+      ],
+      "gen_nums": [
+        1956.0,
+        13.0,
+        0.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "In 1956, George Washington Colonials scored 13\u20130 against Texas Western at the Sun Bowl.",
+      "bleu_hyp": "In 1956 , Colonials won over Texas Western by 13 \u20130 ."
+    },
+    {
+      "example_id": "-825401411038376979",
+      "reference": "In 1990, Glen won the Silver Bear for the Best Actor in the Silent Scream.",
+      "generated": "In 1990 , Glen won the Silver Bear award for Best Actor.",
+      "ref_nums": [
+        1990.0
+      ],
+      "gen_nums": [
+        1990.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 1990, Glen won the Silver Bear for the Best Actor in the Silent Scream.",
+      "bleu_hyp": "In 1990 , Glen won the Silver Bear award for Best Actor."
+    },
+    {
+      "example_id": "-5031596330487780604",
+      "reference": "The Shania: Still the One grossed over $43 million from a total of 346,021.",
+      "generated": "The Shania: Still the One grossed $5.831e+05 in 1901 and grossed $1.564e+06 in 1901 .",
+      "ref_nums": [
+        43.0,
+        346021.0
+      ],
+      "gen_nums": [
+        5.0,
+        5.0,
+        1901.0,
+        1.0,
+        6.0,
+        1901.0
+      ],
+      "num_em": 0.0,
+      "num_mae": 173027.0,
+      "num_mape": 94.18532401212643,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "The Shania: Still the One grossed over $43 million from a total of 346,021.",
+      "bleu_hyp": "The Shania: Still the One grossed $5.831e+05 in 1901 and grossed $1.564e+06 in 1901 ."
+    },
+    {
+      "example_id": "836315625759992199",
+      "reference": "In 2005, Kosuke Matsuura again drove for Super Aguri Fernandez Racing, and again finished 14th with a best place finish of 6th in the two races.",
+      "generated": "Kosuke Matsuura raced in the 2005 season for Super Aguri Fernandez Racing in the Super Aguri Fernandez Racing and finished 14th in the standings with 16 points.",
+      "ref_nums": [
+        2005.0
+      ],
+      "gen_nums": [
+        2005.0,
+        16.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2005, Kosuke Matsuura again drove for Super Aguri Fernandez Racing, and again finished 14th with a best place finish of 6th in the two races.",
+      "bleu_hyp": "Kosuke Matsuura raced in the 2005 season for Super Aguri Fernandez Racing in the Super Aguri Fernandez Racing and finished 14th in the standings with 16 points."
+    },
+    {
+      "example_id": "89433245955247690",
+      "reference": "The Iodine-131, Caesium-134 and Caesium-137 were released from the Fukushima Daiichi nuclear disaster.",
+      "generated": "The Radiation has a Nuclide with a maximum life of 132 Cs, with a maximum life of 136 Cs.",
+      "ref_nums": [
+        131.0,
+        134.0,
+        137.0
+      ],
+      "gen_nums": [
+        132.0,
+        136.0
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 1.5,
+      "num_mape": 1.127948046029395,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "The Iodine-131, Caesium-134 and Caesium-137 were released from the Fukushima Daiichi nuclear disaster.",
+      "bleu_hyp": "The Radiation has a Nuclide with a maximum life of 132 Cs, with a maximum life of 136 Cs."
+    },
+    {
+      "example_id": "-3334410733611086453",
+      "reference": "In 2014, the PAW Patrol theme song was nominated for Outstanding Original Song \u2013 Main Title and Promo in the 41st Daytime Creative Arts Emmy Awards.",
+      "generated": "In 2014 , PAW Patrol received a Daytime Emmy Award for Outstanding Original Song \u2013 Main Title and Promo at the 41st Daytime Creative Arts Emmy Awards.",
+      "ref_nums": [
+        2014.0
+      ],
+      "gen_nums": [
+        2014.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2014, the PAW Patrol theme song was nominated for Outstanding Original Song \u2013 Main Title and Promo in the 41st Daytime Creative Arts Emmy Awards.",
+      "bleu_hyp": "In 2014 , PAW Patrol received a Daytime Emmy Award for Outstanding Original Song \u2013 Main Title and Promo at the 41st Daytime Creative Arts Emmy Awards."
+    },
+    {
+      "example_id": "2328708404712737200",
+      "reference": "The Centre Party won 100 of the 397 seats, while the Social Democratic Party (SPD) won 81.",
+      "generated": "The Social Democratic Party emerged as the largest party in the 1903 German federal election with 81 of the 397 seats and the Centre Party emerged as the largest party in the 1903 German federal election.",
+      "ref_nums": [
+        100.0,
+        397.0,
+        81.0
+      ],
+      "gen_nums": [
+        1903.0,
+        81.0,
+        397.0,
+        1903.0
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 811.6666666666666,
+      "num_mape": 757.5734780400327,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "The Centre Party won 100 of the 397 seats, while the Social Democratic Party (SPD) won 81.",
+      "bleu_hyp": "The Social Democratic Party emerged as the largest party in the 1903 German federal election with 81 of the 397 seats and the Centre Party emerged as the largest party in the 1903 German federal election."
+    },
+    {
+      "example_id": "-3851885828889693262",
+      "reference": "Jesse Tannehill with winning record, at 13\u201311, while Bill Dinneen had the lowest ERA, at 2.92.",
+      "generated": "Dinneen had a 12 \u201311 record and 2.92 ERA.",
+      "ref_nums": [
+        13.0,
+        11.0,
+        2.92
+      ],
+      "gen_nums": [
+        12.0,
+        11.0,
+        2.92
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 0.3333333333333333,
+      "num_mape": 2.5641025641025643,
+      "halluc": 0.3333333333333333,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "Jesse Tannehill with winning record, at 13\u201311, while Bill Dinneen had the lowest ERA, at 2.92.",
+      "bleu_hyp": "Dinneen had a 12 \u201311 record and 2.92 ERA."
+    },
+    {
+      "example_id": "-7180363942811823863",
+      "reference": "At the Los Angeles Olympics, Christina Boxer finished 6th in the 1500 m with 4:05.53.",
+      "generated": "Christina Boxer placed sixth in the 1500 m at the Olympics in Los Angeles, United States with a time of 4 :5.53 .",
+      "ref_nums": [
+        1500.0,
+        4.0,
+        5.53
+      ],
+      "gen_nums": [
+        1500.0,
+        4.0,
+        5.53
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "At the Los Angeles Olympics, Christina Boxer finished 6th in the 1500 m with 4:05.53.",
+      "bleu_hyp": "Christina Boxer placed sixth in the 1500 m at the Olympics in Los Angeles, United States with a time of 4 :5.53 ."
+    },
+    {
+      "example_id": "1383394707823508382",
+      "reference": "In 2015, Umarbayev signed for Tajik League FC Istiklol.",
+      "generated": "In 2015 , Parvizdzhon Umarbayev signed for Tajik League side Istiklol.",
+      "ref_nums": [
+        2015.0
+      ],
+      "gen_nums": [
+        2015.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2015, Umarbayev signed for Tajik League FC Istiklol.",
+      "bleu_hyp": "In 2015 , Parvizdzhon Umarbayev signed for Tajik League side Istiklol."
+    },
+    {
+      "example_id": "-8314333112213159068",
+      "reference": "The Korea Aerospace Research Institute (KARI), established in 1989, is the space agency of South Korea.",
+      "generated": "The KARI (641 ) was the government space agency of South Korea and was founded in 1989 .",
+      "ref_nums": [
+        1989.0
+      ],
+      "gen_nums": [
+        641.0,
+        1989.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1348.0,
+      "num_mape": 67.7727501256913,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "The Korea Aerospace Research Institute (KARI), established in 1989, is the space agency of South Korea.",
+      "bleu_hyp": "The KARI (641 ) was the government space agency of South Korea and was founded in 1989 ."
+    },
+    {
+      "example_id": "5444102153248079053",
+      "reference": "Park scored 151.",
+      "generated": "In the 1898 Open Championship, Park scored 62 , in 51 overs.",
+      "ref_nums": [
+        151.0
+      ],
+      "gen_nums": [
+        1898.0,
+        62.0,
+        51.0
+      ],
+      "num_em": 0.0,
+      "num_mae": 1747.0,
+      "num_mape": 1156.953642384106,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Park scored 151.",
+      "bleu_hyp": "In the 1898 Open Championship, Park scored 62 , in 51 overs."
+    },
+    {
+      "example_id": "-2583256067973016985",
+      "reference": "4-cylinder-inline engine through a four-speed gearbox transmission gave SEAT 1200 Sport a top speed of 157 km/h (98 mph).",
+      "generated": "The SEAT 1200 Sport consists of four-cylinder transversels, the 114 cc engine, the 158 cc and the 200 cc car.",
+      "ref_nums": [
+        4.0,
+        1200.0,
+        157.0,
+        98.0
+      ],
+      "gen_nums": [
+        1200.0,
+        114.0,
+        158.0,
+        200.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 596.25,
+      "num_mape": 7523.804643832055,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "4-cylinder-inline engine through a four-speed gearbox transmission gave SEAT 1200 Sport a top speed of 157 km/h (98 mph).",
+      "bleu_hyp": "The SEAT 1200 Sport consists of four-cylinder transversels, the 114 cc engine, the 158 cc and the 200 cc car."
+    },
+    {
+      "example_id": "-1130960707296388681",
+      "reference": "The 1934\u201335 Svenska m\u00e4sterskapet was the fourth season in the Swedish Champions of men's handball.",
+      "generated": "The 1934 \u201335 Svenska m\u00e4sterskapet was the first Swedish men's handball champion in the Svenska m\u00e4sterskapet tournament.",
+      "ref_nums": [
+        1934.0,
+        35.0
+      ],
+      "gen_nums": [
+        1934.0,
+        35.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The 1934\u201335 Svenska m\u00e4sterskapet was the fourth season in the Swedish Champions of men's handball.",
+      "bleu_hyp": "The 1934 \u201335 Svenska m\u00e4sterskapet was the first Swedish men's handball champion in the Svenska m\u00e4sterskapet tournament."
+    },
+    {
+      "example_id": "-4970046630385451904",
+      "reference": "TalTran Logo (Blue & White), Partially Refurbished 1992 (6802 was not included & roll sign was missing) with separate wheelchair lift access alongside backdoor exit, opening windows, not equipped with power steering, lack of adequate air conditioning, original 1968 interiors preserved.",
+      "generated": "The StarMetro was introduced in 1973 .",
+      "ref_nums": [
+        1992.0,
+        6802.0,
+        1968.0
+      ],
+      "gen_nums": [
+        1973.0
+      ],
+      "num_em": 0.3333333333333333,
+      "num_mae": 19.0,
+      "num_mape": 0.9538152610441768,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "TalTran Logo (Blue & White), Partially Refurbished 1992 (6802 was not included & roll sign was missing) with separate wheelchair lift access alongside backdoor exit, opening windows, not equipped with power steering, lack of adequate air conditioning, original 1968 interiors preserved.",
+      "bleu_hyp": "The StarMetro was introduced in 1973 ."
+    },
+    {
+      "example_id": "-7858242389781082",
+      "reference": "As of the census of 2000, there were 133 people residing in Arrow Point.",
+      "generated": "As of the census of 2000 , there were 133 people residing in Arrow Point, Missouri.",
+      "ref_nums": [
+        2000.0,
+        133.0
+      ],
+      "gen_nums": [
+        2000.0,
+        133.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the census of 2000, there were 133 people residing in Arrow Point.",
+      "bleu_hyp": "As of the census of 2000 , there were 133 people residing in Arrow Point, Missouri."
+    },
+    {
+      "example_id": "6620405786071088918",
+      "reference": "A total of 28, U28Cs were built as Burlington and Quincy #562-577 and Northern Pacific #2800-2811.",
+      "generated": "The two locomotives of the GE U28C were numbered 652 \u2013577 , 1601 , 690 , 1601 , 1601 , and 1711 .",
+      "ref_nums": [
+        28.0,
+        562.0,
+        577.0,
+        2800.0,
+        2811.0
+      ],
+      "gen_nums": [
+        652.0,
+        577.0,
+        1601.0,
+        690.0,
+        1601.0,
+        1601.0,
+        1711.0
+      ],
+      "num_em": 0.2,
+      "num_mae": 996.6,
+      "num_mape": 505.42249218728404,
+      "halluc": 0.8571428571428571,
+      "count_match": false,
+      "n_ref_nums": 5,
+      "bleu_ref": "A total of 28, U28Cs were built as Burlington and Quincy #562-577 and Northern Pacific #2800-2811.",
+      "bleu_hyp": "The two locomotives of the GE U28C were numbered 652 \u2013577 , 1601 , 690 , 1601 , 1601 , and 1711 ."
+    },
+    {
+      "example_id": "-7996466556892340733",
+      "reference": "Hemanth Ravan appeared in Malayalam, Tamil, and Hindi films, including Raasaiyya (1995), Sher-E-Hindustan (1998), Maanthrikam (1995) and Sathyameva Jayathe (2001).",
+      "generated": "Hemanth Ravan made her Malayalam debut in the film Maanthrikam (1995 ), before her Malayalam film Sathyameva Jayathe (1999 ) and acted in the Malayalam film Sher-E-Hindustan (2001 ).",
+      "ref_nums": [
+        1995.0,
+        1998.0,
+        1995.0,
+        2001.0
+      ],
+      "gen_nums": [
+        1995.0,
+        1999.0,
+        2001.0
+      ],
+      "num_em": 0.75,
+      "num_mae": 2.3333333333333335,
+      "num_mape": 0.1169339765830994,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "Hemanth Ravan appeared in Malayalam, Tamil, and Hindi films, including Raasaiyya (1995), Sher-E-Hindustan (1998), Maanthrikam (1995) and Sathyameva Jayathe (2001).",
+      "bleu_hyp": "Hemanth Ravan made her Malayalam debut in the film Maanthrikam (1995 ), before her Malayalam film Sathyameva Jayathe (1999 ) and acted in the Malayalam film Sher-E-Hindustan (2001 )."
+    },
+    {
+      "example_id": "48440727621285975",
+      "reference": "At the 2018\u201319 JGP in junior-level, in the Final event, Mishina and Galliamov had a combined total of 190.63 points and free program of 126.26 points.",
+      "generated": "Aleksandr Galliamov won the junior-level title with a total of 190.6 points in the short program and 126.3 points in the free dance.",
+      "ref_nums": [
+        2018.0,
+        19.0,
+        190.63,
+        126.26
+      ],
+      "gen_nums": [
+        190.6,
+        126.3
+      ],
+      "num_em": 0.5,
+      "num_mae": 967.35,
+      "num_mape": 327.64592353033225,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "At the 2018\u201319 JGP in junior-level, in the Final event, Mishina and Galliamov had a combined total of 190.63 points and free program of 126.26 points.",
+      "bleu_hyp": "Aleksandr Galliamov won the junior-level title with a total of 190.6 points in the short program and 126.3 points in the free dance."
+    },
+    {
+      "example_id": "-102195251449122834",
+      "reference": "In 1987 Alessandro Andrei broke the world record three times in the same competition with successive throws of 22.72, 22.84 & 22.91 m and finishing the sequence with a throw of 22.74 m.",
+      "generated": "Alessandro Andrei placed 5th in 22.72 , 5th in 22.82 , 5th in 22.83 .",
+      "ref_nums": [
+        1987.0,
+        22.72,
+        22.84,
+        22.91,
+        22.74
+      ],
+      "gen_nums": [
+        22.72,
+        22.82,
+        22.83
+      ],
+      "num_em": 0.6,
+      "num_mae": 654.7966666666666,
+      "num_mape": 33.11349712406106,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 5,
+      "bleu_ref": "In 1987 Alessandro Andrei broke the world record three times in the same competition with successive throws of 22.72, 22.84 & 22.91 m and finishing the sequence with a throw of 22.74 m.",
+      "bleu_hyp": "Alessandro Andrei placed 5th in 22.72 , 5th in 22.82 , 5th in 22.83 ."
+    },
+    {
+      "example_id": "-3436542895472503263",
+      "reference": "Cardiff Canton's shed code was 86C.",
+      "generated": "The Cardiff Canton is a shed code in Cardiff.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Cardiff Canton's shed code was 86C.",
+      "bleu_hyp": "The Cardiff Canton is a shed code in Cardiff."
+    },
+    {
+      "example_id": "6436248150519533919",
+      "reference": "Nadia Ejjafini represented Italy for the first time at the 2011 World Cross Country Championships, coming 34th overall.",
+      "generated": "Nadia Ejjafini represented Italy at the 2011 World Cross Country Championships and 34th at the 2011 World Cross Country Championships.",
+      "ref_nums": [
+        2011.0
+      ],
+      "gen_nums": [
+        2011.0,
+        2011.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Nadia Ejjafini represented Italy for the first time at the 2011 World Cross Country Championships, coming 34th overall.",
+      "bleu_hyp": "Nadia Ejjafini represented Italy at the 2011 World Cross Country Championships and 34th at the 2011 World Cross Country Championships."
+    },
+    {
+      "example_id": "-7179005179188955442",
+      "reference": "San Jose State dropped to 10\u201322 in 2001\u201302.",
+      "generated": "In 2001 , Barnes recorded 15 \u201315 in San Jose State and 10 \u201312 in the Big West Conference.",
+      "ref_nums": [
+        10.0,
+        22.0,
+        2001.0,
+        2.0
+      ],
+      "gen_nums": [
+        2001.0,
+        15.0,
+        15.0,
+        10.0,
+        12.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 998.0,
+      "num_mape": 5110.267139157693,
+      "halluc": 0.6,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "San Jose State dropped to 10\u201322 in 2001\u201302.",
+      "bleu_hyp": "In 2001 , Barnes recorded 15 \u201315 in San Jose State and 10 \u201312 in the Big West Conference."
+    },
+    {
+      "example_id": "-8571493566499384802",
+      "reference": "Starc qualified with 2.31 m at the World Championships.",
+      "generated": "Brandon Starc finished the World Championships with a time of 2.33 .",
+      "ref_nums": [
+        2.31
+      ],
+      "gen_nums": [
+        2.33
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.020000000000000018,
+      "num_mape": 0.8658008658008665,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Starc qualified with 2.31 m at the World Championships.",
+      "bleu_hyp": "Brandon Starc finished the World Championships with a time of 2.33 ."
+    },
+    {
+      "example_id": "-5457677260865346777",
+      "reference": "In 2008, Garth starred as Kelly Taylor in \"90210\".",
+      "generated": "Jennie Garth played the role of Kelly Taylor in 9.021e+04 from 2008 to 2010 .",
+      "ref_nums": [
+        2008.0,
+        90210.0
+      ],
+      "gen_nums": [
+        9.0,
+        4.0,
+        2008.0,
+        2010.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 46102.5,
+      "num_mape": 99.77367936523498,
+      "halluc": 0.75,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "In 2008, Garth starred as Kelly Taylor in \"90210\".",
+      "bleu_hyp": "Jennie Garth played the role of Kelly Taylor in 9.021e+04 from 2008 to 2010 ."
+    },
+    {
+      "example_id": "-4987169707523815662",
+      "reference": "The first president of the New Progressive Party (Puerto Rico), was Luis A. Ferr\u00e9, who served from 1967 to 1974.",
+      "generated": "Luis A. Ferr\u00e9 served as the first President of the New Progressive Party (Puerto Rico) from 1967 to 1974 .",
+      "ref_nums": [
+        1967.0,
+        1974.0
+      ],
+      "gen_nums": [
+        1967.0,
+        1974.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The first president of the New Progressive Party (Puerto Rico), was Luis A. Ferr\u00e9, who served from 1967 to 1974.",
+      "bleu_hyp": "Luis A. Ferr\u00e9 served as the first President of the New Progressive Party (Puerto Rico) from 1967 to 1974 ."
+    },
+    {
+      "example_id": "1455903275854735393",
+      "reference": "Mohanlal portrayed Sagar Alias Jacky in Irupatham Noottandu (1987).",
+      "generated": "In 1987 , Mohanlal played as Sagar Alias Jacky in Irupatham Noottandu.",
+      "ref_nums": [
+        1987.0
+      ],
+      "gen_nums": [
+        1987.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Mohanlal portrayed Sagar Alias Jacky in Irupatham Noottandu (1987).",
+      "bleu_hyp": "In 1987 , Mohanlal played as Sagar Alias Jacky in Irupatham Noottandu."
+    },
+    {
+      "example_id": "77993945897784021",
+      "reference": "In 2000, Roopa Ganguly appeared in Rituparno Ghosh's Bengali film Bariwali.",
+      "generated": "Roopa Ganguly appeared in Rituparno Ghosh's Bengali film Bariwali in 2000 .",
+      "ref_nums": [
+        2000.0
+      ],
+      "gen_nums": [
+        2000.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2000, Roopa Ganguly appeared in Rituparno Ghosh's Bengali film Bariwali.",
+      "bleu_hyp": "Roopa Ganguly appeared in Rituparno Ghosh's Bengali film Bariwali in 2000 ."
+    },
+    {
+      "example_id": "-8222261621807649688",
+      "reference": "Takeshi So won the 1976 edition of the Ko\u0161ice Peace Marathon in Czechoslovakia.",
+      "generated": "Takeshi So won the 1976 Ko\u0161ice Peace Marathon, in the Czechoslovakia and won the Ko\u0161ice, Czechoslovakia.",
+      "ref_nums": [
+        1976.0
+      ],
+      "gen_nums": [
+        1976.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Takeshi So won the 1976 edition of the Ko\u0161ice Peace Marathon in Czechoslovakia.",
+      "bleu_hyp": "Takeshi So won the 1976 Ko\u0161ice Peace Marathon, in the Czechoslovakia and won the Ko\u0161ice, Czechoslovakia."
+    },
+    {
+      "example_id": "-94580168586076985",
+      "reference": "Idina Menzel was nominated in 2010 for Choice Music: Group for Glee and in 2014 for Choice Music: Single.",
+      "generated": "Idina Menzel received a nomination for Choice Music: Group in 2011 and Choice Music: Single in 2014 .",
+      "ref_nums": [
+        2010.0,
+        2014.0
+      ],
+      "gen_nums": [
+        2011.0,
+        2014.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.5,
+      "num_mape": 0.02487562189054726,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Idina Menzel was nominated in 2010 for Choice Music: Group for Glee and in 2014 for Choice Music: Single.",
+      "bleu_hyp": "Idina Menzel received a nomination for Choice Music: Group in 2011 and Choice Music: Single in 2014 ."
+    },
+    {
+      "example_id": "-1563105992281591878",
+      "reference": "Starrcade (1988) was the wrestling pay-per-view (PPV) event under the National Wrestling Alliance (NWA).",
+      "generated": "Starrcade (1988 ) was a wrestling pay-per-view (PPV) event produced by World Championship Wrestling (WCW).",
+      "ref_nums": [
+        1988.0
+      ],
+      "gen_nums": [
+        1988.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Starrcade (1988) was the wrestling pay-per-view (PPV) event under the National Wrestling Alliance (NWA).",
+      "bleu_hyp": "Starrcade (1988 ) was a wrestling pay-per-view (PPV) event produced by World Championship Wrestling (WCW)."
+    },
+    {
+      "example_id": "-2282365397854992141",
+      "reference": "There was a massive growth in population of Calais from 13,529 in 1881 to 58,969 in 1886, a growth of 335.9%.",
+      "generated": "In 1881 , Calais had 1.353e+04 , a population of 5.987e+04 , a decrease of +335.9 .",
+      "ref_nums": [
+        13529.0,
+        1881.0,
+        58969.0,
+        1886.0,
+        335.9
+      ],
+      "gen_nums": [
+        1881.0,
+        1.0,
+        4.0,
+        5.0,
+        4.0,
+        335.9
+      ],
+      "num_em": 0.4,
+      "num_mae": 14941.179999999998,
+      "num_mape": 96.91612899710007,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 5,
+      "bleu_ref": "There was a massive growth in population of Calais from 13,529 in 1881 to 58,969 in 1886, a growth of 335.9%.",
+      "bleu_hyp": "In 1881 , Calais had 1.353e+04 , a population of 5.987e+04 , a decrease of +335.9 ."
+    },
+    {
+      "example_id": "1695436471559141669",
+      "reference": "The first edition of the Pepsi Venezuela Music Awards took place on 29 March 2012, in Caracas and was broadcast on Venevisi\u00f3n.",
+      "generated": "Pepsi Venezuela Music Awards first was held on 29 March 2012 , from the Venevisi\u00f3n in Quinta Esmeralda.",
+      "ref_nums": [
+        29.0,
+        2012.0
+      ],
+      "gen_nums": [
+        29.0,
+        2012.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The first edition of the Pepsi Venezuela Music Awards took place on 29 March 2012, in Caracas and was broadcast on Venevisi\u00f3n.",
+      "bleu_hyp": "Pepsi Venezuela Music Awards first was held on 29 March 2012 , from the Venevisi\u00f3n in Quinta Esmeralda."
+    },
+    {
+      "example_id": "7457900926661663193",
+      "reference": "In 2019, Liang played the role of Su Ying in Handsome Siblings.",
+      "generated": "In 2019 , Liang Jie played as Su Ying in Handsome Siblings",
+      "ref_nums": [
+        2019.0
+      ],
+      "gen_nums": [
+        2019.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2019, Liang played the role of Su Ying in Handsome Siblings.",
+      "bleu_hyp": "In 2019 , Liang Jie played as Su Ying in Handsome Siblings"
+    },
+    {
+      "example_id": "5407845950607572188",
+      "reference": "Axel Chapelle won the medal at the 2013 European Junior Championships in Rieti, Italy, with a vault of 5.25 m.",
+      "generated": "At the 2013 European Junior Championships in Rieti, Italy, Axel Chapelle won the silver medal with a mark of 5.25 m.",
+      "ref_nums": [
+        2013.0,
+        5.25
+      ],
+      "gen_nums": [
+        2013.0,
+        5.25
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Axel Chapelle won the medal at the 2013 European Junior Championships in Rieti, Italy, with a vault of 5.25 m.",
+      "bleu_hyp": "At the 2013 European Junior Championships in Rieti, Italy, Axel Chapelle won the silver medal with a mark of 5.25 m."
+    },
+    {
+      "example_id": "-5257790446339306746",
+      "reference": "As of the census of 2010, there were 128 people in Monument.",
+      "generated": "As of the census of 2010 , there were 128 people residing in Monument.",
+      "ref_nums": [
+        2010.0,
+        128.0
+      ],
+      "gen_nums": [
+        2010.0,
+        128.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the census of 2010, there were 128 people in Monument.",
+      "bleu_hyp": "As of the census of 2010 , there were 128 people residing in Monument."
+    },
+    {
+      "example_id": "2430295884418168228",
+      "reference": "Beatrice II (7 May 1231) reigned as the Countess of Burgundy from 1205 until her death.",
+      "generated": "Beatrice II was the count of Burgundy from 1205 until 1231 .",
+      "ref_nums": [
+        7.0,
+        1231.0,
+        1205.0
+      ],
+      "gen_nums": [
+        1205.0,
+        1231.0
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 599.0,
+      "num_mape": 8557.142857142857,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "Beatrice II (7 May 1231) reigned as the Countess of Burgundy from 1205 until her death.",
+      "bleu_hyp": "Beatrice II was the count of Burgundy from 1205 until 1231 ."
+    },
+    {
+      "example_id": "-6907829628836954809",
+      "reference": "Dushman is a 1939 Hindi social romantic drama film.",
+      "generated": "Dushman is a 1939 Hindi social romantic film.",
+      "ref_nums": [
+        1939.0
+      ],
+      "gen_nums": [
+        1939.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Dushman is a 1939 Hindi social romantic drama film.",
+      "bleu_hyp": "Dushman is a 1939 Hindi social romantic film."
+    },
+    {
+      "example_id": "2616988227865974761",
+      "reference": "Meadows had been a member of the Alexandra Cricket Association for three years from 1910/1911 to 1912/1913.",
+      "generated": "Meadows was the Dissolved / Depart in 1911 .",
+      "ref_nums": [
+        1910.0,
+        1911.0,
+        1912.0,
+        1913.0
+      ],
+      "gen_nums": [
+        1911.0
+      ],
+      "num_em": 0.25,
+      "num_mae": 1.0,
+      "num_mape": 0.052356020942408384,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "Meadows had been a member of the Alexandra Cricket Association for three years from 1910/1911 to 1912/1913.",
+      "bleu_hyp": "Meadows was the Dissolved / Depart in 1911 ."
+    },
+    {
+      "example_id": "-5241992791074741430",
+      "reference": "Tobias Billstr\u00f6m served as First Deputy Speaker of the Riksdag.",
+      "generated": "Riksdag Speaker Urban Ahlin Deputy was a Deputy Speaker of the Riksdag.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Tobias Billstr\u00f6m served as First Deputy Speaker of the Riksdag.",
+      "bleu_hyp": "Riksdag Speaker Urban Ahlin Deputy was a Deputy Speaker of the Riksdag."
+    },
+    {
+      "example_id": "815856428871749477",
+      "reference": "LM317 produces a voltage of 1.25 V.",
+      "generated": "The Output voltage range is 1.25 \u201337 .",
+      "ref_nums": [
+        1.25
+      ],
+      "gen_nums": [
+        1.25,
+        37.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "LM317 produces a voltage of 1.25 V.",
+      "bleu_hyp": "The Output voltage range is 1.25 \u201337 ."
+    },
+    {
+      "example_id": "-5551027299860666276",
+      "reference": "The population of Seffner was 7,579 at the 2010 census, up from 5,467 at the 2000 census.",
+      "generated": "The population was 7579 at the 2010 census, up from 5467 at the 2000 census.",
+      "ref_nums": [
+        7579.0,
+        2010.0,
+        5467.0,
+        2000.0
+      ],
+      "gen_nums": [
+        7579.0,
+        2010.0,
+        5467.0,
+        2000.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "The population of Seffner was 7,579 at the 2010 census, up from 5,467 at the 2000 census.",
+      "bleu_hyp": "The population was 7579 at the 2010 census, up from 5467 at the 2000 census."
+    },
+    {
+      "example_id": "-1716190096353403942",
+      "reference": "As of the census of 2010, there were 1,420 people residing in Velda City, Missouri.",
+      "generated": "The population was 1420 at the 2010 census in Velda City, Missouri.",
+      "ref_nums": [
+        2010.0,
+        1420.0
+      ],
+      "gen_nums": [
+        1420.0,
+        2010.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 590.0,
+      "num_mape": 35.45126480274683,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the census of 2010, there were 1,420 people residing in Velda City, Missouri.",
+      "bleu_hyp": "The population was 1420 at the 2010 census in Velda City, Missouri."
+    },
+    {
+      "example_id": "-8843877009321434048",
+      "reference": "Bill Dooley served as the head coach at the North Carolina (1967\u20131977), Virginia tech (1978\u20131986) and Wake Forest (1987\u20131992).",
+      "generated": "From 1967 to 1971 , at the University of Virginia Tech, in 1973 to 1976 , and in 1989 , compiling a record of 18 wins in 903 games in 1975 .",
+      "ref_nums": [
+        1967.0,
+        1977.0,
+        1978.0,
+        1986.0,
+        1987.0,
+        1992.0
+      ],
+      "gen_nums": [
+        1967.0,
+        1971.0,
+        1973.0,
+        1976.0,
+        1989.0,
+        18.0,
+        903.0,
+        1975.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 332.8333333333333,
+      "num_mape": 16.70947253175689,
+      "halluc": 0.25,
+      "count_match": false,
+      "n_ref_nums": 6,
+      "bleu_ref": "Bill Dooley served as the head coach at the North Carolina (1967\u20131977), Virginia tech (1978\u20131986) and Wake Forest (1987\u20131992).",
+      "bleu_hyp": "From 1967 to 1971 , at the University of Virginia Tech, in 1973 to 1976 , and in 1989 , compiling a record of 18 wins in 903 games in 1975 ."
+    },
+    {
+      "example_id": "-1267573069441067024",
+      "reference": "The TV series, Huge, premiered on June 28, 2010 with 2.53 million viewers.",
+      "generated": "The Huge's finale episode was watched by 2.53 million viewers on June 28 , 2010 .",
+      "ref_nums": [
+        28.0,
+        2010.0,
+        2.53
+      ],
+      "gen_nums": [
+        2.53,
+        28.0,
+        2010.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1338.3133333333333,
+      "num_mape": 26512.07052236465,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "The TV series, Huge, premiered on June 28, 2010 with 2.53 million viewers.",
+      "bleu_hyp": "The Huge's finale episode was watched by 2.53 million viewers on June 28 , 2010 ."
+    },
+    {
+      "example_id": "-7678483100880354075",
+      "reference": "The Paradise in Me album reached #121 on the U.S. Billboard 200 chart.",
+      "generated": "Paradise in Me peaked at number 121 on the Billboard 200 .",
+      "ref_nums": [
+        121.0,
+        200.0
+      ],
+      "gen_nums": [
+        121.0,
+        200.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The Paradise in Me album reached #121 on the U.S. Billboard 200 chart.",
+      "bleu_hyp": "Paradise in Me peaked at number 121 on the Billboard 200 ."
+    },
+    {
+      "example_id": "-8643888315832079061",
+      "reference": "Jones moved to Major League Soccer side Chicago Fire for the 2015 season before spending the 2016 and 2017 seasons with Seattle Sounders FC.",
+      "generated": "Jones played for the Chicago Fire of Major League Soccer in 2015 and later signed for Major League Soccer side Seattle Sounders FC in 2017 .",
+      "ref_nums": [
+        2015.0,
+        2016.0,
+        2017.0
+      ],
+      "gen_nums": [
+        2015.0,
+        2017.0
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 0.5,
+      "num_mape": 0.0248015873015873,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "Jones moved to Major League Soccer side Chicago Fire for the 2015 season before spending the 2016 and 2017 seasons with Seattle Sounders FC.",
+      "bleu_hyp": "Jones played for the Chicago Fire of Major League Soccer in 2015 and later signed for Major League Soccer side Seattle Sounders FC in 2017 ."
+    },
+    {
+      "example_id": "7561300603449609801",
+      "reference": "Toyota were the Japanese manufacturer to win at the 24 Hours of Le Mans.",
+      "generated": "The Toyota Gazoo Racing team won the 24 Hours of Le Mans.",
+      "ref_nums": [
+        24.0
+      ],
+      "gen_nums": [
+        24.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Toyota were the Japanese manufacturer to win at the 24 Hours of Le Mans.",
+      "bleu_hyp": "The Toyota Gazoo Racing team won the 24 Hours of Le Mans."
+    },
+    {
+      "example_id": "-7477625995715985868",
+      "reference": "Gaius Popilius Carus Pedo was suffect consul with Sextus Cocceius Severianus in succession to Tiberius Licinius Cassius Cassianus in 147.",
+      "generated": "Gaius Popilius Carus Pedo was suffect consul in 147 , and then suffect consul for the year 147 , with Sextus Cocceius Severianus.",
+      "ref_nums": [
+        147.0
+      ],
+      "gen_nums": [
+        147.0,
+        147.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Gaius Popilius Carus Pedo was suffect consul with Sextus Cocceius Severianus in succession to Tiberius Licinius Cassius Cassianus in 147.",
+      "bleu_hyp": "Gaius Popilius Carus Pedo was suffect consul in 147 , and then suffect consul for the year 147 , with Sextus Cocceius Severianus."
+    },
+    {
+      "example_id": "237384219495558649",
+      "reference": "The finale of Veronica Mars (season 2) was watched by 2.42 million viewers.",
+      "generated": "The second episode of Veronica Mars (season 2 ) was watched by 2.42 million viewers.",
+      "ref_nums": [
+        2.0,
+        2.42
+      ],
+      "gen_nums": [
+        2.0,
+        2.42
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The finale of Veronica Mars (season 2) was watched by 2.42 million viewers.",
+      "bleu_hyp": "The second episode of Veronica Mars (season 2 ) was watched by 2.42 million viewers."
+    },
+    {
+      "example_id": "-8447285647633298406",
+      "reference": "On July 22, 2011, Carmouche faced Sarah Kaufman at Strikeforce Challengers: Voelker vs. Bowling III in Las Vegas, Nevada.",
+      "generated": "Carmouche faced Sarah Kaufman at Strikeforce Challengers: Voelker vs. Bowling III on July 22 , 2011 in Las Vegas, Nevada.",
+      "ref_nums": [
+        22.0,
+        2011.0
+      ],
+      "gen_nums": [
+        22.0,
+        2011.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "On July 22, 2011, Carmouche faced Sarah Kaufman at Strikeforce Challengers: Voelker vs. Bowling III in Las Vegas, Nevada.",
+      "bleu_hyp": "Carmouche faced Sarah Kaufman at Strikeforce Challengers: Voelker vs. Bowling III on July 22 , 2011 in Las Vegas, Nevada."
+    },
+    {
+      "example_id": "1671284994035359998",
+      "reference": "Interpol notice consisted of six colour coded notices; Red, Blue, Green, Yellow, Black, and Purple.",
+      "generated": "The 2011 Interpol notice includes the Red, Black, Purple, Red and the Red.",
+      "ref_nums": [],
+      "gen_nums": [
+        2011.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 2011.0,
+      "num_mape": null,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 0,
+      "bleu_ref": "Interpol notice consisted of six colour coded notices; Red, Blue, Green, Yellow, Black, and Purple.",
+      "bleu_hyp": "The 2011 Interpol notice includes the Red, Black, Purple, Red and the Red."
+    },
+    {
+      "example_id": "-5619579990785111181",
+      "reference": "Pasadena averages 21.24 inches (539.5 mm) of rain in a year.",
+      "generated": "The average annual rainfall in Pasadena, California is 21.34 inches.",
+      "ref_nums": [
+        21.24,
+        539.5
+      ],
+      "gen_nums": [
+        21.34
+      ],
+      "num_em": 0.5,
+      "num_mae": 0.10000000000000142,
+      "num_mape": 0.4708097928436979,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Pasadena averages 21.24 inches (539.5 mm) of rain in a year.",
+      "bleu_hyp": "The average annual rainfall in Pasadena, California is 21.34 inches."
+    },
+    {
+      "example_id": "-3984514572995844070",
+      "reference": "South Wimbledon is in Zone 3 and Zone 4.",
+      "generated": "South Wimbledon is a station in Zone 3 and Zone 3 .",
+      "ref_nums": [
+        3.0,
+        4.0
+      ],
+      "gen_nums": [
+        3.0,
+        3.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 0.5,
+      "num_mape": 12.5,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "South Wimbledon is in Zone 3 and Zone 4.",
+      "bleu_hyp": "South Wimbledon is a station in Zone 3 and Zone 3 ."
+    },
+    {
+      "example_id": "-3793337113615931120",
+      "reference": "Sicilia of the featherweight division, faced Rony Jason on October 13, 2012 at UFC 153.",
+      "generated": "Sicilia faced Rony Jason in the Featherweight debut on October 13 , 2012 at UFC 153 .",
+      "ref_nums": [
+        13.0,
+        2012.0,
+        153.0
+      ],
+      "gen_nums": [
+        13.0,
+        2012.0,
+        153.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "Sicilia of the featherweight division, faced Rony Jason on October 13, 2012 at UFC 153.",
+      "bleu_hyp": "Sicilia faced Rony Jason in the Featherweight debut on October 13 , 2012 at UFC 153 ."
+    },
+    {
+      "example_id": "1018411925847056967",
+      "reference": "The Trojans won against Washington Huskies before a crowd of 80,216 at the Los Angeles Memorial Coliseum in 2008.",
+      "generated": "Washington Huskies lost the Huskies to the Kn 57 \u20130 before a crowd of 8.022e+04 at Memorial Coliseum in Columbia.",
+      "ref_nums": [
+        80216.0,
+        2008.0
+      ],
+      "gen_nums": [
+        57.0,
+        0.0,
+        8.0,
+        4.0
+      ],
+      "num_em": 0.0,
+      "num_mae": 41083.5,
+      "num_mape": 99.96447092849307,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "The Trojans won against Washington Huskies before a crowd of 80,216 at the Los Angeles Memorial Coliseum in 2008.",
+      "bleu_hyp": "Washington Huskies lost the Huskies to the Kn 57 \u20130 before a crowd of 8.022e+04 at Memorial Coliseum in Columbia."
+    },
+    {
+      "example_id": "230628071966954864",
+      "reference": "The highest attendance for a sports event in Busch Stadium was on May 23, 2013, when 48,263 people watched Chelsea and Manchester City play a friendly match.",
+      "generated": "The 2013 season was played on May 23 , 2013 , at Club Friendly, with a crowd of 4.826e+04 .",
+      "ref_nums": [
+        23.0,
+        2013.0,
+        48263.0
+      ],
+      "gen_nums": [
+        2013.0,
+        23.0,
+        2013.0,
+        4.0,
+        4.0
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 16743.333333333332,
+      "num_mape": 2948.953480936451,
+      "halluc": 0.6,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "The highest attendance for a sports event in Busch Stadium was on May 23, 2013, when 48,263 people watched Chelsea and Manchester City play a friendly match.",
+      "bleu_hyp": "The 2013 season was played on May 23 , 2013 , at Club Friendly, with a crowd of 4.826e+04 ."
+    },
+    {
+      "example_id": "-8523805116094872517",
+      "reference": "Hulhumeedhoo is the 5th largest island in Maldives.",
+      "generated": "Hulhumeedhoo is the fifth-largest island in the Maldives.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Hulhumeedhoo is the 5th largest island in Maldives.",
+      "bleu_hyp": "Hulhumeedhoo is the fifth-largest island in the Maldives."
+    },
+    {
+      "example_id": "4993534017198867452",
+      "reference": "As of the 2010 United States Census, there were 8,340 people residing in the Jenkins County.",
+      "generated": "As of the 2010 census, the population of Jenkins County, Georgia was 8340 .",
+      "ref_nums": [
+        2010.0,
+        8340.0
+      ],
+      "gen_nums": [
+        2010.0,
+        8340.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the 2010 United States Census, there were 8,340 people residing in the Jenkins County.",
+      "bleu_hyp": "As of the 2010 census, the population of Jenkins County, Georgia was 8340 ."
+    },
+    {
+      "example_id": "-2888967519893067401",
+      "reference": "Melissa George starred in Charmed and, in 2003, was cast as Susan in Coupling.",
+      "generated": "Melissa George played the role of Susan in the 2003 series Coupling and as Susan in the 2003 Charmed.",
+      "ref_nums": [
+        2003.0
+      ],
+      "gen_nums": [
+        2003.0,
+        2003.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Melissa George starred in Charmed and, in 2003, was cast as Susan in Coupling.",
+      "bleu_hyp": "Melissa George played the role of Susan in the 2003 series Coupling and as Susan in the 2003 Charmed."
+    },
+    {
+      "example_id": "-8508257896552998841",
+      "reference": "The 2014 Anzac Test was played at the Sydney Football Stadium in Sydney.",
+      "generated": "The 2014 Anzac Test was played at Sydney Football Stadium in Sydney.",
+      "ref_nums": [
+        2014.0
+      ],
+      "gen_nums": [
+        2014.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "The 2014 Anzac Test was played at the Sydney Football Stadium in Sydney.",
+      "bleu_hyp": "The 2014 Anzac Test was played at Sydney Football Stadium in Sydney."
+    },
+    {
+      "example_id": "-2853994511626719880",
+      "reference": "Jayne was named as the third \"Next Big Sound\" by Billboard in 2016.",
+      "generated": "Erika Jayne's Next Big Sound was ranked number 3 on the 2016 list of the Top 100 .",
+      "ref_nums": [
+        2016.0
+      ],
+      "gen_nums": [
+        3.0,
+        2016.0,
+        100.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 2013.0,
+      "num_mape": 99.85119047619048,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Jayne was named as the third \"Next Big Sound\" by Billboard in 2016.",
+      "bleu_hyp": "Erika Jayne's Next Big Sound was ranked number 3 on the 2016 list of the Top 100 ."
+    },
+    {
+      "example_id": "-1034734344682198873",
+      "reference": "Harold Lilie and David Berkowitz finished first and second in 1980 and Berkowitz won the fourth and last next year.",
+      "generated": "The Cavendish Invitational was won by the David Berkowitz in 1980 and 1981 .",
+      "ref_nums": [
+        1980.0
+      ],
+      "gen_nums": [
+        1980.0,
+        1981.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Harold Lilie and David Berkowitz finished first and second in 1980 and Berkowitz won the fourth and last next year.",
+      "bleu_hyp": "The Cavendish Invitational was won by the David Berkowitz in 1980 and 1981 ."
+    },
+    {
+      "example_id": "3174530295265252637",
+      "reference": "After 4 seasons in the Moto3 category, Francesco Bagnaia moved up to Moto2, racing for SKY Racing Team VR46, where he last rode in 2014.",
+      "generated": "In 2014 , Francesco Bagnaia competed in the Moto3 and Moto3 class for SKY Racing Team VR46 and in 2015 .",
+      "ref_nums": [
+        4.0,
+        2014.0
+      ],
+      "gen_nums": [
+        2014.0,
+        2015.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 1005.5,
+      "num_mape": 25125.024826216486,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "After 4 seasons in the Moto3 category, Francesco Bagnaia moved up to Moto2, racing for SKY Racing Team VR46, where he last rode in 2014.",
+      "bleu_hyp": "In 2014 , Francesco Bagnaia competed in the Moto3 and Moto3 class for SKY Racing Team VR46 and in 2015 ."
+    },
+    {
+      "example_id": "-3559695241550535595",
+      "reference": "The 172nd Street-Jamaica Armory building is one of the armories and arsenals in New York City and surrounding counties in 1924.",
+      "generated": "The 1724 armory was the armory in New York City and was built in 1924 .",
+      "ref_nums": [
+        1924.0
+      ],
+      "gen_nums": [
+        1724.0,
+        1924.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 200.0,
+      "num_mape": 10.395010395010395,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "The 172nd Street-Jamaica Armory building is one of the armories and arsenals in New York City and surrounding counties in 1924.",
+      "bleu_hyp": "The 1724 armory was the armory in New York City and was built in 1924 ."
+    },
+    {
+      "example_id": "-4378600902770972677",
+      "reference": "In 2010, Singular released its first single, \"24.7 (Twenty-Four Seven)\".",
+      "generated": "Singular's first single was 24.7 .",
+      "ref_nums": [
+        2010.0,
+        24.7
+      ],
+      "gen_nums": [
+        24.7
+      ],
+      "num_em": 0.5,
+      "num_mae": 1985.3,
+      "num_mape": 98.77114427860695,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "In 2010, Singular released its first single, \"24.7 (Twenty-Four Seven)\".",
+      "bleu_hyp": "Singular's first single was 24.7 ."
+    },
+    {
+      "example_id": "2195740494617607946",
+      "reference": "Laurent Robinson ran 40-yard dash in 4.41 seconds.",
+      "generated": "At the 2007 NFL Combine, Robinson finished the 40 -yard dash in 4.41 seconds.",
+      "ref_nums": [
+        40.0,
+        4.41
+      ],
+      "gen_nums": [
+        2007.0,
+        40.0,
+        4.41
+      ],
+      "num_em": 1.0,
+      "num_mae": 1001.295,
+      "num_mape": 2862.264739229025,
+      "halluc": 0.3333333333333333,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Laurent Robinson ran 40-yard dash in 4.41 seconds.",
+      "bleu_hyp": "At the 2007 NFL Combine, Robinson finished the 40 -yard dash in 4.41 seconds."
+    },
+    {
+      "example_id": "-5072886654441629097",
+      "reference": "John Tyndall received 411 votes (27.5%), while Griffin received 1,082 (72.5%).",
+      "generated": "Griffin received 1082 votes, 11.7 Tyndall and 28.4 % of the total.",
+      "ref_nums": [
+        411.0,
+        27.5,
+        1082.0,
+        72.5
+      ],
+      "gen_nums": [
+        1082.0,
+        11.7,
+        28.4
+      ],
+      "num_em": 0.25,
+      "num_mae": 580.1333333333333,
+      "num_mape": 106.03003904691776,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "John Tyndall received 411 votes (27.5%), while Griffin received 1,082 (72.5%).",
+      "bleu_hyp": "Griffin received 1082 votes, 11.7 Tyndall and 28.4 % of the total."
+    },
+    {
+      "example_id": "8062199740523506036",
+      "reference": "Part 1 of the MPEG-1 system is defined in ISO/IEC-11172-1.",
+      "generated": "The first MPEG-1 's first edition is ISO/IEC 1.117e+04 -1 .",
+      "ref_nums": [
+        1.0,
+        1.0,
+        11172.0,
+        1.0
+      ],
+      "gen_nums": [
+        1.0,
+        1.0,
+        4.0,
+        -1.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 2792.5,
+      "num_mape": 74.99104905119943,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "Part 1 of the MPEG-1 system is defined in ISO/IEC-11172-1.",
+      "bleu_hyp": "The first MPEG-1 's first edition is ISO/IEC 1.117e+04 -1 ."
+    },
+    {
+      "example_id": "2097410980694798607",
+      "reference": "Mayakkari was a Tamil movie (1951).",
+      "generated": "Mayakkari is a 1951 Tamil film.",
+      "ref_nums": [
+        1951.0
+      ],
+      "gen_nums": [
+        1951.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Mayakkari was a Tamil movie (1951).",
+      "bleu_hyp": "Mayakkari is a 1951 Tamil film."
+    },
+    {
+      "example_id": "7356779125058281106",
+      "reference": "The Eine Lustspielouvert\u00fcre (Comedy Overture) Op. 38 (BV 245) for orchestra is a concert overture by Ferruccio Busoni; it was composed in 1897 and revised in 1904.",
+      "generated": "The Eine Lustspieliki's compositions was composed in July 1897 for the original version Eine Lustspielyadt\u00fcre (Comedy Overture) Op. 38 .",
+      "ref_nums": [
+        38.0,
+        245.0,
+        1897.0,
+        1904.0
+      ],
+      "gen_nums": [
+        1897.0,
+        38.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 1033.0,
+      "num_mape": 2488.2975295381307,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "The Eine Lustspielouvert\u00fcre (Comedy Overture) Op. 38 (BV 245) for orchestra is a concert overture by Ferruccio Busoni; it was composed in 1897 and revised in 1904.",
+      "bleu_hyp": "The Eine Lustspieliki's compositions was composed in July 1897 for the original version Eine Lustspielyadt\u00fcre (Comedy Overture) Op. 38 ."
+    },
+    {
+      "example_id": "-940215158397765790",
+      "reference": "The 1936 Summer Games were led by gymnast Al Jochim.",
+      "generated": "Al Jochim was the flag bearer for the United States at the 1936 Summer Olympics.",
+      "ref_nums": [
+        1936.0
+      ],
+      "gen_nums": [
+        1936.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "The 1936 Summer Games were led by gymnast Al Jochim.",
+      "bleu_hyp": "Al Jochim was the flag bearer for the United States at the 1936 Summer Olympics."
+    },
+    {
+      "example_id": "-347023383939130245",
+      "reference": "Segafredo Virtus Bologna won LNP Cup by beating Angelico Biella 69\u201368 in the Finals.",
+      "generated": "Angelico Biella won the 2017 Italian LNP Cup by defeating Segafredo Virtus Bologna with 68 \u201369 in the final.",
+      "ref_nums": [
+        69.0,
+        68.0
+      ],
+      "gen_nums": [
+        2017.0,
+        68.0,
+        69.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 974.0,
+      "num_mape": 1411.5942028985507,
+      "halluc": 0.3333333333333333,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Segafredo Virtus Bologna won LNP Cup by beating Angelico Biella 69\u201368 in the Finals.",
+      "bleu_hyp": "Angelico Biella won the 2017 Italian LNP Cup by defeating Segafredo Virtus Bologna with 68 \u201369 in the final."
+    },
+    {
+      "example_id": "3720052447081834236",
+      "reference": "In 2014, Mayuka Tha\u00efs sang the song Tusks & Horns on guitar produced by Geoff Levin.",
+      "generated": "In 2014 , Tha\u00efs released Tusks & Horns by Mayuka Tha\u00efs and wrote the song \"Tusks & Horns\".",
+      "ref_nums": [
+        2014.0
+      ],
+      "gen_nums": [
+        2014.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2014, Mayuka Tha\u00efs sang the song Tusks & Horns on guitar produced by Geoff Levin.",
+      "bleu_hyp": "In 2014 , Tha\u00efs released Tusks & Horns by Mayuka Tha\u00efs and wrote the song \"Tusks & Horns\"."
+    },
+    {
+      "example_id": "6769486772156120526",
+      "reference": "The Dixie Chicks went home with 4 awards in 2003, including Best Country Album, Best Recording Package, Best Country Instrumental Performance for \"Lil' Jack Slade\", and Best Country Performance by a Duo or Group with Vocal for \"Long Time Gone\".",
+      "generated": "\"Lil' Jack Slade\" was nominated for Best Country Album at the 2003 and 2003 , and the Home 1003 Best Country Performance award at the 2003 Grammy Awards.",
+      "ref_nums": [
+        4.0,
+        2003.0
+      ],
+      "gen_nums": [
+        2003.0,
+        2003.0,
+        1003.0,
+        2003.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 999.5,
+      "num_mape": 24987.5,
+      "halluc": 0.75,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "The Dixie Chicks went home with 4 awards in 2003, including Best Country Album, Best Recording Package, Best Country Instrumental Performance for \"Lil' Jack Slade\", and Best Country Performance by a Duo or Group with Vocal for \"Long Time Gone\".",
+      "bleu_hyp": "\"Lil' Jack Slade\" was nominated for Best Country Album at the 2003 and 2003 , and the Home 1003 Best Country Performance award at the 2003 Grammy Awards."
+    },
+    {
+      "example_id": "353231872623119146",
+      "reference": "The following year Maciej Dreszer joined Dutch co-driver Stephane Kox in the BMW M235i.",
+      "generated": "Maciej Dreszer and Paul Menten participated in the BMW M235i Racing in Zolder for the team of Stephane Kox and Dennis Retera and Paul Menten in a BMW M235i Racing.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "The following year Maciej Dreszer joined Dutch co-driver Stephane Kox in the BMW M235i.",
+      "bleu_hyp": "Maciej Dreszer and Paul Menten participated in the BMW M235i Racing in Zolder for the team of Stephane Kox and Dennis Retera and Paul Menten in a BMW M235i Racing."
+    },
+    {
+      "example_id": "7423268571893799784",
+      "reference": "James A. Lockhart (D) served as representative till June 5, 1896 which was later served by Charles H. Martin (P) from June 5, 1896.",
+      "generated": "James A. Lockhart (D) served as representative until June 5 , 1896 which was later served by Charles H. Martin (P), from June 5 , 1896 .",
+      "ref_nums": [
+        5.0,
+        1896.0,
+        5.0,
+        1896.0
+      ],
+      "gen_nums": [
+        5.0,
+        1896.0,
+        5.0,
+        1896.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "James A. Lockhart (D) served as representative till June 5, 1896 which was later served by Charles H. Martin (P) from June 5, 1896.",
+      "bleu_hyp": "James A. Lockhart (D) served as representative until June 5 , 1896 which was later served by Charles H. Martin (P), from June 5 , 1896 ."
+    },
+    {
+      "example_id": "4716590601775760042",
+      "reference": "Prague is the capital of the Czech Republic in the European Union.",
+      "generated": "Prague is a city in the Czech Republic.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Prague is the capital of the Czech Republic in the European Union.",
+      "bleu_hyp": "Prague is a city in the Czech Republic."
+    },
+    {
+      "example_id": "7267413942893410365",
+      "reference": "Jim Otis with Ohio State scored 985 rushing yards.",
+      "generated": "In 1968 Big Ten Conference football season, Jim Otis of Ohio State was the top-corer with 985 yards.",
+      "ref_nums": [
+        985.0
+      ],
+      "gen_nums": [
+        1968.0,
+        985.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 983.0,
+      "num_mape": 99.79695431472081,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Jim Otis with Ohio State scored 985 rushing yards.",
+      "bleu_hyp": "In 1968 Big Ten Conference football season, Jim Otis of Ohio State was the top-corer with 985 yards."
+    },
+    {
+      "example_id": "-464954746976039826",
+      "reference": "Project Gutenberg won seven awards at the 38th Hong Kong Film Awards, including Best Film, Best Director and Best Screenplay.",
+      "generated": "Project Gutenberg won the Best Film and Best Screenplay at the 38th Hong Kong Film Awards.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Project Gutenberg won seven awards at the 38th Hong Kong Film Awards, including Best Film, Best Director and Best Screenplay.",
+      "bleu_hyp": "Project Gutenberg won the Best Film and Best Screenplay at the 38th Hong Kong Film Awards."
+    },
+    {
+      "example_id": "-8456043234683585021",
+      "reference": "As of the 2010 Census, Carteret's population was 22,844, reflecting an increase of 2,135 (+10.3%) from the 20,709 counted in the 2000 Census, which had in turn increased by 1,684 (+8.9%) from the 19,025 counted in the 1990 Census.",
+      "generated": "As of the 2010 Census, Carteret's population was 2.284e+04 , reflecting an increase of 1632 (+10.3 %) from the 2.071e+04 counted in the 2000 Census, which had in turn increased by 1802 (+8.9 %) from the 1.902e+04 counted in the 1990 Census.",
+      "ref_nums": [
+        2010.0,
+        22844.0,
+        2135.0,
+        10.3,
+        20709.0,
+        2000.0,
+        1684.0,
+        8.9,
+        19025.0,
+        1990.0
+      ],
+      "gen_nums": [
+        2010.0,
+        2.0,
+        4.0,
+        1632.0,
+        10.3,
+        2.0,
+        4.0,
+        2000.0,
+        1802.0,
+        8.9,
+        1.0,
+        4.0,
+        1990.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 7216.660000000001,
+      "num_mape": 3880.6067947468277,
+      "halluc": 0.6153846153846154,
+      "count_match": false,
+      "n_ref_nums": 10,
+      "bleu_ref": "As of the 2010 Census, Carteret's population was 22,844, reflecting an increase of 2,135 (+10.3%) from the 20,709 counted in the 2000 Census, which had in turn increased by 1,684 (+8.9%) from the 19,025 counted in the 1990 Census.",
+      "bleu_hyp": "As of the 2010 Census, Carteret's population was 2.284e+04 , reflecting an increase of 1632 (+10.3 %) from the 2.071e+04 counted in the 2000 Census, which had in turn increased by 1802 (+8.9 %) from the 1.902e+04 counted in the 1990 Census."
+    },
+    {
+      "example_id": "-6789952336213066045",
+      "reference": "John Sigismund was the Margrave of Brandenburg.",
+      "generated": "John Sigismund Johann Sigismund was the Duke of Brandenburg.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "John Sigismund was the Margrave of Brandenburg.",
+      "bleu_hyp": "John Sigismund Johann Sigismund was the Duke of Brandenburg."
+    },
+    {
+      "example_id": "-8411969365425311730",
+      "reference": "In 2012, Worthington starred as Nick Cassidy in Man on a Ledge.",
+      "generated": "Worthington played Nick Cassidy in the 2012 film Man on a Ledge.",
+      "ref_nums": [
+        2012.0
+      ],
+      "gen_nums": [
+        2012.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2012, Worthington starred as Nick Cassidy in Man on a Ledge.",
+      "bleu_hyp": "Worthington played Nick Cassidy in the 2012 film Man on a Ledge."
+    },
+    {
+      "example_id": "-5096339208513244460",
+      "reference": "Marcia Strassman played Nancy Sterngood on the television series Tremors (2003).",
+      "generated": "In 2003 , Marcia Strassman played Nancy Sterngood in Tremors.",
+      "ref_nums": [
+        2003.0
+      ],
+      "gen_nums": [
+        2003.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Marcia Strassman played Nancy Sterngood on the television series Tremors (2003).",
+      "bleu_hyp": "In 2003 , Marcia Strassman played Nancy Sterngood in Tremors."
+    },
+    {
+      "example_id": "4640160628151640516",
+      "reference": "Doug Mitchell produced Happy Feet in 2006.",
+      "generated": "In 2006 , Mitchell was the producer for Happy Feet.",
+      "ref_nums": [
+        2006.0
+      ],
+      "gen_nums": [
+        2006.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Doug Mitchell produced Happy Feet in 2006.",
+      "bleu_hyp": "In 2006 , Mitchell was the producer for Happy Feet."
+    },
+    {
+      "example_id": "3785232124100531030",
+      "reference": "Abraham Chebii finished in ninth place in the 5000 m at the 2009 World Athletics Final.",
+      "generated": "Abraham Chebii finished ninth in the 5000 m at the 2009 World Athletics Final.",
+      "ref_nums": [
+        5000.0,
+        2009.0
+      ],
+      "gen_nums": [
+        5000.0,
+        2009.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Abraham Chebii finished in ninth place in the 5000 m at the 2009 World Athletics Final.",
+      "bleu_hyp": "Abraham Chebii finished ninth in the 5000 m at the 2009 World Athletics Final."
+    },
+    {
+      "example_id": "-376211613438070720",
+      "reference": "The Way Through the Woods is an episode of the Inspector Morse series.",
+      "generated": "\"The Way Through the Woods\" is the final episode of the Inspector Morse.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "The Way Through the Woods is an episode of the Inspector Morse series.",
+      "bleu_hyp": "\"The Way Through the Woods\" is the final episode of the Inspector Morse."
+    },
+    {
+      "example_id": "4657001369585531100",
+      "reference": "Campbell played 149 WHA games for the Aeros and the Winnipeg Jets.",
+      "generated": "Campbell played 149 games for the Aeros of the National Hockey League for the National Hockey League (NHA), playing for the Winnipeg Jets in the National Hockey League.",
+      "ref_nums": [
+        149.0
+      ],
+      "gen_nums": [
+        149.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Campbell played 149 WHA games for the Aeros and the Winnipeg Jets.",
+      "bleu_hyp": "Campbell played 149 games for the Aeros of the National Hockey League for the National Hockey League (NHA), playing for the Winnipeg Jets in the National Hockey League."
+    },
+    {
+      "example_id": "2932729814676695459",
+      "reference": "As of the census of 2010, there were 268 people in the Hamilton city.",
+      "generated": "As of the 2010 census, Hamilton's population was 268 .",
+      "ref_nums": [
+        2010.0,
+        268.0
+      ],
+      "gen_nums": [
+        2010.0,
+        268.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the census of 2010, there were 268 people in the Hamilton city.",
+      "bleu_hyp": "As of the 2010 census, Hamilton's population was 268 ."
+    },
+    {
+      "example_id": "-397987591798276143",
+      "reference": "In the finals, Souleiman finished in fourth place with a time of 3:50.29.",
+      "generated": "Ayanleh Souleiman finished the race in fourth place with a time of 3 :50.39 .",
+      "ref_nums": [
+        3.0,
+        50.29
+      ],
+      "gen_nums": [
+        3.0,
+        50.39
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.05000000000000071,
+      "num_mape": 0.0994233446013138,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "In the finals, Souleiman finished in fourth place with a time of 3:50.29.",
+      "bleu_hyp": "Ayanleh Souleiman finished the race in fourth place with a time of 3 :50.39 ."
+    },
+    {
+      "example_id": "-5924712899754140483",
+      "reference": "As a sophomore, Peters averaged 16.8 points and 6.7 rebounds per game.",
+      "generated": "In 2014 \u201315 , Alec Peters averaged 16.8 points and 6.7 rebounds per game.",
+      "ref_nums": [
+        16.8,
+        6.7
+      ],
+      "gen_nums": [
+        2014.0,
+        15.0,
+        16.8,
+        6.7
+      ],
+      "num_em": 1.0,
+      "num_mae": 1002.75,
+      "num_mape": 6005.987917555082,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "As a sophomore, Peters averaged 16.8 points and 6.7 rebounds per game.",
+      "bleu_hyp": "In 2014 \u201315 , Alec Peters averaged 16.8 points and 6.7 rebounds per game."
+    },
+    {
+      "example_id": "-5170770034654985527",
+      "reference": "Matthew Knight made his debut in 2002 as Peter in Queer as Folk.",
+      "generated": "In 2002 , Knight played as Peter in Queer as Folk.",
+      "ref_nums": [
+        2002.0
+      ],
+      "gen_nums": [
+        2002.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Matthew Knight made his debut in 2002 as Peter in Queer as Folk.",
+      "bleu_hyp": "In 2002 , Knight played as Peter in Queer as Folk."
+    },
+    {
+      "example_id": "7587376943938828855",
+      "reference": "In 2007, Ziana had a role in 4 Diva Sekampung.",
+      "generated": "Ziana Zain appeared in the 2006 4 Diva Sekampung.",
+      "ref_nums": [
+        2007.0,
+        4.0
+      ],
+      "gen_nums": [
+        2006.0,
+        4.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.5,
+      "num_mape": 0.024912805181863475,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "In 2007, Ziana had a role in 4 Diva Sekampung.",
+      "bleu_hyp": "Ziana Zain appeared in the 2006 4 Diva Sekampung."
+    },
+    {
+      "example_id": "-8022074195752678130",
+      "reference": "Ralph Herseth (1909 \u2013 1969) was the 21st Governor of South Dakota from January 6, 1959 to January 3, 1961.",
+      "generated": "Ralph Herseth was the 21st Governor of South Dakota from 1959 to 1961 .",
+      "ref_nums": [
+        1909.0,
+        1969.0,
+        6.0,
+        1959.0,
+        3.0,
+        1961.0
+      ],
+      "gen_nums": [
+        1959.0,
+        1961.0
+      ],
+      "num_em": 0.3333333333333333,
+      "num_mae": 29.0,
+      "num_mape": 1.5127349772707985,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 6,
+      "bleu_ref": "Ralph Herseth (1909 \u2013 1969) was the 21st Governor of South Dakota from January 6, 1959 to January 3, 1961.",
+      "bleu_hyp": "Ralph Herseth was the 21st Governor of South Dakota from 1959 to 1961 ."
+    },
+    {
+      "example_id": "6806645721366788038",
+      "reference": "The New Zealand national football team has represented New Zealand at the FIFA Confederations Cup on four occasions: 1999, 2003, 2009 and 2017.",
+      "generated": "The New Zealand played in the 1999 , 2001 , 2016 , and 2018 tournaments.",
+      "ref_nums": [
+        1999.0,
+        2003.0,
+        2009.0,
+        2017.0
+      ],
+      "gen_nums": [
+        1999.0,
+        2001.0,
+        2016.0,
+        2018.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 2.5,
+      "num_mape": 0.12446521561617194,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "The New Zealand national football team has represented New Zealand at the FIFA Confederations Cup on four occasions: 1999, 2003, 2009 and 2017.",
+      "bleu_hyp": "The New Zealand played in the 1999 , 2001 , 2016 , and 2018 tournaments."
+    },
+    {
+      "example_id": "5800367333834816702",
+      "reference": "Warrick had 21.4 points and 8.6 rebounds per game in his final year.",
+      "generated": "Warrick averaged 21.4 points and 8.6 rebounds per game.",
+      "ref_nums": [
+        21.4,
+        8.6
+      ],
+      "gen_nums": [
+        21.4,
+        8.6
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Warrick had 21.4 points and 8.6 rebounds per game in his final year.",
+      "bleu_hyp": "Warrick averaged 21.4 points and 8.6 rebounds per game."
+    },
+    {
+      "example_id": "-6897564476590801394",
+      "reference": "Dragon Ball Z: Battle of Gods was the first Dragon Ball movie in 17 years to have a theatrical release, the last movie being in 1996, which followed the first three Dragon Ball films and the thirteen Dragon Ball Z films.",
+      "generated": "The concertengers. Leopath of the Dragon Ball Z, 701 was released on March 13 , 1996 , and the second version of the same year was released on March 30 , 1996 .",
+      "ref_nums": [
+        17.0,
+        1996.0
+      ],
+      "gen_nums": [
+        701.0,
+        13.0,
+        1996.0,
+        30.0,
+        1996.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 1333.5,
+      "num_mape": 2061.439054579748,
+      "halluc": 0.8,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Dragon Ball Z: Battle of Gods was the first Dragon Ball movie in 17 years to have a theatrical release, the last movie being in 1996, which followed the first three Dragon Ball films and the thirteen Dragon Ball Z films.",
+      "bleu_hyp": "The concertengers. Leopath of the Dragon Ball Z, 701 was released on March 13 , 1996 , and the second version of the same year was released on March 30 , 1996 ."
+    },
+    {
+      "example_id": "40801575489927635",
+      "reference": "RAF Hornchurch No. 111 Squadron was led by Squadron Leader Keith Park.",
+      "generated": "No. 111 Squadron was at Hornchurch.",
+      "ref_nums": [
+        111.0
+      ],
+      "gen_nums": [
+        111.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "RAF Hornchurch No. 111 Squadron was led by Squadron Leader Keith Park.",
+      "bleu_hyp": "No. 111 Squadron was at Hornchurch."
+    },
+    {
+      "example_id": "-250064522426939255",
+      "reference": "Rene Ricard appeared in the Warhol films Kitchen in 1965, Chelsea Girls in 1966, and The Andy Warhol Story in 1966.",
+      "generated": "Rene Ricard worked on the film Kitchen (1965 ), and The Andy Warhol (1966 ), directed by Andy Warhol.",
+      "ref_nums": [
+        1965.0,
+        1966.0,
+        1966.0
+      ],
+      "gen_nums": [
+        1965.0,
+        1966.0
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "Rene Ricard appeared in the Warhol films Kitchen in 1965, Chelsea Girls in 1966, and The Andy Warhol Story in 1966.",
+      "bleu_hyp": "Rene Ricard worked on the film Kitchen (1965 ), and The Andy Warhol (1966 ), directed by Andy Warhol."
+    },
+    {
+      "example_id": "-6910120332529205403",
+      "reference": "The population in Catawissa, Pennsylvania, was 1,552 at the 2010 census.",
+      "generated": "The population of Catawissa, Pennsylvania was 1552 at the 2010 census.",
+      "ref_nums": [
+        1552.0,
+        2010.0
+      ],
+      "gen_nums": [
+        1552.0,
+        2010.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The population in Catawissa, Pennsylvania, was 1,552 at the 2010 census.",
+      "bleu_hyp": "The population of Catawissa, Pennsylvania was 1552 at the 2010 census."
+    },
+    {
+      "example_id": "-5106680340101958359",
+      "reference": "Robert Black was the Governor of Singapore from 1955 to 1957.",
+      "generated": "In 1956 , Robert Brown Black was appointed as the Governor of Singapore.",
+      "ref_nums": [
+        1955.0,
+        1957.0
+      ],
+      "gen_nums": [
+        1956.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 1.0,
+      "num_mape": 0.051150895140664954,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Robert Black was the Governor of Singapore from 1955 to 1957.",
+      "bleu_hyp": "In 1956 , Robert Brown Black was appointed as the Governor of Singapore."
+    },
+    {
+      "example_id": "-5972375171940527242",
+      "reference": "Busan is the home of the team Busan KT Sonicboom, which played the Korean Basketball League at Sajik Arena.",
+      "generated": "Busan KT Sonicboom, a member of the KBL, played at the Sajik Arena in the Basketball.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Busan is the home of the team Busan KT Sonicboom, which played the Korean Basketball League at Sajik Arena.",
+      "bleu_hyp": "Busan KT Sonicboom, a member of the KBL, played at the Sajik Arena in the Basketball."
+    },
+    {
+      "example_id": "-5168073591288708329",
+      "reference": "\"The Don\" debuted on the UK Singles Chart at number 196.",
+      "generated": "The Don (Nas song) peaked at number 196 on the UK Singles Chart.",
+      "ref_nums": [
+        196.0
+      ],
+      "gen_nums": [
+        196.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "\"The Don\" debuted on the UK Singles Chart at number 196.",
+      "bleu_hyp": "The Don (Nas song) peaked at number 196 on the UK Singles Chart."
+    },
+    {
+      "example_id": "-6777635082915351063",
+      "reference": "In 2014, Fox starred as April O'Neil in Teenage Mutant Ninja Turtles, and reprised the role in Teenage Mutant Ninja Turtles: Out of the Shadows (2016).",
+      "generated": "Fox played April O'Neil in Teenage Mutant Ninja Turtles and as April O'Neil in the 2015 film Teenage Mutant Ninja Turtles: Out of the Shadows and as April O'Neil in the 2016 film Teenage Mutant Ninja Turtles: Out of the Shadows.",
+      "ref_nums": [
+        2014.0,
+        2016.0
+      ],
+      "gen_nums": [
+        2015.0,
+        2016.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.5,
+      "num_mape": 0.024826216484607744,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "In 2014, Fox starred as April O'Neil in Teenage Mutant Ninja Turtles, and reprised the role in Teenage Mutant Ninja Turtles: Out of the Shadows (2016).",
+      "bleu_hyp": "Fox played April O'Neil in Teenage Mutant Ninja Turtles and as April O'Neil in the 2015 film Teenage Mutant Ninja Turtles: Out of the Shadows and as April O'Neil in the 2016 film Teenage Mutant Ninja Turtles: Out of the Shadows."
+    },
+    {
+      "example_id": "-276277944479206617",
+      "reference": "The 1918 edition contained 269 songs.",
+      "generated": "The Church of Jesus Christ of Latter-day Saints hymn was 269 in 1918 .",
+      "ref_nums": [
+        1918.0,
+        269.0
+      ],
+      "gen_nums": [
+        269.0,
+        1918.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1649.0,
+      "num_mape": 349.4930631737676,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The 1918 edition contained 269 songs.",
+      "bleu_hyp": "The Church of Jesus Christ of Latter-day Saints hymn was 269 in 1918 ."
+    },
+    {
+      "example_id": "5904317795718356630",
+      "reference": "Michael Tuck held the record as the VFL/AFL games record holder with 426 games until 2016 when the record was broken by North Melbourne's Brent Harvey.",
+      "generated": "Brent Harvey played 434 games for the North Melbourne and Michael Tuck in 1996 .",
+      "ref_nums": [
+        426.0,
+        2016.0
+      ],
+      "gen_nums": [
+        434.0,
+        1996.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 14.0,
+      "num_mape": 1.4349988821819808,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Michael Tuck held the record as the VFL/AFL games record holder with 426 games until 2016 when the record was broken by North Melbourne's Brent Harvey.",
+      "bleu_hyp": "Brent Harvey played 434 games for the North Melbourne and Michael Tuck in 1996 ."
+    },
+    {
+      "example_id": "3551431250608670456",
+      "reference": "Pope John XVI is Pope of Alexandria & Patriarch.",
+      "generated": "John XVI was the Pope of Alexandria & Patriarch.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Pope John XVI is Pope of Alexandria & Patriarch.",
+      "bleu_hyp": "John XVI was the Pope of Alexandria & Patriarch."
+    },
+    {
+      "example_id": "-7821231161448483367",
+      "reference": "Kathryn Mitchell scored an Australian record at the 2018 Commonwealth Games with a throw of 68.92 m.",
+      "generated": "Kathryn Mitchell's 68.92 m is the Commonwealth Games record.",
+      "ref_nums": [
+        2018.0,
+        68.92
+      ],
+      "gen_nums": [
+        68.92
+      ],
+      "num_em": 0.5,
+      "num_mae": 1949.08,
+      "num_mape": 96.58473736372646,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Kathryn Mitchell scored an Australian record at the 2018 Commonwealth Games with a throw of 68.92 m.",
+      "bleu_hyp": "Kathryn Mitchell's 68.92 m is the Commonwealth Games record."
+    },
+    {
+      "example_id": "1264033835286692322",
+      "reference": "The largest orders were from the SOU (120), UP (111), ATSF (85), and the B&O (77).",
+      "generated": "The EMD GP30 has 85 -210 , 68 -210 , 11 -110 , 11 -10 -10 , 11 -11 -11 , 11 -12 -12 , 11 -12 -12 , 11 -12 -12 , and 11 -12 -13 -13 -13 -13 -13",
+      "ref_nums": [
+        120.0,
+        111.0,
+        85.0,
+        77.0
+      ],
+      "gen_nums": [
+        85.0,
+        -210.0,
+        68.0,
+        -210.0,
+        11.0,
+        -110.0,
+        11.0,
+        -10.0,
+        -10.0,
+        11.0,
+        -11.0,
+        -11.0,
+        11.0,
+        -12.0,
+        -12.0,
+        11.0,
+        -12.0,
+        -12.0,
+        11.0,
+        -12.0,
+        -12.0,
+        11.0,
+        -12.0,
+        -13.0,
+        -13.0,
+        -13.0,
+        -13.0,
+        -13.0
+      ],
+      "num_em": 0.25,
+      "num_mae": 165.0,
+      "num_mape": 177.77078214578216,
+      "halluc": 0.9642857142857143,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "The largest orders were from the SOU (120), UP (111), ATSF (85), and the B&O (77).",
+      "bleu_hyp": "The EMD GP30 has 85 -210 , 68 -210 , 11 -110 , 11 -10 -10 , 11 -11 -11 , 11 -12 -12 , 11 -12 -12 , 11 -12 -12 , and 11 -12 -13 -13 -13 -13 -13"
+    },
+    {
+      "example_id": "558708154626593288",
+      "reference": "The annual average precipitation of Zhaoqing is 1,633 mm.",
+      "generated": "The average annual rainfall in Zhaoqing is 1633 millimetres (64.28 in).",
+      "ref_nums": [
+        1633.0
+      ],
+      "gen_nums": [
+        1633.0,
+        64.28
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "The annual average precipitation of Zhaoqing is 1,633 mm.",
+      "bleu_hyp": "The average annual rainfall in Zhaoqing is 1633 millimetres (64.28 in)."
+    },
+    {
+      "example_id": "1053212343282964350",
+      "reference": "The population of Ashville was 4,097 at the 2010 census.",
+      "generated": "As of the census of 2010 , there were 4097 people residing in Ashville.",
+      "ref_nums": [
+        4097.0,
+        2010.0
+      ],
+      "gen_nums": [
+        2010.0,
+        4097.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 2087.0,
+      "num_mape": 77.38527887776155,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The population of Ashville was 4,097 at the 2010 census.",
+      "bleu_hyp": "As of the census of 2010 , there were 4097 people residing in Ashville."
+    },
+    {
+      "example_id": "-5161016304371125740",
+      "reference": "Morris played Karen Pruitt in Home Alone 3 in 1997.",
+      "generated": "In 1997 , Morris played the role of Karen Pruitt in Home Alone 3 .",
+      "ref_nums": [
+        3.0,
+        1997.0
+      ],
+      "gen_nums": [
+        1997.0,
+        3.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1994.0,
+      "num_mape": 33283.25822066433,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Morris played Karen Pruitt in Home Alone 3 in 1997.",
+      "bleu_hyp": "In 1997 , Morris played the role of Karen Pruitt in Home Alone 3 ."
+    },
+    {
+      "example_id": "4265417016824569576",
+      "reference": "Global sales totaled 2,018,247 plug-in passenger cars in 2018, with a market share of 2.1%.",
+      "generated": "In 2018 , Light-duty plug-in cumulative registrations of electric car use by total, with 1.915e+04 units in 2018 , followed by Light-duty Plus.",
+      "ref_nums": [
+        2018247.0,
+        2018.0,
+        2.1
+      ],
+      "gen_nums": [
+        2018.0,
+        1.0,
+        4.0,
+        2018.0
+      ],
+      "num_em": 0.3333333333333333,
+      "num_mae": 672749.2999999999,
+      "num_mape": 96.77554956688628,
+      "halluc": 0.75,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "Global sales totaled 2,018,247 plug-in passenger cars in 2018, with a market share of 2.1%.",
+      "bleu_hyp": "In 2018 , Light-duty plug-in cumulative registrations of electric car use by total, with 1.915e+04 units in 2018 , followed by Light-duty Plus."
+    },
+    {
+      "example_id": "-5052865687877700869",
+      "reference": "Ant\u00f3nio Pinto won the 5000 metres gold with a championship record time of 13:34.34 minutes.",
+      "generated": "Ant\u00f3nio Pinto won the 5000 metres in a time of 13 :34.34 .",
+      "ref_nums": [
+        5000.0,
+        13.0,
+        34.34
+      ],
+      "gen_nums": [
+        5000.0,
+        13.0,
+        34.34
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "Ant\u00f3nio Pinto won the 5000 metres gold with a championship record time of 13:34.34 minutes.",
+      "bleu_hyp": "Ant\u00f3nio Pinto won the 5000 metres in a time of 13 :34.34 ."
+    },
+    {
+      "example_id": "8657033894796792219",
+      "reference": "The Totem Dance group is one of Ukraine's contemporary dance companies.",
+      "generated": "Totem Dance Group is a dance company in Ukraine.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "The Totem Dance group is one of Ukraine's contemporary dance companies.",
+      "bleu_hyp": "Totem Dance Group is a dance company in Ukraine."
+    },
+    {
+      "example_id": "-1942986951387524846",
+      "reference": "In 2017, Eriksson was signed by HTP Motorsport at the Blancpain GT Series Sprint Cup.",
+      "generated": "In 2017 , Eriksson joined HTP Motorsport in the Blancpain GT Series Sprint Cup and drove for HTP Motorsport.",
+      "ref_nums": [
+        2017.0
+      ],
+      "gen_nums": [
+        2017.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2017, Eriksson was signed by HTP Motorsport at the Blancpain GT Series Sprint Cup.",
+      "bleu_hyp": "In 2017 , Eriksson joined HTP Motorsport in the Blancpain GT Series Sprint Cup and drove for HTP Motorsport."
+    },
+    {
+      "example_id": "-6380279410458224913",
+      "reference": "In November 2011, D\u00edaz appeared in the television series \"Pan Am\" playing the role of Miguel in the episode \"Unscheduled Departure\".",
+      "generated": "In 2011 , D\u00edaz appeared in the episode of Pan Am as Miguel in the episode \"Unscheduled\".",
+      "ref_nums": [
+        2011.0
+      ],
+      "gen_nums": [
+        2011.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In November 2011, D\u00edaz appeared in the television series \"Pan Am\" playing the role of Miguel in the episode \"Unscheduled Departure\".",
+      "bleu_hyp": "In 2011 , D\u00edaz appeared in the episode of Pan Am as Miguel in the episode \"Unscheduled\"."
+    },
+    {
+      "example_id": "-4179887086879359533",
+      "reference": "Crawford averaged 17.3 points, 3.5 rebounds, 5.1 assists and 1.4 steals.",
+      "generated": "Crawford averaged 17.3 points, 4.4 rebounds, 5.2 assists and 1.4 steals per game.",
+      "ref_nums": [
+        17.3,
+        3.5,
+        5.1,
+        1.4
+      ],
+      "gen_nums": [
+        17.3,
+        4.4,
+        5.2,
+        1.4
+      ],
+      "num_em": 0.5,
+      "num_mae": 0.2500000000000002,
+      "num_mape": 6.918767507002806,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "Crawford averaged 17.3 points, 3.5 rebounds, 5.1 assists and 1.4 steals.",
+      "bleu_hyp": "Crawford averaged 17.3 points, 4.4 rebounds, 5.2 assists and 1.4 steals per game."
+    },
+    {
+      "example_id": "-985922509276559381",
+      "reference": "According to the 2015 census, Burgos has a population of 4,034 people.",
+      "generated": "According to the 2015 census, Burgos has a population of 4034 people.",
+      "ref_nums": [
+        2015.0,
+        4034.0
+      ],
+      "gen_nums": [
+        2015.0,
+        4034.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "According to the 2015 census, Burgos has a population of 4,034 people.",
+      "bleu_hyp": "According to the 2015 census, Burgos has a population of 4034 people."
+    },
+    {
+      "example_id": "3716635623717068563",
+      "reference": "JJ Project debuted with the single \"Bounce\" on 2012.",
+      "generated": "JJ Project's second single \"Bounce\" was released in 2012 .",
+      "ref_nums": [
+        2012.0
+      ],
+      "gen_nums": [
+        2012.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "JJ Project debuted with the single \"Bounce\" on 2012.",
+      "bleu_hyp": "JJ Project's second single \"Bounce\" was released in 2012 ."
+    },
+    {
+      "example_id": "8324295766678773073",
+      "reference": "Brent Musburger covered the World Series in CBS.",
+      "generated": "CBS's La Laider, the High School was one of the World Series broadcaster for the CBS network.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Brent Musburger covered the World Series in CBS.",
+      "bleu_hyp": "CBS's La Laider, the High School was one of the World Series broadcaster for the CBS network."
+    },
+    {
+      "example_id": "4012447468149527348",
+      "reference": "Torrey DeVitto played Nina, in the film The Rite in 2011.",
+      "generated": "Torrey DeVitto played Nina in the 2011 film The Rite.",
+      "ref_nums": [
+        2011.0
+      ],
+      "gen_nums": [
+        2011.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Torrey DeVitto played Nina, in the film The Rite in 2011.",
+      "bleu_hyp": "Torrey DeVitto played Nina in the 2011 film The Rite."
+    },
+    {
+      "example_id": "6081075168683711176",
+      "reference": "On December 18, 2015, Dawodu faced Marat Magomedov at WSOF 26.",
+      "generated": "Dawodu faced Marat Magomedov at WSOF 26 on December 18 , 2015 .",
+      "ref_nums": [
+        18.0,
+        2015.0,
+        26.0
+      ],
+      "gen_nums": [
+        26.0,
+        18.0,
+        2015.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1331.3333333333333,
+      "num_mape": 2597.8503813987686,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "On December 18, 2015, Dawodu faced Marat Magomedov at WSOF 26.",
+      "bleu_hyp": "Dawodu faced Marat Magomedov at WSOF 26 on December 18 , 2015 ."
+    },
+    {
+      "example_id": "3783817878834634324",
+      "reference": "Yongju-ri has four administrative districts: Yongju(\uc6a9\uc8fc), Gonae(\uace0\ub0b4), Hodu(\ud638\ub450), Hwaryeon(\ud654\ub828).",
+      "generated": "Hwayang-myeon, Yeosu has two administrative districts: Yongju(\ubc31), Hodu(\ubc31), and Hwaryeon(\ubc31).",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Yongju-ri has four administrative districts: Yongju(\uc6a9\uc8fc), Gonae(\uace0\ub0b4), Hodu(\ud638\ub450), Hwaryeon(\ud654\ub828).",
+      "bleu_hyp": "Hwayang-myeon, Yeosu has two administrative districts: Yongju(\ubc31), Hodu(\ubc31), and Hwaryeon(\ubc31)."
+    },
+    {
+      "example_id": "-8362597360504372061",
+      "reference": "Wiggins averaged 17.1 points per game (ppg), 5.9 rebounds per game (rpg), and made 34.1% of his three-pointers in Kansas.",
+      "generated": "Andrew Wiggins averaged 17.1 points and 5.9 rebounds per game in Kansas.",
+      "ref_nums": [
+        17.1,
+        5.9,
+        34.1
+      ],
+      "gen_nums": [
+        17.1,
+        5.9
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "Wiggins averaged 17.1 points per game (ppg), 5.9 rebounds per game (rpg), and made 34.1% of his three-pointers in Kansas.",
+      "bleu_hyp": "Andrew Wiggins averaged 17.1 points and 5.9 rebounds per game in Kansas."
+    },
+    {
+      "example_id": "-3740977985141857622",
+      "reference": "Sir Robert Best (Liberal), was elected as the member for Kooyong.",
+      "generated": "Liberal Sir Robert Best (Liberal) contested Kooyong.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "Sir Robert Best (Liberal), was elected as the member for Kooyong.",
+      "bleu_hyp": "Liberal Sir Robert Best (Liberal) contested Kooyong."
+    },
+    {
+      "example_id": "-5864509824108166593",
+      "reference": "Anuraagakkodathi is a 1982 Malayalam film directed by Hariharan.",
+      "generated": "Anuraagakkodathi is a 1982 Malayalam film, directed by Hariharan.",
+      "ref_nums": [
+        1982.0
+      ],
+      "gen_nums": [
+        1982.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Anuraagakkodathi is a 1982 Malayalam film directed by Hariharan.",
+      "bleu_hyp": "Anuraagakkodathi is a 1982 Malayalam film, directed by Hariharan."
+    },
+    {
+      "example_id": "-9035649839852582098",
+      "reference": "In 2008, Thamarai was awarded Best Lyricist of Tamil for \"Nenjukkul Peithidum\" in Vaaranam Aayiram.",
+      "generated": "In 2008 , Tamil film Vaaranam Aayiram was composed by Nenjukkul Peithidum and composed by Nenjukkul Peithidum.",
+      "ref_nums": [
+        2008.0
+      ],
+      "gen_nums": [
+        2008.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2008, Thamarai was awarded Best Lyricist of Tamil for \"Nenjukkul Peithidum\" in Vaaranam Aayiram.",
+      "bleu_hyp": "In 2008 , Tamil film Vaaranam Aayiram was composed by Nenjukkul Peithidum and composed by Nenjukkul Peithidum."
+    },
+    {
+      "example_id": "-6435184086926489876",
+      "reference": "As of the census of 2000, there were 42,695 people residing in Watauga county.",
+      "generated": "As of the census of 2000 , there were 4.27e+04 people residing in Watauga County, North Carolina.",
+      "ref_nums": [
+        2000.0,
+        42695.0
+      ],
+      "gen_nums": [
+        2000.0,
+        4.0,
+        4.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 21345.5,
+      "num_mape": 49.99531561072725,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the census of 2000, there were 42,695 people residing in Watauga county.",
+      "bleu_hyp": "As of the census of 2000 , there were 4.27e+04 people residing in Watauga County, North Carolina."
+    },
+    {
+      "example_id": "-3599573310175247229",
+      "reference": "At Allianz Stadium in Sydney on 23 June 2018, Australia beat Ireland 20 pts to 16.",
+      "generated": "The first match was played on 23 June 2018 , at Allianz Stadium in Sydney, with a 16 \u201320 win over Ireland.",
+      "ref_nums": [
+        23.0,
+        2018.0,
+        20.0,
+        16.0
+      ],
+      "gen_nums": [
+        23.0,
+        2018.0,
+        16.0,
+        20.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 2.0,
+      "num_mape": 11.25,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "At Allianz Stadium in Sydney on 23 June 2018, Australia beat Ireland 20 pts to 16.",
+      "bleu_hyp": "The first match was played on 23 June 2018 , at Allianz Stadium in Sydney, with a 16 \u201320 win over Ireland."
+    },
+    {
+      "example_id": "-3039208574667603410",
+      "reference": "In 2017, Cordingly appeared as Debbie Morton in EastEnders.",
+      "generated": "In 2017 , Cordingly played the role of Debbie Morton in EastEnders.",
+      "ref_nums": [
+        2017.0
+      ],
+      "gen_nums": [
+        2017.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2017, Cordingly appeared as Debbie Morton in EastEnders.",
+      "bleu_hyp": "In 2017 , Cordingly played the role of Debbie Morton in EastEnders."
+    },
+    {
+      "example_id": "-6201201314774400362",
+      "reference": "Mackenzie River is the thirteenth longest river system in the world and has a total length of 4,241 kilometres including its tributaries.",
+      "generated": "The Mackenzie\u2013Slave\u2013Peace\u2013Finlay is the longest river in the world with a length of 4241 km (2 mi).",
+      "ref_nums": [
+        4241.0
+      ],
+      "gen_nums": [
+        4241.0,
+        2.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Mackenzie River is the thirteenth longest river system in the world and has a total length of 4,241 kilometres including its tributaries.",
+      "bleu_hyp": "The Mackenzie\u2013Slave\u2013Peace\u2013Finlay is the longest river in the world with a length of 4241 km (2 mi)."
+    },
+    {
+      "example_id": "-414670913022172312",
+      "reference": "James Anderson of England has taken the five-wicket haul at Headingley, with figures of 5 wickets for 76 runs against West Indies on 25 August 2017.",
+      "generated": "Anderson took 5 /85 for England against West Indies in 2017 .",
+      "ref_nums": [
+        5.0,
+        76.0,
+        25.0,
+        2017.0
+      ],
+      "gen_nums": [
+        5.0,
+        85.0,
+        2017.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 667.0,
+      "num_mape": 2659.947368421053,
+      "halluc": 0.3333333333333333,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "James Anderson of England has taken the five-wicket haul at Headingley, with figures of 5 wickets for 76 runs against West Indies on 25 August 2017.",
+      "bleu_hyp": "Anderson took 5 /85 for England against West Indies in 2017 ."
+    },
+    {
+      "example_id": "-6603749479093065664",
+      "reference": "In Germany, RTL aired 500 - Die Quiz-Arena and hosted by G\u00fcnther Jauch in 2016.",
+      "generated": "500 Questions was broadcasted in Germany on July 4 , 2016 , and the 500 was broadcasted in RTL channel.",
+      "ref_nums": [
+        500.0,
+        2016.0
+      ],
+      "gen_nums": [
+        500.0,
+        4.0,
+        2016.0,
+        500.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 1006.0,
+      "num_mape": 49.90079365079365,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "In Germany, RTL aired 500 - Die Quiz-Arena and hosted by G\u00fcnther Jauch in 2016.",
+      "bleu_hyp": "500 Questions was broadcasted in Germany on July 4 , 2016 , and the 500 was broadcasted in RTL channel."
+    },
+    {
+      "example_id": "-6667696142718753620",
+      "reference": "Myles Rudge won an Ivor Novello Award in 1966 for the Year's Outstanding Novelty for his song \"A Windmill in Old Amsterdam\".",
+      "generated": "In 1966 , Rudge received the Ivor Novello Award for \"A Windmill in Old Amsterdam\" for her song \"A Windmill in Old Amsterdam\".",
+      "ref_nums": [
+        1966.0
+      ],
+      "gen_nums": [
+        1966.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Myles Rudge won an Ivor Novello Award in 1966 for the Year's Outstanding Novelty for his song \"A Windmill in Old Amsterdam\".",
+      "bleu_hyp": "In 1966 , Rudge received the Ivor Novello Award for \"A Windmill in Old Amsterdam\" for her song \"A Windmill in Old Amsterdam\"."
+    },
+    {
+      "example_id": "-2331546479700020641",
+      "reference": "Mathews of Philadelphia Eagles finished the 2015 season in rushing TDs with 6, as well as compiling 539 rushing yards on 106 carries, a 5.1 average.",
+      "generated": "Ryan Mathews finished the 2015 season with 539 rushing yards, 317 rushing yards, 6 rushing touchdowns, 529 receiving yards, and six receiving touchdowns.",
+      "ref_nums": [
+        2015.0,
+        6.0,
+        539.0,
+        106.0,
+        5.1
+      ],
+      "gen_nums": [
+        2015.0,
+        539.0,
+        317.0,
+        6.0,
+        529.0
+      ],
+      "num_em": 0.6,
+      "num_mae": 275.78000000000003,
+      "num_mape": 3858.281871925443,
+      "halluc": 0.4,
+      "count_match": true,
+      "n_ref_nums": 5,
+      "bleu_ref": "Mathews of Philadelphia Eagles finished the 2015 season in rushing TDs with 6, as well as compiling 539 rushing yards on 106 carries, a 5.1 average.",
+      "bleu_hyp": "Ryan Mathews finished the 2015 season with 539 rushing yards, 317 rushing yards, 6 rushing touchdowns, 529 receiving yards, and six receiving touchdowns."
+    },
+    {
+      "example_id": "8158013240323520315",
+      "reference": "Albert Piddington served on the High Court of Australia for one month in 1913, making him the shortest-serving judge in the court's history.",
+      "generated": "Albert Piddington was Justice of the High Court from 1913 to 1913 .",
+      "ref_nums": [
+        1913.0
+      ],
+      "gen_nums": [
+        1913.0,
+        1913.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Albert Piddington served on the High Court of Australia for one month in 1913, making him the shortest-serving judge in the court's history.",
+      "bleu_hyp": "Albert Piddington was Justice of the High Court from 1913 to 1913 ."
+    },
+    {
+      "example_id": "3649486749368477114",
+      "reference": "In 1987, Anton Mang became 250cc World Champion for the third time with 8 consecutive victories.",
+      "generated": "In 1980 , Mang won three Grand Prix World Championship for the 994 Moto2 125cc.",
+      "ref_nums": [
+        1987.0,
+        8.0
+      ],
+      "gen_nums": [
+        1980.0,
+        994.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 496.5,
+      "num_mape": 6162.676144942124,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "In 1987, Anton Mang became 250cc World Champion for the third time with 8 consecutive victories.",
+      "bleu_hyp": "In 1980 , Mang won three Grand Prix World Championship for the 994 Moto2 125cc."
+    },
+    {
+      "example_id": "6939139467648676019",
+      "reference": "The FA Cup gave Derby their first match of the new year and Commons scored Derby's first goal with a 52nd-minute equaliser away to Millwall in a 1\u20131 draw in the 3rd Round.",
+      "generated": "In the third round of the FA Cup, Derby beat Millwall 1 \u20131 , with a goal from Commons.",
+      "ref_nums": [
+        1.0,
+        1.0
+      ],
+      "gen_nums": [
+        1.0,
+        1.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The FA Cup gave Derby their first match of the new year and Commons scored Derby's first goal with a 52nd-minute equaliser away to Millwall in a 1\u20131 draw in the 3rd Round.",
+      "bleu_hyp": "In the third round of the FA Cup, Derby beat Millwall 1 \u20131 , with a goal from Commons."
+    },
+    {
+      "example_id": "-8598782474009725421",
+      "reference": "Waterston played Gerard Pitts in the 1989 film, Dead Poets Society.",
+      "generated": "In 1989 , Waterston played as Gerard Pitts in Dead Poets Society.",
+      "ref_nums": [
+        1989.0
+      ],
+      "gen_nums": [
+        1989.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Waterston played Gerard Pitts in the 1989 film, Dead Poets Society.",
+      "bleu_hyp": "In 1989 , Waterston played as Gerard Pitts in Dead Poets Society."
+    },
+    {
+      "example_id": "-1353345558404675079",
+      "reference": "Ersin Tacir made a record in 1:22:19.",
+      "generated": "Ersin Tacir set a Turkish record in the 1 :21 .",
+      "ref_nums": [
+        1.0,
+        22.0,
+        19.0
+      ],
+      "gen_nums": [
+        1.0,
+        21.0
+      ],
+      "num_em": 0.3333333333333333,
+      "num_mae": 0.5,
+      "num_mape": 2.272727272727273,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "Ersin Tacir made a record in 1:22:19.",
+      "bleu_hyp": "Ersin Tacir set a Turkish record in the 1 :21 ."
+    },
+    {
+      "example_id": "2947773407504248310",
+      "reference": "Senna's first international goal came against Armenia, on September 10, 2008, a 4\u20130 win in the 2010 World Cup qualifying.",
+      "generated": "On 10 September 2008 , Marcos Senna scored his first goal in a 4 \u20130 win against Armenia in the 2010 World Cup qualification.",
+      "ref_nums": [
+        10.0,
+        2008.0,
+        4.0,
+        0.0,
+        2010.0
+      ],
+      "gen_nums": [
+        10.0,
+        2008.0,
+        4.0,
+        0.0,
+        2010.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 5,
+      "bleu_ref": "Senna's first international goal came against Armenia, on September 10, 2008, a 4\u20130 win in the 2010 World Cup qualifying.",
+      "bleu_hyp": "On 10 September 2008 , Marcos Senna scored his first goal in a 4 \u20130 win against Armenia in the 2010 World Cup qualification."
+    },
+    {
+      "example_id": "1179581928771759171",
+      "reference": "Izzy was the mascot of the Atlanta 1996 Summer Olympics.",
+      "generated": "In 1996 , Izzy performed at the Olympic Games in Atlanta in Mascot.",
+      "ref_nums": [
+        1996.0
+      ],
+      "gen_nums": [
+        1996.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Izzy was the mascot of the Atlanta 1996 Summer Olympics.",
+      "bleu_hyp": "In 1996 , Izzy performed at the Olympic Games in Atlanta in Mascot."
+    },
+    {
+      "example_id": "8537696873686127335",
+      "reference": "On television, Bart appeared in The George Carlin Show (1994) and portrayed Paul in Bram and Alice (2002).",
+      "generated": "Roger Bart played Paul in The George Carlin Show (1994 ) and Bram and Alice (2002 ).",
+      "ref_nums": [
+        1994.0,
+        2002.0
+      ],
+      "gen_nums": [
+        1994.0,
+        2002.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "On television, Bart appeared in The George Carlin Show (1994) and portrayed Paul in Bram and Alice (2002).",
+      "bleu_hyp": "Roger Bart played Paul in The George Carlin Show (1994 ) and Bram and Alice (2002 )."
+    },
+    {
+      "example_id": "-9102469731189778894",
+      "reference": "On November 16, 1917, Pams was appointed Minister of the Interior.",
+      "generated": "In 1917 , Pams was appointed as Interior Minister.",
+      "ref_nums": [
+        16.0,
+        1917.0
+      ],
+      "gen_nums": [
+        1917.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 1901.0,
+      "num_mape": 11881.25,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "On November 16, 1917, Pams was appointed Minister of the Interior.",
+      "bleu_hyp": "In 1917 , Pams was appointed as Interior Minister."
+    },
+    {
+      "example_id": "478192954687255597",
+      "reference": "As of the 2010 census, there were 211,033 people residing in Yavapai County.",
+      "generated": "As of the 2010 census, the population of Yavapai County was 2.11e+05 .",
+      "ref_nums": [
+        2010.0,
+        211033.0
+      ],
+      "gen_nums": [
+        2010.0,
+        2.0,
+        5.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 105515.5,
+      "num_mape": 49.99952614046144,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the 2010 census, there were 211,033 people residing in Yavapai County.",
+      "bleu_hyp": "As of the 2010 census, the population of Yavapai County was 2.11e+05 ."
+    },
+    {
+      "example_id": "-6054148453174284067",
+      "reference": "Lake Superior is the second largest lake in the world by area and the largest freshwater lake by area.",
+      "generated": "Superior is the largest freshwater lake in the world, with an area of 8.21e+04 km\u00b2 (3.17e+04 sq mi), making it the largest freshwater lake in the world.",
+      "ref_nums": [],
+      "gen_nums": [
+        8.0,
+        4.0,
+        3.0,
+        4.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 4.75,
+      "num_mape": null,
+      "halluc": 1.0,
+      "count_match": false,
+      "n_ref_nums": 0,
+      "bleu_ref": "Lake Superior is the second largest lake in the world by area and the largest freshwater lake by area.",
+      "bleu_hyp": "Superior is the largest freshwater lake in the world, with an area of 8.21e+04 km\u00b2 (3.17e+04 sq mi), making it the largest freshwater lake in the world."
+    },
+    {
+      "example_id": "6233047036042577667",
+      "reference": "Reggie Bush finished with 297 rushing yards and two rushing touchdowns.",
+      "generated": "Bush had 297 yards and two touchdowns.",
+      "ref_nums": [
+        297.0
+      ],
+      "gen_nums": [
+        297.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Reggie Bush finished with 297 rushing yards and two rushing touchdowns.",
+      "bleu_hyp": "Bush had 297 yards and two touchdowns."
+    },
+    {
+      "example_id": "-1676766775701640899",
+      "reference": "Korissia's population was 4,775 at the 2011 census.",
+      "generated": "In 2011 , Korissia had a population of 4775 .",
+      "ref_nums": [
+        4775.0,
+        2011.0
+      ],
+      "gen_nums": [
+        2011.0,
+        4775.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 2764.0,
+      "num_mape": 97.6644372183358,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Korissia's population was 4,775 at the 2011 census.",
+      "bleu_hyp": "In 2011 , Korissia had a population of 4775 ."
+    },
+    {
+      "example_id": "-640254278571401126",
+      "reference": "Madly in Anger with the World Tour was held at Olympiastadion on June 13, 2004 in Munich, Germany.",
+      "generated": "The Madly in Anger with the World Tour was held on June 13 , 2004 in Munich, Germany.",
+      "ref_nums": [
+        13.0,
+        2004.0
+      ],
+      "gen_nums": [
+        13.0,
+        2004.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Madly in Anger with the World Tour was held at Olympiastadion on June 13, 2004 in Munich, Germany.",
+      "bleu_hyp": "The Madly in Anger with the World Tour was held on June 13 , 2004 in Munich, Germany."
+    },
+    {
+      "example_id": "-4877249984744067325",
+      "reference": "Daniel Rodney's political career began in 1810, when he ran for Governor as a Federalist.",
+      "generated": "Daniel Rodney was the Governor of the Federalist Party.",
+      "ref_nums": [
+        1810.0
+      ],
+      "gen_nums": [],
+      "num_em": 0.0,
+      "num_mae": 1810.0,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Daniel Rodney's political career began in 1810, when he ran for Governor as a Federalist.",
+      "bleu_hyp": "Daniel Rodney was the Governor of the Federalist Party."
+    },
+    {
+      "example_id": "469060645742242148",
+      "reference": "The King of the Ring was held on September 7, 1991 at the Providence Civic Center in Providence, Rhode Island.",
+      "generated": "The King of the Ring was held on September 7 , 1991 at the Providence Civic Center in Providence, Rhode Island.",
+      "ref_nums": [
+        7.0,
+        1991.0
+      ],
+      "gen_nums": [
+        7.0,
+        1991.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The King of the Ring was held on September 7, 1991 at the Providence Civic Center in Providence, Rhode Island.",
+      "bleu_hyp": "The King of the Ring was held on September 7 , 1991 at the Providence Civic Center in Providence, Rhode Island."
+    },
+    {
+      "example_id": "3901804289152900175",
+      "reference": "Johnson averaged 17.3 points and 13.6 rebounds per game.",
+      "generated": "Johnson averaged 17.3 points and 13.6 rebounds per game.",
+      "ref_nums": [
+        17.3,
+        13.6
+      ],
+      "gen_nums": [
+        17.3,
+        13.6
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Johnson averaged 17.3 points and 13.6 rebounds per game.",
+      "bleu_hyp": "Johnson averaged 17.3 points and 13.6 rebounds per game."
+    },
+    {
+      "example_id": "4230126569864856383",
+      "reference": "PBCom Tower is the third tallest building in the Philippines.",
+      "generated": "PBCom Tower is the third tallest building in the Philippines.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "PBCom Tower is the third tallest building in the Philippines.",
+      "bleu_hyp": "PBCom Tower is the third tallest building in the Philippines."
+    },
+    {
+      "example_id": "-4536900128885699858",
+      "reference": "Gracie faced Roger Carroll at Bellator 151 on March 4, 2016.",
+      "generated": "Gracie faced Roger Carroll at Bellator 151 on March 4 , 2016 .",
+      "ref_nums": [
+        151.0,
+        4.0,
+        2016.0
+      ],
+      "gen_nums": [
+        151.0,
+        4.0,
+        2016.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "Gracie faced Roger Carroll at Bellator 151 on March 4, 2016.",
+      "bleu_hyp": "Gracie faced Roger Carroll at Bellator 151 on March 4 , 2016 ."
+    },
+    {
+      "example_id": "6499361996896441339",
+      "reference": "As of the 2010 United States Census, there were 26,503 people residing in Hamilton Township.",
+      "generated": "As of the 2010 Census, there were 2.65e+04 people residing in Hamilton Township, Atlantic County, New Jersey.",
+      "ref_nums": [
+        2010.0,
+        26503.0
+      ],
+      "gen_nums": [
+        2010.0,
+        2.0,
+        4.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 13250.5,
+      "num_mape": 49.996226842244276,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the 2010 United States Census, there were 26,503 people residing in Hamilton Township.",
+      "bleu_hyp": "As of the 2010 Census, there were 2.65e+04 people residing in Hamilton Township, Atlantic County, New Jersey."
+    },
+    {
+      "example_id": "8289216315320695030",
+      "reference": "Putney railway station serves zones 2 and 3 in Wandsworth, London.",
+      "generated": "Putney is a railway station in the town of Wandsworth, and is in Zone 2 .",
+      "ref_nums": [
+        2.0,
+        3.0
+      ],
+      "gen_nums": [
+        2.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Putney railway station serves zones 2 and 3 in Wandsworth, London.",
+      "bleu_hyp": "Putney is a railway station in the town of Wandsworth, and is in Zone 2 ."
+    },
+    {
+      "example_id": "7114473019527868556",
+      "reference": "Christopher Green served as mayor of Sacramento, California, from 1872 to 1877.",
+      "generated": "Christopher Green was the mayor of Sacramento, California from 1872 to 1877 .",
+      "ref_nums": [
+        1872.0,
+        1877.0
+      ],
+      "gen_nums": [
+        1872.0,
+        1877.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Christopher Green served as mayor of Sacramento, California, from 1872 to 1877.",
+      "bleu_hyp": "Christopher Green was the mayor of Sacramento, California from 1872 to 1877 ."
+    },
+    {
+      "example_id": "-6504581948180305540",
+      "reference": "Jitpur Simara is a sub-metropolitan city in Bara District in Province No. 2.",
+      "generated": "Jitpur Simara is a municipality in the Bara District in Province No. 2 of Nepal.",
+      "ref_nums": [
+        2.0
+      ],
+      "gen_nums": [
+        2.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Jitpur Simara is a sub-metropolitan city in Bara District in Province No. 2.",
+      "bleu_hyp": "Jitpur Simara is a municipality in the Bara District in Province No. 2 of Nepal."
+    },
+    {
+      "example_id": "4220301340246025309",
+      "reference": "Williams compiled 11.5 sacks in 2004, 4 in 2005, and 5 in 2006.",
+      "generated": "Williams finished the season with 11.5 sacks, 4 forced fumbles and 5 forced fumbles.",
+      "ref_nums": [
+        11.5,
+        2004.0,
+        4.0,
+        2005.0,
+        5.0,
+        2006.0
+      ],
+      "gen_nums": [
+        11.5,
+        4.0,
+        5.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 667.0,
+      "num_mape": 41.60013306719893,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 6,
+      "bleu_ref": "Williams compiled 11.5 sacks in 2004, 4 in 2005, and 5 in 2006.",
+      "bleu_hyp": "Williams finished the season with 11.5 sacks, 4 forced fumbles and 5 forced fumbles."
+    },
+    {
+      "example_id": "3434974214630277461",
+      "reference": "Zinger moved to the Cincinnati Cyclones of the ECHL for the 2009\u201310 season.",
+      "generated": "Dwayne Zinger played for the Cincinnati Cyclones of the ECHL in the 2009 \u201310 season.",
+      "ref_nums": [
+        2009.0,
+        10.0
+      ],
+      "gen_nums": [
+        2009.0,
+        10.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "Zinger moved to the Cincinnati Cyclones of the ECHL for the 2009\u201310 season.",
+      "bleu_hyp": "Dwayne Zinger played for the Cincinnati Cyclones of the ECHL in the 2009 \u201310 season."
+    },
+    {
+      "example_id": "5814709970675717677",
+      "reference": "The 2.0 litre I4 produces a power of 138 hp (103 kW).",
+      "generated": "The 2 L (1991 cc) engine had 140 PS (103 kW; 138 hp).",
+      "ref_nums": [
+        2.0,
+        138.0,
+        103.0
+      ],
+      "gen_nums": [
+        2.0,
+        1991.0,
+        140.0,
+        103.0,
+        138.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 630.0,
+      "num_mape": 459.55865109516435,
+      "halluc": 0.4,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "The 2.0 litre I4 produces a power of 138 hp (103 kW).",
+      "bleu_hyp": "The 2 L (1991 cc) engine had 140 PS (103 kW; 138 hp)."
+    },
+    {
+      "example_id": "2257889878985744083",
+      "reference": "In 2015\u201316, Murray started 34 games and averaged 16.1 points, 4.4 assists and 1.8 steals in 33.5 minutes for Washington.",
+      "generated": "In 34 games for Washington in 2015 \u201316 , Murray averaged 16.1 points, 4.5 rebounds, 2.6 assists and 1.8 steals in 33.5 minutes per game.",
+      "ref_nums": [
+        2015.0,
+        16.0,
+        34.0,
+        16.1,
+        4.4,
+        1.8,
+        33.5
+      ],
+      "gen_nums": [
+        34.0,
+        2015.0,
+        16.0,
+        16.1,
+        4.5,
+        2.6,
+        1.8,
+        33.5
+      ],
+      "num_em": 0.8571428571428571,
+      "num_mae": 575.8,
+      "num_mape": 1826.621124135179,
+      "halluc": 0.25,
+      "count_match": false,
+      "n_ref_nums": 7,
+      "bleu_ref": "In 2015\u201316, Murray started 34 games and averaged 16.1 points, 4.4 assists and 1.8 steals in 33.5 minutes for Washington.",
+      "bleu_hyp": "In 34 games for Washington in 2015 \u201316 , Murray averaged 16.1 points, 4.5 rebounds, 2.6 assists and 1.8 steals in 33.5 minutes per game."
+    },
+    {
+      "example_id": "6780997767461040526",
+      "reference": "The last match was played against Toora, with Welshpool and won by two points, 16.10 (106) to 15.14 (104).",
+      "generated": "In the 1994 Welshpool Football Club, the Welshpool Football Club won the final by beating Win with 15.14 (104 ) to 16.1 (105 ).",
+      "ref_nums": [
+        16.1,
+        106.0,
+        15.14,
+        104.0
+      ],
+      "gen_nums": [
+        1994.0,
+        15.14,
+        104.0,
+        16.1,
+        105.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 561.3800000000001,
+      "num_mape": 3260.5628600923374,
+      "halluc": 0.2,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "The last match was played against Toora, with Welshpool and won by two points, 16.10 (106) to 15.14 (104).",
+      "bleu_hyp": "In the 1994 Welshpool Football Club, the Welshpool Football Club won the final by beating Win with 15.14 (104 ) to 16.1 (105 )."
+    },
+    {
+      "example_id": "3279583283991734919",
+      "reference": "William Glackens won the 1924 award from Temple Gold Medal Nude.",
+      "generated": "In 1924 , William Glackens received the Temple Gold Medal Nude in the Temple Gold Medal.",
+      "ref_nums": [
+        1924.0
+      ],
+      "gen_nums": [
+        1924.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "William Glackens won the 1924 award from Temple Gold Medal Nude.",
+      "bleu_hyp": "In 1924 , William Glackens received the Temple Gold Medal Nude in the Temple Gold Medal."
+    },
+    {
+      "example_id": "8255203822560021214",
+      "reference": "In the 2015 census, the population of Banate, Iloilo, was 32,532 people.",
+      "generated": "According to the 2015 census, Banate has a population of 3.253e+04 people.",
+      "ref_nums": [
+        2015.0,
+        32532.0
+      ],
+      "gen_nums": [
+        2015.0,
+        3.0,
+        4.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 16264.5,
+      "num_mape": 49.99538915529325,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "In the 2015 census, the population of Banate, Iloilo, was 32,532 people.",
+      "bleu_hyp": "According to the 2015 census, Banate has a population of 3.253e+04 people."
+    },
+    {
+      "example_id": "-2946336705537976628",
+      "reference": "The highest temperature recorded was 49.5 \u00b0C (121.1 \u00b0F), recorded in June, while the lowest 19 \u00b0C (66 \u00b0F) was recorded in May.",
+      "generated": "The highest temperature recorded in Hyderabad was 49.5 \u00b0C (121.1 \u00b0F) in June and the lowest temperature recorded was 19 \u00b0C (66.2 \u00b0F) in January.",
+      "ref_nums": [
+        49.5,
+        121.1,
+        19.0,
+        66.0
+      ],
+      "gen_nums": [
+        49.5,
+        121.1,
+        19.0,
+        66.2
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.05000000000000071,
+      "num_mape": 0.07575757575757683,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "The highest temperature recorded was 49.5 \u00b0C (121.1 \u00b0F), recorded in June, while the lowest 19 \u00b0C (66 \u00b0F) was recorded in May.",
+      "bleu_hyp": "The highest temperature recorded in Hyderabad was 49.5 \u00b0C (121.1 \u00b0F) in June and the lowest temperature recorded was 19 \u00b0C (66.2 \u00b0F) in January."
+    },
+    {
+      "example_id": "-6370931853427476850",
+      "reference": "In 2008, Luke Wilkshire played in the Russian Premier League for Dynamo Moscow.",
+      "generated": "In 2008 , Wilkshire played for the Russian Premier League side Dynamo Moscow.",
+      "ref_nums": [
+        2008.0
+      ],
+      "gen_nums": [
+        2008.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 2008, Luke Wilkshire played in the Russian Premier League for Dynamo Moscow.",
+      "bleu_hyp": "In 2008 , Wilkshire played for the Russian Premier League side Dynamo Moscow."
+    },
+    {
+      "example_id": "-5860656774109144072",
+      "reference": "The population of Cobleskill (village), New York was 4,533 at the time of the 2000 census.",
+      "generated": "As of the census of 2000 , there were 4533 people residing in Cobleskill village.",
+      "ref_nums": [
+        4533.0,
+        2000.0
+      ],
+      "gen_nums": [
+        2000.0,
+        4533.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 2533.0,
+      "num_mape": 91.26455437899845,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "The population of Cobleskill (village), New York was 4,533 at the time of the 2000 census.",
+      "bleu_hyp": "As of the census of 2000 , there were 4533 people residing in Cobleskill village."
+    },
+    {
+      "example_id": "-2291656381501182235",
+      "reference": "Gabala made a 1-0 away victory over Ravan Baku on 29 November 2013, with a goal from Kamanan.",
+      "generated": "On 29 November, Gabala won against Ravan Baku with a goal from Kamanan and a goal from Kamana.",
+      "ref_nums": [
+        1.0,
+        0.0,
+        29.0,
+        2013.0
+      ],
+      "gen_nums": [
+        29.0
+      ],
+      "num_em": 0.25,
+      "num_mae": 28.0,
+      "num_mape": 2800.0,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "Gabala made a 1-0 away victory over Ravan Baku on 29 November 2013, with a goal from Kamanan.",
+      "bleu_hyp": "On 29 November, Gabala won against Ravan Baku with a goal from Kamanan and a goal from Kamana."
+    },
+    {
+      "example_id": "8164778046235028172",
+      "reference": "As of the census of 2010, there were 2,159 people residing in Cascade, Iowa.",
+      "generated": "The population of Cascade was 2159 at the 2010 census.",
+      "ref_nums": [
+        2010.0,
+        2159.0
+      ],
+      "gen_nums": [
+        2159.0,
+        2010.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 149.0,
+      "num_mape": 7.15713926891711,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 2,
+      "bleu_ref": "As of the census of 2010, there were 2,159 people residing in Cascade, Iowa.",
+      "bleu_hyp": "The population of Cascade was 2159 at the 2010 census."
+    },
+    {
+      "example_id": "3596940855038118439",
+      "reference": "Fischer's How Can I Ease the Pain won her a Grammy Award for Best Female R&B Vocal Performance in 1992.",
+      "generated": "In 1992 , Lisa Fischer won the Grammy Award for Best Female R&B Vocal Performance for \"How Can I Ease the Pain\".",
+      "ref_nums": [
+        1992.0
+      ],
+      "gen_nums": [
+        1992.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Fischer's How Can I Ease the Pain won her a Grammy Award for Best Female R&B Vocal Performance in 1992.",
+      "bleu_hyp": "In 1992 , Lisa Fischer won the Grammy Award for Best Female R&B Vocal Performance for \"How Can I Ease the Pain\"."
+    },
+    {
+      "example_id": "952456370619979672",
+      "reference": "In 2014, Richard Thompson made a record in 100 m with a run of 9.82 s.",
+      "generated": "In 2014 , Thompson ran a personal best of 9.82 seconds in the 100 m.",
+      "ref_nums": [
+        2014.0,
+        100.0,
+        9.82
+      ],
+      "gen_nums": [
+        2014.0,
+        9.82,
+        100.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 60.120000000000005,
+      "num_mape": 336.1699796334012,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "In 2014, Richard Thompson made a record in 100 m with a run of 9.82 s.",
+      "bleu_hyp": "In 2014 , Thompson ran a personal best of 9.82 seconds in the 100 m."
+    },
+    {
+      "example_id": "2156397842939918908",
+      "reference": "In 2000, JSAT ordered JCSAT-8 to replace JCSAT-2 at the 154\u00b0 East slot.",
+      "generated": "JSAT-8 was replaced by JCSAT-2 .",
+      "ref_nums": [
+        2000.0,
+        8.0,
+        2.0,
+        154.0
+      ],
+      "gen_nums": [
+        8.0,
+        2.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 999.0,
+      "num_mape": 87.3,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "In 2000, JSAT ordered JCSAT-8 to replace JCSAT-2 at the 154\u00b0 East slot.",
+      "bleu_hyp": "JSAT-8 was replaced by JCSAT-2 ."
+    },
+    {
+      "example_id": "5606375498641801036",
+      "reference": "In 2013, Mark Williams won the Rotterdam Open, defeating Mark Selby by 4\u20133 in the final.",
+      "generated": "Williams won the Rotterdam Open in 2013 , defeating Mark Selby 4 \u20133 in the final.",
+      "ref_nums": [
+        2013.0,
+        4.0,
+        3.0
+      ],
+      "gen_nums": [
+        2013.0,
+        4.0,
+        3.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 3,
+      "bleu_ref": "In 2013, Mark Williams won the Rotterdam Open, defeating Mark Selby by 4\u20133 in the final.",
+      "bleu_hyp": "Williams won the Rotterdam Open in 2013 , defeating Mark Selby 4 \u20133 in the final."
+    },
+    {
+      "example_id": "-6864378733311694984",
+      "reference": "Stanley's average precipitation was 544 mm throughout the year.",
+      "generated": "The annual rainfall in Stanley was 544 millimetres (21.4 in).",
+      "ref_nums": [
+        544.0
+      ],
+      "gen_nums": [
+        544.0,
+        21.4
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "Stanley's average precipitation was 544 mm throughout the year.",
+      "bleu_hyp": "The annual rainfall in Stanley was 544 millimetres (21.4 in)."
+    },
+    {
+      "example_id": "-9054061750338183532",
+      "reference": "In the 1963 Mongolian legislative election, the MPRP won 216 of the 270 seats, with the remaining 54 seats going to non-party candidates.",
+      "generated": "The MPRP won 216 of the 270 seats and the remaining 54 seats going to non-party candidates.",
+      "ref_nums": [
+        1963.0,
+        216.0,
+        270.0,
+        54.0
+      ],
+      "gen_nums": [
+        216.0,
+        270.0,
+        54.0
+      ],
+      "num_em": 0.75,
+      "num_mae": 672.3333333333334,
+      "num_mape": 64.66547800984887,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "In the 1963 Mongolian legislative election, the MPRP won 216 of the 270 seats, with the remaining 54 seats going to non-party candidates.",
+      "bleu_hyp": "The MPRP won 216 of the 270 seats and the remaining 54 seats going to non-party candidates."
+    },
+    {
+      "example_id": "8696084606309146868",
+      "reference": "Colley made her debut in 2014 as Abigail Williams in The Crucible at The Old Vic in London.",
+      "generated": "In 2014 , Samantha Colley played Abigail Williams in The Crucible by Arthur Miller.",
+      "ref_nums": [
+        2014.0
+      ],
+      "gen_nums": [
+        2014.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Colley made her debut in 2014 as Abigail Williams in The Crucible at The Old Vic in London.",
+      "bleu_hyp": "In 2014 , Samantha Colley played Abigail Williams in The Crucible by Arthur Miller."
+    },
+    {
+      "example_id": "2876514433041751301",
+      "reference": "The Pittsburgh Triangles won the World TeamTennis title in 1975.",
+      "generated": "The Pittsburgh Triangles team was a tennis player, who played in the 1975 World TeamT Fame.",
+      "ref_nums": [
+        1975.0
+      ],
+      "gen_nums": [
+        1975.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "The Pittsburgh Triangles won the World TeamTennis title in 1975.",
+      "bleu_hyp": "The Pittsburgh Triangles team was a tennis player, who played in the 1975 World TeamT Fame."
+    },
+    {
+      "example_id": "-8201041524523362876",
+      "reference": "New York Penn Station is the busiest railway station in New York City.",
+      "generated": "New York City is the busiest railway station in the world by passenger traffic.",
+      "ref_nums": [],
+      "gen_nums": [],
+      "num_em": 1.0,
+      "num_mae": null,
+      "num_mape": null,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 0,
+      "bleu_ref": "New York Penn Station is the busiest railway station in New York City.",
+      "bleu_hyp": "New York City is the busiest railway station in the world by passenger traffic."
+    },
+    {
+      "example_id": "2189586628697397786",
+      "reference": "In 2000\u201301 Luton Town F.C. season, The cost of Mark Ovendale from Bournemouth was \u00a3425,000.",
+      "generated": "In the 2000 \u20131 season, Luton Town F.C. signed Mark Ovendale for a fee of \u00a34.25e+05 .",
+      "ref_nums": [
+        2000.0,
+        1.0,
+        425000.0
+      ],
+      "gen_nums": [
+        2000.0,
+        1.0,
+        4.0,
+        5.0
+      ],
+      "num_em": 0.6666666666666666,
+      "num_mae": 141665.33333333334,
+      "num_mape": 33.333019607843134,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "In 2000\u201301 Luton Town F.C. season, The cost of Mark Ovendale from Bournemouth was \u00a3425,000.",
+      "bleu_hyp": "In the 2000 \u20131 season, Luton Town F.C. signed Mark Ovendale for a fee of \u00a34.25e+05 ."
+    },
+    {
+      "example_id": "-8312581199125031978",
+      "reference": "Eddie Constantine reprised the role of Lemmy Caution in Jean-Luc Godard's Germany Year 90 Nine Zero (1991).",
+      "generated": "Constantine played the role of Lemmy Caution in Lemmy Caution's Germany Year 90 Nine Zero in 1991 and later in Lemmy Caution's German Year 90 Nine Zero.",
+      "ref_nums": [
+        90.0,
+        1991.0
+      ],
+      "gen_nums": [
+        90.0,
+        1991.0,
+        90.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.3333333333333333,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "Eddie Constantine reprised the role of Lemmy Caution in Jean-Luc Godard's Germany Year 90 Nine Zero (1991).",
+      "bleu_hyp": "Constantine played the role of Lemmy Caution in Lemmy Caution's Germany Year 90 Nine Zero in 1991 and later in Lemmy Caution's German Year 90 Nine Zero."
+    },
+    {
+      "example_id": "4160516930779391619",
+      "reference": "Baudette Air Force Station was awarded the Air Force Outstanding Unit Award for the period, 1 June 1971 through 31 May 1973.",
+      "generated": "The Baudette Air Force Station was awarded the Air Force Outstanding Unit Award from 1971 to 1973 .",
+      "ref_nums": [
+        1.0,
+        1971.0,
+        31.0,
+        1973.0
+      ],
+      "gen_nums": [
+        1971.0,
+        1973.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 986.0,
+      "num_mape": 98500.05073566717,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 4,
+      "bleu_ref": "Baudette Air Force Station was awarded the Air Force Outstanding Unit Award for the period, 1 June 1971 through 31 May 1973.",
+      "bleu_hyp": "The Baudette Air Force Station was awarded the Air Force Outstanding Unit Award from 1971 to 1973 ."
+    },
+    {
+      "example_id": "3431451729633989544",
+      "reference": "Craig Williams took the Cardiff North seat by defeating Labour with 2,137 votes.",
+      "generated": "Williams of the Labour party won the Cardiff North seat by 2137 votes.",
+      "ref_nums": [
+        2137.0
+      ],
+      "gen_nums": [
+        2137.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Craig Williams took the Cardiff North seat by defeating Labour with 2,137 votes.",
+      "bleu_hyp": "Williams of the Labour party won the Cardiff North seat by 2137 votes."
+    },
+    {
+      "example_id": "5976376434807700354",
+      "reference": "Game 1 was a beat down from the Tigers, who won 111-74.",
+      "generated": "The Melbourne Tigers scored 111 .",
+      "ref_nums": [
+        1.0,
+        111.0,
+        74.0
+      ],
+      "gen_nums": [
+        111.0
+      ],
+      "num_em": 0.3333333333333333,
+      "num_mae": 110.0,
+      "num_mape": 11000.0,
+      "halluc": 0.0,
+      "count_match": false,
+      "n_ref_nums": 3,
+      "bleu_ref": "Game 1 was a beat down from the Tigers, who won 111-74.",
+      "bleu_hyp": "The Melbourne Tigers scored 111 ."
+    },
+    {
+      "example_id": "4244919154510149423",
+      "reference": "The population was 14,430 at the 2010 census in Antioch, Illinois.",
+      "generated": "The population was 1.443e+04 at the 2010 census in Antioch.",
+      "ref_nums": [
+        14430.0,
+        2010.0
+      ],
+      "gen_nums": [
+        1.0,
+        4.0,
+        2010.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 8217.5,
+      "num_mape": 99.89703250897281,
+      "halluc": 0.6666666666666666,
+      "count_match": false,
+      "n_ref_nums": 2,
+      "bleu_ref": "The population was 14,430 at the 2010 census in Antioch, Illinois.",
+      "bleu_hyp": "The population was 1.443e+04 at the 2010 census in Antioch."
+    },
+    {
+      "example_id": "2709032007461637162",
+      "reference": "Allan Smith represented the Commonwealth Select and achieved 2.23 m at the Glasgow International Match.",
+      "generated": "Allan Smith won the Commonwealth Select Championship in Glasgow with a jump of 2.23 m.",
+      "ref_nums": [
+        2.23
+      ],
+      "gen_nums": [
+        2.23
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.0,
+      "count_match": true,
+      "n_ref_nums": 1,
+      "bleu_ref": "Allan Smith represented the Commonwealth Select and achieved 2.23 m at the Glasgow International Match.",
+      "bleu_hyp": "Allan Smith won the Commonwealth Select Championship in Glasgow with a jump of 2.23 m."
+    },
+    {
+      "example_id": "7560398791060999884",
+      "reference": "In 1831, Dennis Kimberly held the office of, Mayor of New Haven.",
+      "generated": "Dennis Kimberly was the Mayor of New Haven, Connecticut from 1831 to 1832 .",
+      "ref_nums": [
+        1831.0
+      ],
+      "gen_nums": [
+        1831.0,
+        1832.0
+      ],
+      "num_em": 1.0,
+      "num_mae": 0.0,
+      "num_mape": 0.0,
+      "halluc": 0.5,
+      "count_match": false,
+      "n_ref_nums": 1,
+      "bleu_ref": "In 1831, Dennis Kimberly held the office of, Mayor of New Haven.",
+      "bleu_hyp": "Dennis Kimberly was the Mayor of New Haven, Connecticut from 1831 to 1832 ."
+    },
+    {
+      "example_id": "391734623219814305",
+      "reference": "In 1910, 5,830 and in 1940, 7,223 people lived in Etna, Pennsylvania.",
+      "generated": "In 1920 , the population of Etna, Pennsylvania was 6422 , up from 5830 in 1920 .",
+      "ref_nums": [
+        1910.0,
+        5830.0,
+        1940.0,
+        7223.0
+      ],
+      "gen_nums": [
+        1920.0,
+        6422.0,
+        5830.0,
+        1920.0
+      ],
+      "num_em": 0.5,
+      "num_mae": 2448.75,
+      "num_mape": 71.15291133014695,
+      "halluc": 0.5,
+      "count_match": true,
+      "n_ref_nums": 4,
+      "bleu_ref": "In 1910, 5,830 and in 1940, 7,223 people lived in Etna, Pennsylvania.",
+      "bleu_hyp": "In 1920 , the population of Etna, Pennsylvania was 6422 , up from 5830 in 1920 ."
+    }
+  ]
+}
