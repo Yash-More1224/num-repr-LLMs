@@ -1,0 +1,4009 @@
+{
+  "model_type": "xval",
+  "checkpoint": "checkpoints/xval_bigbench/xval_bigbench_best_epoch70_step001050.pt",
+  "n_examples": 500,
+  "exact_accuracy": 0.0,
+  "near_accuracy": 0.116,
+  "results": [
+    {
+      "id": "arith_00000",
+      "input": "What is 87 plus 684?",
+      "target": "771",
+      "generated": "805.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00001",
+      "input": "What is 757 minus 550?",
+      "target": "207",
+      "generated": "198.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00002",
+      "input": "What is 427 minus 246?",
+      "target": "181",
+      "generated": "175.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00003",
+      "input": "What is 82 times 38?",
+      "target": "3116",
+      "generated": "2775",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00004",
+      "input": "What is 390 divided by 5?",
+      "target": "78",
+      "generated": "68.43",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00005",
+      "input": "What is 88 times 56?",
+      "target": "4928",
+      "generated": "4810",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00006",
+      "input": "What is 369 plus 956?",
+      "target": "1325",
+      "generated": "1355",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00007",
+      "input": "What is 0 divided by 51?",
+      "target": "0",
+      "generated": "-0.206",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00008",
+      "input": "What is 945 minus 17?",
+      "target": "928",
+      "generated": "930.7",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00009",
+      "input": "What is 1444 divided by 19?",
+      "target": "76",
+      "generated": "65.11",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00010",
+      "input": "What is 517 divided by 11?",
+      "target": "47",
+      "generated": "38.73",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00011",
+      "input": "What is 680 minus 673?",
+      "target": "7",
+      "generated": "13.15",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00012",
+      "input": "What is 82 times 25?",
+      "target": "2050",
+      "generated": "1817",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00013",
+      "input": "What is 873 plus 670?",
+      "target": "1543",
+      "generated": "1515",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00014",
+      "input": "What is 857 minus 275?",
+      "target": "582",
+      "generated": "581.7",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00015",
+      "input": "What is 47 times 10?",
+      "target": "470",
+      "generated": "455.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00016",
+      "input": "What is 496 divided by 16?",
+      "target": "31",
+      "generated": "26.26",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00017",
+      "input": "What is 283 plus 795?",
+      "target": "1078",
+      "generated": "1149",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00018",
+      "input": "What is 334 plus 621?",
+      "target": "955",
+      "generated": "988.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00019",
+      "input": "What is 1800 divided by 25?",
+      "target": "72",
+      "generated": "66.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00020",
+      "input": "What is 7505 divided by 79?",
+      "target": "95",
+      "generated": "56.43",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00021",
+      "input": "What is 42 divided by 3?",
+      "target": "14",
+      "generated": "14.08",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00022",
+      "input": "What is 147 plus 903?",
+      "target": "1050",
+      "generated": "1102",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00023",
+      "input": "What is 7216 divided by 82?",
+      "target": "88",
+      "generated": "55.95",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00024",
+      "input": "What is 516 minus 121?",
+      "target": "395",
+      "generated": "387.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00025",
+      "input": "What is 800 divided by 25?",
+      "target": "32",
+      "generated": "31.25",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00026",
+      "input": "What is 777 plus 673?",
+      "target": "1450",
+      "generated": "1444",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00027",
+      "input": "What is 170 plus 202?",
+      "target": "372",
+      "generated": "405.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00028",
+      "input": "What is 294 minus 271?",
+      "target": "23",
+      "generated": "14.37",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00029",
+      "input": "What is 955 minus 704?",
+      "target": "251",
+      "generated": "236.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00030",
+      "input": "What is 92 plus 222?",
+      "target": "314",
+      "generated": "330.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00031",
+      "input": "What is 1953 divided by 21?",
+      "target": "93",
+      "generated": "80.88",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00032",
+      "input": "What is 1445 divided by 17?",
+      "target": "85",
+      "generated": "71.31",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00033",
+      "input": "What is 22 times 74?",
+      "target": "1628",
+      "generated": "1542",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00034",
+      "input": "What is 45 times 89?",
+      "target": "4005",
+      "generated": "3867",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00035",
+      "input": "What is 24 times 86?",
+      "target": "2064",
+      "generated": "1929",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00036",
+      "input": "What is 33 times 80?",
+      "target": "2640",
+      "generated": "2458",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00037",
+      "input": "What is 609 plus 657?",
+      "target": "1266",
+      "generated": "1289",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00038",
+      "input": "What is 52 divided by 52?",
+      "target": "1",
+      "generated": "0.5907",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00039",
+      "input": "What is 72 times 48?",
+      "target": "3456",
+      "generated": "3342",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00040",
+      "input": "What is 5070 divided by 65?",
+      "target": "78",
+      "generated": "59.42",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00041",
+      "input": "What is 5 divided by 5?",
+      "target": "1",
+      "generated": "0.9084",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00042",
+      "input": "What is 2385 divided by 53?",
+      "target": "45",
+      "generated": "56.93",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00043",
+      "input": "What is 525 minus 425?",
+      "target": "100",
+      "generated": "75.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00044",
+      "input": "What is 71 times 83?",
+      "target": "5893",
+      "generated": "6317",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00045",
+      "input": "What is 67 times 4?",
+      "target": "268",
+      "generated": "262.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00046",
+      "input": "What is 496 plus 527?",
+      "target": "1023",
+      "generated": "1015",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00047",
+      "input": "What is 987 minus 5?",
+      "target": "982",
+      "generated": "957.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00048",
+      "input": "What is 347 plus 666?",
+      "target": "1013",
+      "generated": "1054",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00049",
+      "input": "What is 73 times 64?",
+      "target": "4672",
+      "generated": "4908",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00050",
+      "input": "What is 649 plus 796?",
+      "target": "1445",
+      "generated": "1467",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00051",
+      "input": "What is 1120 divided by 70?",
+      "target": "16",
+      "generated": "15.35",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00052",
+      "input": "What is 21 times 92?",
+      "target": "1932",
+      "generated": "1818",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00053",
+      "input": "What is 699 plus 445?",
+      "target": "1144",
+      "generated": "1107",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00054",
+      "input": "What is 563 minus 428?",
+      "target": "135",
+      "generated": "113.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00055",
+      "input": "What is 343 plus 18?",
+      "target": "361",
+      "generated": "366.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00056",
+      "input": "What is 754 plus 93?",
+      "target": "847",
+      "generated": "885.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00057",
+      "input": "What is 386 plus 127?",
+      "target": "513",
+      "generated": "511.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00058",
+      "input": "What is 956 plus 483?",
+      "target": "1439",
+      "generated": "1394",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00059",
+      "input": "What is 950 plus 197?",
+      "target": "1147",
+      "generated": "1174",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00060",
+      "input": "What is 5445 divided by 99?",
+      "target": "55",
+      "generated": "53.91",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00061",
+      "input": "What is 878 minus 453?",
+      "target": "425",
+      "generated": "420.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00062",
+      "input": "What is 106 plus 79?",
+      "target": "185",
+      "generated": "187.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00063",
+      "input": "What is 2304 divided by 48?",
+      "target": "48",
+      "generated": "58.14",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00064",
+      "input": "What is 27 times 67?",
+      "target": "1809",
+      "generated": "1680",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00065",
+      "input": "What is 130 plus 509?",
+      "target": "639",
+      "generated": "655.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00066",
+      "input": "What is 36 times 25?",
+      "target": "900",
+      "generated": "811",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00067",
+      "input": "What is 5035 divided by 95?",
+      "target": "53",
+      "generated": "54.29",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00068",
+      "input": "What is 137 plus 769?",
+      "target": "906",
+      "generated": "961.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00069",
+      "input": "What is 2088 divided by 24?",
+      "target": "87",
+      "generated": "79.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00070",
+      "input": "What is 532 plus 99?",
+      "target": "631",
+      "generated": "643.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00071",
+      "input": "What is 17 times 59?",
+      "target": "1003",
+      "generated": "985.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00072",
+      "input": "What is 29 plus 996?",
+      "target": "1025",
+      "generated": "1008",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00073",
+      "input": "What is 251 plus 816?",
+      "target": "1067",
+      "generated": "1144",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00074",
+      "input": "What is 17 times 5?",
+      "target": "85",
+      "generated": "86.73",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00075",
+      "input": "What is 516 divided by 43?",
+      "target": "12",
+      "generated": "10.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00076",
+      "input": "What is 194 plus 298?",
+      "target": "492",
+      "generated": "525.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00077",
+      "input": "What is 301 minus 259?",
+      "target": "42",
+      "generated": "21.83",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00078",
+      "input": "What is 61 minus 0?",
+      "target": "61",
+      "generated": "25.92",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00079",
+      "input": "What is 13 times 16?",
+      "target": "208",
+      "generated": "229.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00080",
+      "input": "What is 1 times 53?",
+      "target": "53",
+      "generated": "73.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00081",
+      "input": "What is 2040 divided by 85?",
+      "target": "24",
+      "generated": "40.75",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00082",
+      "input": "What is 840 divided by 30?",
+      "target": "28",
+      "generated": "27.71",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00083",
+      "input": "What is 3936 divided by 41?",
+      "target": "96",
+      "generated": "71.01",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00084",
+      "input": "What is 882 minus 761?",
+      "target": "121",
+      "generated": "114.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00085",
+      "input": "What is 857 minus 507?",
+      "target": "350",
+      "generated": "346.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00086",
+      "input": "What is 256 minus 138?",
+      "target": "118",
+      "generated": "105.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00087",
+      "input": "What is 13 plus 952?",
+      "target": "965",
+      "generated": "976.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00088",
+      "input": "What is 6499 divided by 67?",
+      "target": "97",
+      "generated": "58.91",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00089",
+      "input": "What is 726 plus 939?",
+      "target": "1665",
+      "generated": "1632",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00090",
+      "input": "What is 408 minus 336?",
+      "target": "72",
+      "generated": "46.15",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00091",
+      "input": "What is 65 times 75?",
+      "target": "4875",
+      "generated": "5196",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00092",
+      "input": "What is 1272 divided by 53?",
+      "target": "24",
+      "generated": "22.57",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00093",
+      "input": "What is 85 plus 658?",
+      "target": "743",
+      "generated": "774.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00094",
+      "input": "What is 905 minus 626?",
+      "target": "279",
+      "generated": "270.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00095",
+      "input": "What is 48 times 71?",
+      "target": "3408",
+      "generated": "3407",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00096",
+      "input": "What is 59 times 56?",
+      "target": "3304",
+      "generated": "3376",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00097",
+      "input": "What is 78 times 87?",
+      "target": "6786",
+      "generated": "7238",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00098",
+      "input": "What is 245 plus 906?",
+      "target": "1151",
+      "generated": "1221",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00099",
+      "input": "What is 945 minus 348?",
+      "target": "597",
+      "generated": "570.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00100",
+      "input": "What is 5192 divided by 59?",
+      "target": "88",
+      "generated": "61.32",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00101",
+      "input": "What is 806 minus 701?",
+      "target": "105",
+      "generated": "90.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00102",
+      "input": "What is 87 times 15?",
+      "target": "1305",
+      "generated": "1230",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00103",
+      "input": "What is 8265 divided by 87?",
+      "target": "95",
+      "generated": "55.25",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00104",
+      "input": "What is 91 plus 665?",
+      "target": "756",
+      "generated": "787.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00105",
+      "input": "What is 816 plus 855?",
+      "target": "1671",
+      "generated": "1647",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00106",
+      "input": "What is 864 divided by 24?",
+      "target": "36",
+      "generated": "35.22",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00107",
+      "input": "What is 78 times 49?",
+      "target": "3822",
+      "generated": "3665",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00108",
+      "input": "What is 756 minus 547?",
+      "target": "209",
+      "generated": "200.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00109",
+      "input": "What is 26 times 96?",
+      "target": "2496",
+      "generated": "2299",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00110",
+      "input": "What is 516 plus 739?",
+      "target": "1255",
+      "generated": "1293",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00111",
+      "input": "What is 317 minus 54?",
+      "target": "263",
+      "generated": "296.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00112",
+      "input": "What is 5808 divided by 88?",
+      "target": "66",
+      "generated": "55.12",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00113",
+      "input": "What is 397 minus 248?",
+      "target": "149",
+      "generated": "143.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00114",
+      "input": "What is 49 times 52?",
+      "target": "2548",
+      "generated": "2511",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00115",
+      "input": "What is 51 times 10?",
+      "target": "510",
+      "generated": "498.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00116",
+      "input": "What is 689 plus 669?",
+      "target": "1358",
+      "generated": "1373",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00117",
+      "input": "What is 3344 divided by 38?",
+      "target": "88",
+      "generated": "73.04",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00118",
+      "input": "What is 542 minus 375?",
+      "target": "167",
+      "generated": "146.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00119",
+      "input": "What is 5586 divided by 98?",
+      "target": "57",
+      "generated": "54.01",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00120",
+      "input": "What is 987 minus 774?",
+      "target": "213",
+      "generated": "196.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00121",
+      "input": "What is 90 times 71?",
+      "target": "6390",
+      "generated": "6646",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00122",
+      "input": "What is 633 plus 370?",
+      "target": "1003",
+      "generated": "961.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00123",
+      "input": "What is 646 divided by 34?",
+      "target": "19",
+      "generated": "17.97",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00124",
+      "input": "What is 62 plus 412?",
+      "target": "474",
+      "generated": "475.2",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00125",
+      "input": "What is 66 plus 216?",
+      "target": "282",
+      "generated": "297.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00126",
+      "input": "What is 487 minus 321?",
+      "target": "166",
+      "generated": "149.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00127",
+      "input": "What is 786 minus 261?",
+      "target": "525",
+      "generated": "525.9",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00128",
+      "input": "What is 265 plus 904?",
+      "target": "1169",
+      "generated": "1236",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00129",
+      "input": "What is 946 divided by 86?",
+      "target": "11",
+      "generated": "11.31",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00130",
+      "input": "What is 6930 divided by 99?",
+      "target": "70",
+      "generated": "53.92",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00131",
+      "input": "What is 228 minus 24?",
+      "target": "204",
+      "generated": "229.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00132",
+      "input": "What is 6 times 12?",
+      "target": "72",
+      "generated": "80.62",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00133",
+      "input": "What is 11 times 51?",
+      "target": "561",
+      "generated": "572.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00134",
+      "input": "What is 306 minus 145?",
+      "target": "161",
+      "generated": "158.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00135",
+      "input": "What is 30 times 49?",
+      "target": "1470",
+      "generated": "1345",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00136",
+      "input": "What is 498 minus 186?",
+      "target": "312",
+      "generated": "300.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00137",
+      "input": "What is 2040 divided by 30?",
+      "target": "68",
+      "generated": "67.91",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00138",
+      "input": "What is 73 times 76?",
+      "target": "5548",
+      "generated": "5969",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00139",
+      "input": "What is 4788 divided by 63?",
+      "target": "76",
+      "generated": "59.98",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00140",
+      "input": "What is 770 divided by 14?",
+      "target": "55",
+      "generated": "48.27",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00141",
+      "input": "What is 5170 divided by 55?",
+      "target": "94",
+      "generated": "62.87",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00142",
+      "input": "What is 951 minus 93?",
+      "target": "858",
+      "generated": "852.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00143",
+      "input": "What is 71 plus 481?",
+      "target": "552",
+      "generated": "556.1",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00144",
+      "input": "What is 6 times 11?",
+      "target": "66",
+      "generated": "75.63",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00145",
+      "input": "What is 741 plus 539?",
+      "target": "1280",
+      "generated": "1255",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00146",
+      "input": "What is 36 times 73?",
+      "target": "2628",
+      "generated": "2473",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00147",
+      "input": "What is 111 plus 651?",
+      "target": "762",
+      "generated": "793.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00148",
+      "input": "What is 96 times 75?",
+      "target": "7200",
+      "generated": "7407",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00149",
+      "input": "What is 2300 divided by 23?",
+      "target": "100",
+      "generated": "86.58",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00150",
+      "input": "What is 185 plus 882?",
+      "target": "1067",
+      "generated": "1138",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00151",
+      "input": "What is 958 minus 800?",
+      "target": "158",
+      "generated": "151.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00152",
+      "input": "What is 572 plus 53?",
+      "target": "625",
+      "generated": "639.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00153",
+      "input": "What is 465 plus 897?",
+      "target": "1362",
+      "generated": "1391",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00154",
+      "input": "What is 71 times 60?",
+      "target": "4260",
+      "generated": "4414",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00155",
+      "input": "What is 6 times 14?",
+      "target": "84",
+      "generated": "89.93",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00156",
+      "input": "What is 793 divided by 13?",
+      "target": "61",
+      "generated": "53.22",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00157",
+      "input": "What is 392 plus 515?",
+      "target": "907",
+      "generated": "905.1",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00158",
+      "input": "What is 39 plus 378?",
+      "target": "417",
+      "generated": "416.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00159",
+      "input": "What is 121 minus 1?",
+      "target": "120",
+      "generated": "111.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00160",
+      "input": "What is 5568 divided by 58?",
+      "target": "96",
+      "generated": "61.69",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00161",
+      "input": "What is 52 times 46?",
+      "target": "2392",
+      "generated": "2324",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00162",
+      "input": "What is 3705 divided by 65?",
+      "target": "57",
+      "generated": "59.03",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00163",
+      "input": "What is 86 times 76?",
+      "target": "6536",
+      "generated": "6924",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00164",
+      "input": "What is 30 times 34?",
+      "target": "1020",
+      "generated": "915.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00165",
+      "input": "What is 147 plus 553?",
+      "target": "700",
+      "generated": "729.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00166",
+      "input": "What is 78 times 61?",
+      "target": "4758",
+      "generated": "4898",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00167",
+      "input": "What is 19 times 35?",
+      "target": "665",
+      "generated": "624",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00168",
+      "input": "What is 152 divided by 38?",
+      "target": "4",
+      "generated": "3.298",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00169",
+      "input": "What is 553 minus 382?",
+      "target": "171",
+      "generated": "150.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00170",
+      "input": "What is 3108 divided by 37?",
+      "target": "84",
+      "generated": "73.44",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00171",
+      "input": "What is 288 plus 275?",
+      "target": "563",
+      "generated": "575.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00172",
+      "input": "What is 312 plus 215?",
+      "target": "527",
+      "generated": "532.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00173",
+      "input": "What is 87 times 44?",
+      "target": "3828",
+      "generated": "3475",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00174",
+      "input": "What is 754 minus 14?",
+      "target": "740",
+      "generated": "744.8",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00175",
+      "input": "What is 513 plus 903?",
+      "target": "1416",
+      "generated": "1438",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00176",
+      "input": "What is 3168 divided by 48?",
+      "target": "66",
+      "generated": "65.12",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00177",
+      "input": "What is 972 divided by 18?",
+      "target": "54",
+      "generated": "50.54",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00178",
+      "input": "What is 462 plus 515?",
+      "target": "977",
+      "generated": "967.3",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00179",
+      "input": "What is 541 plus 357?",
+      "target": "898",
+      "generated": "852.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00180",
+      "input": "What is 16 times 65?",
+      "target": "1040",
+      "generated": "1026",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00181",
+      "input": "What is 512 plus 763?",
+      "target": "1275",
+      "generated": "1314",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00182",
+      "input": "What is 2242 divided by 59?",
+      "target": "38",
+      "generated": "51.93",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00183",
+      "input": "What is 1729 divided by 91?",
+      "target": "19",
+      "generated": "27.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00184",
+      "input": "What is 986 minus 284?",
+      "target": "702",
+      "generated": "651.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00185",
+      "input": "What is 630 minus 582?",
+      "target": "48",
+      "generated": "26.27",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00186",
+      "input": "What is 132 plus 629?",
+      "target": "761",
+      "generated": "796.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00187",
+      "input": "What is 663 minus 572?",
+      "target": "91",
+      "generated": "64.65",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00188",
+      "input": "What is 28 times 56?",
+      "target": "1568",
+      "generated": "1444",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00189",
+      "input": "What is 67 plus 316?",
+      "target": "383",
+      "generated": "391.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00190",
+      "input": "What is 32 times 41?",
+      "target": "1312",
+      "generated": "1190",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00191",
+      "input": "What is 855 minus 601?",
+      "target": "254",
+      "generated": "250.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00192",
+      "input": "What is 355 plus 700?",
+      "target": "1055",
+      "generated": "1102",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00193",
+      "input": "What is 4200 divided by 70?",
+      "target": "60",
+      "generated": "58.03",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00194",
+      "input": "What is 891 plus 640?",
+      "target": "1531",
+      "generated": "1498",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00195",
+      "input": "What is 53 times 77?",
+      "target": "4081",
+      "generated": "4163",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00196",
+      "input": "What is 986 minus 115?",
+      "target": "871",
+      "generated": "840.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00197",
+      "input": "What is 506 minus 395?",
+      "target": "111",
+      "generated": "88.45",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00198",
+      "input": "What is 170 plus 613?",
+      "target": "783",
+      "generated": "830.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00199",
+      "input": "What is 52 times 57?",
+      "target": "2964",
+      "generated": "2990",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00200",
+      "input": "What is 982 plus 602?",
+      "target": "1584",
+      "generated": "1529",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00201",
+      "input": "What is 38 times 20?",
+      "target": "760",
+      "generated": "698.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00202",
+      "input": "What is 7565 divided by 85?",
+      "target": "89",
+      "generated": "55.52",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00203",
+      "input": "What is 67 times 28?",
+      "target": "1876",
+      "generated": "1685",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00204",
+      "input": "What is 586 minus 549?",
+      "target": "37",
+      "generated": "21.11",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00205",
+      "input": "What is 87 times 82?",
+      "target": "7134",
+      "generated": "7541",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00206",
+      "input": "What is 893 minus 256?",
+      "target": "637",
+      "generated": "629.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00207",
+      "input": "What is 5 times 81?",
+      "target": "405",
+      "generated": "395.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00208",
+      "input": "What is 556 minus 57?",
+      "target": "499",
+      "generated": "513",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00209",
+      "input": "What is 56 times 66?",
+      "target": "3696",
+      "generated": "3828",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00210",
+      "input": "What is 980 minus 224?",
+      "target": "756",
+      "generated": "709.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00211",
+      "input": "What is 357 divided by 51?",
+      "target": "7",
+      "generated": "5.464",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00212",
+      "input": "What is 420 minus 126?",
+      "target": "294",
+      "generated": "294.1",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00213",
+      "input": "What is 283 plus 918?",
+      "target": "1201",
+      "generated": "1261",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00214",
+      "input": "What is 594 divided by 9?",
+      "target": "66",
+      "generated": "55.32",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00215",
+      "input": "What is 49 times 62?",
+      "target": "3038",
+      "generated": "3049",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00216",
+      "input": "What is 80 divided by 2?",
+      "target": "40",
+      "generated": "43.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00217",
+      "input": "What is 3780 divided by 63?",
+      "target": "60",
+      "generated": "59.67",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00218",
+      "input": "What is 2 times 84?",
+      "target": "168",
+      "generated": "197",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00219",
+      "input": "What is 985 minus 19?",
+      "target": "966",
+      "generated": "962.9",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00220",
+      "input": "What is 50 times 13?",
+      "target": "650",
+      "generated": "630",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00221",
+      "input": "What is 155 plus 917?",
+      "target": "1072",
+      "generated": "1125",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00222",
+      "input": "What is 457 minus 378?",
+      "target": "79",
+      "generated": "53.11",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00223",
+      "input": "What is 403 plus 382?",
+      "target": "785",
+      "generated": "758",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00224",
+      "input": "What is 563 minus 411?",
+      "target": "152",
+      "generated": "131.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00225",
+      "input": "What is 2040 divided by 34?",
+      "target": "60",
+      "generated": "63.02",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00226",
+      "input": "What is 7 times 43?",
+      "target": "301",
+      "generated": "285.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00227",
+      "input": "What is 66 plus 890?",
+      "target": "956",
+      "generated": "985.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00228",
+      "input": "What is 2280 divided by 24?",
+      "target": "95",
+      "generated": "84.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00229",
+      "input": "What is 285 minus 210?",
+      "target": "75",
+      "generated": "55.26",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00230",
+      "input": "What is 33 times 30?",
+      "target": "990",
+      "generated": "886.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00231",
+      "input": "What is 729 divided by 81?",
+      "target": "9",
+      "generated": "8.83",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00232",
+      "input": "What is 800 divided by 40?",
+      "target": "20",
+      "generated": "18.83",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00233",
+      "input": "What is 294 divided by 14?",
+      "target": "21",
+      "generated": "17.33",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00234",
+      "input": "What is 39 times 16?",
+      "target": "624",
+      "generated": "587.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00235",
+      "input": "What is 225 plus 751?",
+      "target": "976",
+      "generated": "1052",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00236",
+      "input": "What is 5396 divided by 76?",
+      "target": "71",
+      "generated": "56.94",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00237",
+      "input": "What is 981 plus 156?",
+      "target": "1137",
+      "generated": "1175",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00238",
+      "input": "What is 2530 divided by 55?",
+      "target": "46",
+      "generated": "57.94",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00239",
+      "input": "What is 796 minus 269?",
+      "target": "527",
+      "generated": "528.4",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00240",
+      "input": "What is 713 minus 430?",
+      "target": "283",
+      "generated": "268.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00241",
+      "input": "What is 291 plus 28?",
+      "target": "319",
+      "generated": "332.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00242",
+      "input": "What is 280 divided by 8?",
+      "target": "35",
+      "generated": "30.45",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00243",
+      "input": "What is 88 times 74?",
+      "target": "6512",
+      "generated": "6849",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00244",
+      "input": "What is 517 plus 136?",
+      "target": "653",
+      "generated": "658.7",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00245",
+      "input": "What is 4074 divided by 97?",
+      "target": "42",
+      "generated": "53.91",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00246",
+      "input": "What is 3528 divided by 36?",
+      "target": "98",
+      "generated": "75.33",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00247",
+      "input": "What is 2548 divided by 52?",
+      "target": "49",
+      "generated": "59.49",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00248",
+      "input": "What is 444 plus 100?",
+      "target": "544",
+      "generated": "545.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00249",
+      "input": "What is 936 plus 133?",
+      "target": "1069",
+      "generated": "1115",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00250",
+      "input": "What is 4675 divided by 85?",
+      "target": "55",
+      "generated": "55.46",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00251",
+      "input": "What is 670 minus 86?",
+      "target": "584",
+      "generated": "587.9",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00252",
+      "input": "What is 533 plus 810?",
+      "target": "1343",
+      "generated": "1379",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00253",
+      "input": "What is 12 plus 421?",
+      "target": "433",
+      "generated": "425.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00254",
+      "input": "What is 3081 divided by 39?",
+      "target": "79",
+      "generated": "71.45",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00255",
+      "input": "What is 300 minus 99?",
+      "target": "201",
+      "generated": "209.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00256",
+      "input": "What is 806 minus 323?",
+      "target": "483",
+      "generated": "483.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00257",
+      "input": "What is 33 times 46?",
+      "target": "1518",
+      "generated": "1390",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00258",
+      "input": "What is 2590 divided by 70?",
+      "target": "37",
+      "generated": "53.84",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00259",
+      "input": "What is 467 plus 625?",
+      "target": "1092",
+      "generated": "1113",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00260",
+      "input": "What is 451 minus 266?",
+      "target": "185",
+      "generated": "176.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00261",
+      "input": "What is 5 times 94?",
+      "target": "470",
+      "generated": "438",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00262",
+      "input": "What is 842 minus 797?",
+      "target": "45",
+      "generated": "32.13",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00263",
+      "input": "What is 95 times 61?",
+      "target": "5795",
+      "generated": "5708",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00264",
+      "input": "What is 95 times 46?",
+      "target": "4370",
+      "generated": "3930",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00265",
+      "input": "What is 53 times 22?",
+      "target": "1166",
+      "generated": "1073",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00266",
+      "input": "What is 5734 divided by 61?",
+      "target": "94",
+      "generated": "60.65",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00267",
+      "input": "What is 374 plus 375?",
+      "target": "749",
+      "generated": "729.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00268",
+      "input": "What is 11 times 68?",
+      "target": "748",
+      "generated": "749.4",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00269",
+      "input": "What is 824 minus 60?",
+      "target": "764",
+      "generated": "787.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00270",
+      "input": "What is 975 plus 735?",
+      "target": "1710",
+      "generated": "1655",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00271",
+      "input": "What is 883 minus 141?",
+      "target": "742",
+      "generated": "738.8",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00272",
+      "input": "What is 3510 divided by 90?",
+      "target": "39",
+      "generated": "54.24",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00273",
+      "input": "What is 495 minus 393?",
+      "target": "102",
+      "generated": "78.54",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00274",
+      "input": "What is 3762 divided by 57?",
+      "target": "66",
+      "generated": "61.71",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00275",
+      "input": "What is 93 plus 764?",
+      "target": "857",
+      "generated": "897.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00276",
+      "input": "What is 129 plus 517?",
+      "target": "646",
+      "generated": "663",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00277",
+      "input": "What is 740 minus 232?",
+      "target": "508",
+      "generated": "504.3",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00278",
+      "input": "What is 33 times 48?",
+      "target": "1584",
+      "generated": "1454",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00279",
+      "input": "What is 555 plus 753?",
+      "target": "1308",
+      "generated": "1345",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00280",
+      "input": "What is 713 minus 419?",
+      "target": "294",
+      "generated": "279.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00281",
+      "input": "What is 876 minus 219?",
+      "target": "657",
+      "generated": "653.1",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00282",
+      "input": "What is 58 times 64?",
+      "target": "3712",
+      "generated": "3860",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00283",
+      "input": "What is 887 minus 221?",
+      "target": "666",
+      "generated": "659.7",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00284",
+      "input": "What is 91 times 57?",
+      "target": "5187",
+      "generated": "5051",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00285",
+      "input": "What is 98 times 68?",
+      "target": "6664",
+      "generated": "6707",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00286",
+      "input": "What is 23 times 95?",
+      "target": "2185",
+      "generated": "2033",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00287",
+      "input": "What is 184 divided by 4?",
+      "target": "46",
+      "generated": "46.62",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00288",
+      "input": "What is 464 divided by 8?",
+      "target": "58",
+      "generated": "48.45",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00289",
+      "input": "What is 823 minus 180?",
+      "target": "643",
+      "generated": "643.9",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00290",
+      "input": "What is 74 times 46?",
+      "target": "3404",
+      "generated": "3233",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00291",
+      "input": "What is 580 minus 579?",
+      "target": "1",
+      "generated": "12.13",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00292",
+      "input": "What is 317 plus 472?",
+      "target": "789",
+      "generated": "793.3",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00293",
+      "input": "What is 2430 divided by 90?",
+      "target": "27",
+      "generated": "48.54",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00294",
+      "input": "What is 21 times 26?",
+      "target": "546",
+      "generated": "513.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00295",
+      "input": "What is 61 plus 140?",
+      "target": "201",
+      "generated": "205.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00296",
+      "input": "What is 1080 divided by 18?",
+      "target": "60",
+      "generated": "56.06",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00297",
+      "input": "What is 914 minus 5?",
+      "target": "909",
+      "generated": "897.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00298",
+      "input": "What is 21 plus 844?",
+      "target": "865",
+      "generated": "915.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00299",
+      "input": "What is 4902 divided by 57?",
+      "target": "86",
+      "generated": "62.04",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00300",
+      "input": "What is 63 times 68?",
+      "target": "4284",
+      "generated": "4527",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00301",
+      "input": "What is 205 minus 190?",
+      "target": "15",
+      "generated": "12.85",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00302",
+      "input": "What is 900 plus 950?",
+      "target": "1850",
+      "generated": "1763",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00303",
+      "input": "What is 6 times 82?",
+      "target": "492",
+      "generated": "473.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00304",
+      "input": "What is 923 minus 265?",
+      "target": "658",
+      "generated": "640.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00305",
+      "input": "What is 713 minus 411?",
+      "target": "302",
+      "generated": "287.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00306",
+      "input": "What is 3055 divided by 65?",
+      "target": "47",
+      "generated": "57.85",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00307",
+      "input": "What is 122 minus 12?",
+      "target": "110",
+      "generated": "111.1",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00308",
+      "input": "What is 410 minus 39?",
+      "target": "371",
+      "generated": "404.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00309",
+      "input": "What is 315 divided by 63?",
+      "target": "5",
+      "generated": "3.914",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00310",
+      "input": "What is 526 plus 243?",
+      "target": "769",
+      "generated": "745.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00311",
+      "input": "What is 3375 divided by 45?",
+      "target": "75",
+      "generated": "67.45",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00312",
+      "input": "What is 7371 divided by 91?",
+      "target": "81",
+      "generated": "54.76",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00313",
+      "input": "What is 3828 divided by 44?",
+      "target": "87",
+      "generated": "68.64",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00314",
+      "input": "What is 4183 divided by 47?",
+      "target": "89",
+      "generated": "66.83",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00315",
+      "input": "What is 17 times 34?",
+      "target": "578",
+      "generated": "549.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00316",
+      "input": "What is 719 minus 686?",
+      "target": "33",
+      "generated": "20.71",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00317",
+      "input": "What is 588 divided by 6?",
+      "target": "98",
+      "generated": "85.42",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00318",
+      "input": "What is 130 minus 44?",
+      "target": "86",
+      "generated": "72.87",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00319",
+      "input": "What is 610 minus 237?",
+      "target": "373",
+      "generated": "357.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00320",
+      "input": "What is 674 minus 175?",
+      "target": "499",
+      "generated": "487.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00321",
+      "input": "What is 5580 divided by 90?",
+      "target": "62",
+      "generated": "54.87",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00322",
+      "input": "What is 460 plus 762?",
+      "target": "1222",
+      "generated": "1264",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00323",
+      "input": "What is 4575 divided by 75?",
+      "target": "61",
+      "generated": "57.07",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00324",
+      "input": "What is 2888 divided by 38?",
+      "target": "76",
+      "generated": "71.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00325",
+      "input": "What is 269 plus 729?",
+      "target": "998",
+      "generated": "1066",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00326",
+      "input": "What is 24 times 83?",
+      "target": "1992",
+      "generated": "1865",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00327",
+      "input": "What is 841 plus 297?",
+      "target": "1138",
+      "generated": "1131",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00328",
+      "input": "What is 591 plus 104?",
+      "target": "695",
+      "generated": "713.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00329",
+      "input": "What is 914 plus 267?",
+      "target": "1181",
+      "generated": "1184",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00330",
+      "input": "What is 76 times 83?",
+      "target": "6308",
+      "generated": "6772",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00331",
+      "input": "What is 610 plus 184?",
+      "target": "794",
+      "generated": "796.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00332",
+      "input": "What is 2240 divided by 80?",
+      "target": "28",
+      "generated": "46.68",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00333",
+      "input": "What is 3920 divided by 98?",
+      "target": "40",
+      "generated": "53.74",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00334",
+      "input": "What is 880 plus 460?",
+      "target": "1340",
+      "generated": "1306",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00335",
+      "input": "What is 55 times 87?",
+      "target": "4785",
+      "generated": "4861",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00336",
+      "input": "What is 58 times 40?",
+      "target": "2320",
+      "generated": "2187",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00337",
+      "input": "What is 42 times 38?",
+      "target": "1596",
+      "generated": "1474",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00338",
+      "input": "What is 921 minus 632?",
+      "target": "289",
+      "generated": "277.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00339",
+      "input": "What is 4 times 62?",
+      "target": "248",
+      "generated": "254.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00340",
+      "input": "What is 214 minus 205?",
+      "target": "9",
+      "generated": "11.32",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00341",
+      "input": "What is 5796 divided by 92?",
+      "target": "63",
+      "generated": "54.64",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00342",
+      "input": "What is 856 minus 589?",
+      "target": "267",
+      "generated": "263.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00343",
+      "input": "What is 625 plus 613?",
+      "target": "1238",
+      "generated": "1249",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00344",
+      "input": "What is 370 minus 161?",
+      "target": "209",
+      "generated": "208.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00345",
+      "input": "What is 511 divided by 73?",
+      "target": "7",
+      "generated": "6.102",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00346",
+      "input": "What is 698 plus 906?",
+      "target": "1604",
+      "generated": "1591",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00347",
+      "input": "What is 705 minus 21?",
+      "target": "684",
+      "generated": "692.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00348",
+      "input": "What is 154 minus 6?",
+      "target": "148",
+      "generated": "165.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00349",
+      "input": "What is 100 times 48?",
+      "target": "4800",
+      "generated": "4310",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00350",
+      "input": "What is 493 plus 678?",
+      "target": "1171",
+      "generated": "1203",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00351",
+      "input": "What is 732 minus 433?",
+      "target": "299",
+      "generated": "287.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00352",
+      "input": "What is 676 plus 235?",
+      "target": "911",
+      "generated": "904.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00353",
+      "input": "What is 290 plus 205?",
+      "target": "495",
+      "generated": "507",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00354",
+      "input": "What is 675 minus 570?",
+      "target": "105",
+      "generated": "81.26",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00355",
+      "input": "What is 2640 divided by 88?",
+      "target": "30",
+      "generated": "51.15",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00356",
+      "input": "What is 103 plus 608?",
+      "target": "711",
+      "generated": "733.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00357",
+      "input": "What is 23 times 6?",
+      "target": "138",
+      "generated": "129.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00358",
+      "input": "What is 2492 divided by 28?",
+      "target": "89",
+      "generated": "80.61",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00359",
+      "input": "What is 84 times 33?",
+      "target": "2772",
+      "generated": "2422",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00360",
+      "input": "What is 50 times 8?",
+      "target": "400",
+      "generated": "385.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00361",
+      "input": "What is 825 minus 203?",
+      "target": "622",
+      "generated": "623.3",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00362",
+      "input": "What is 69 times 59?",
+      "target": "4071",
+      "generated": "4209",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00363",
+      "input": "What is 325 divided by 65?",
+      "target": "5",
+      "generated": "3.94",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00364",
+      "input": "What is 189 plus 241?",
+      "target": "430",
+      "generated": "465.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00365",
+      "input": "What is 51 times 52?",
+      "target": "2652",
+      "generated": "2631",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00366",
+      "input": "What is 813 plus 607?",
+      "target": "1420",
+      "generated": "1399",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00367",
+      "input": "What is 462 minus 440?",
+      "target": "22",
+      "generated": "16.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00368",
+      "input": "What is 3358 divided by 73?",
+      "target": "46",
+      "generated": "56.68",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00369",
+      "input": "What is 1530 divided by 17?",
+      "target": "90",
+      "generated": "73.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00370",
+      "input": "What is 86 plus 346?",
+      "target": "432",
+      "generated": "438.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00371",
+      "input": "What is 406 plus 372?",
+      "target": "778",
+      "generated": "749.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00372",
+      "input": "What is 35 times 80?",
+      "target": "2800",
+      "generated": "2620",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00373",
+      "input": "What is 20 divided by 5?",
+      "target": "4",
+      "generated": "3.298",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00374",
+      "input": "What is 58 times 76?",
+      "target": "4408",
+      "generated": "4598",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00375",
+      "input": "What is 891 minus 543?",
+      "target": "348",
+      "generated": "340.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00376",
+      "input": "What is 8712 divided by 88?",
+      "target": "99",
+      "generated": "55.13",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00377",
+      "input": "What is 585 minus 390?",
+      "target": "195",
+      "generated": "174",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00378",
+      "input": "What is 384 plus 897?",
+      "target": "1281",
+      "generated": "1322",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00379",
+      "input": "What is 3250 divided by 65?",
+      "target": "50",
+      "generated": "58.38",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00380",
+      "input": "What is 18 times 93?",
+      "target": "1674",
+      "generated": "1591",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00381",
+      "input": "What is 692 minus 18?",
+      "target": "674",
+      "generated": "679.5",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00382",
+      "input": "What is 821 minus 621?",
+      "target": "200",
+      "generated": "196.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00383",
+      "input": "What is 44 times 94?",
+      "target": "4136",
+      "generated": "3942",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00384",
+      "input": "What is 87 times 48?",
+      "target": "4176",
+      "generated": "3883",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00385",
+      "input": "What is 970 minus 469?",
+      "target": "501",
+      "generated": "462.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00386",
+      "input": "What is 480 minus 150?",
+      "target": "330",
+      "generated": "321",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00387",
+      "input": "What is 773 minus 575?",
+      "target": "198",
+      "generated": "191.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00388",
+      "input": "What is 631 minus 573?",
+      "target": "58",
+      "generated": "32.52",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00389",
+      "input": "What is 630 minus 574?",
+      "target": "56",
+      "generated": "31.13",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00390",
+      "input": "What is 905 plus 738?",
+      "target": "1643",
+      "generated": "1608",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00391",
+      "input": "What is 251 plus 140?",
+      "target": "391",
+      "generated": "410.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00392",
+      "input": "What is 780 divided by 15?",
+      "target": "52",
+      "generated": "46.18",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00393",
+      "input": "What is 28 plus 491?",
+      "target": "519",
+      "generated": "524.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00394",
+      "input": "What is 904 minus 218?",
+      "target": "686",
+      "generated": "675",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00395",
+      "input": "What is 51 plus 297?",
+      "target": "348",
+      "generated": "355.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00396",
+      "input": "What is 3072 divided by 32?",
+      "target": "96",
+      "generated": "79.02",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00397",
+      "input": "What is 873 minus 75?",
+      "target": "798",
+      "generated": "815.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00398",
+      "input": "What is 49 times 92?",
+      "target": "4508",
+      "generated": "4411",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00399",
+      "input": "What is 48 times 54?",
+      "target": "2592",
+      "generated": "2558",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00400",
+      "input": "What is 98 plus 364?",
+      "target": "462",
+      "generated": "467.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00401",
+      "input": "What is 156 minus 51?",
+      "target": "105",
+      "generated": "93.86",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00402",
+      "input": "What is 514 plus 826?",
+      "target": "1340",
+      "generated": "1376",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00403",
+      "input": "What is 174 plus 695?",
+      "target": "869",
+      "generated": "932.6",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00404",
+      "input": "What is 724 minus 69?",
+      "target": "655",
+      "generated": "669.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00405",
+      "input": "What is 480 plus 121?",
+      "target": "601",
+      "generated": "604.8",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00406",
+      "input": "What is 341 plus 789?",
+      "target": "1130",
+      "generated": "1188",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00407",
+      "input": "What is 585 minus 533?",
+      "target": "52",
+      "generated": "28.57",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00408",
+      "input": "What is 728 minus 389?",
+      "target": "339",
+      "generated": "327.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00409",
+      "input": "What is 88 times 30?",
+      "target": "2640",
+      "generated": "2288",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00410",
+      "input": "What is 46 plus 677?",
+      "target": "723",
+      "generated": "766.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00411",
+      "input": "What is 82 times 10?",
+      "target": "820",
+      "generated": "790.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00412",
+      "input": "What is 794 minus 535?",
+      "target": "259",
+      "generated": "253.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00413",
+      "input": "What is 810 divided by 90?",
+      "target": "9",
+      "generated": "9.326",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00414",
+      "input": "What is 12 divided by 1?",
+      "target": "12",
+      "generated": "11.38",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00415",
+      "input": "What is 89 times 91?",
+      "target": "8099",
+      "generated": "8374",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00416",
+      "input": "What is 50 times 75?",
+      "target": "3750",
+      "generated": "3777",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00417",
+      "input": "What is 46 plus 433?",
+      "target": "479",
+      "generated": "478.4",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00418",
+      "input": "What is 197 minus 36?",
+      "target": "161",
+      "generated": "168.7",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00419",
+      "input": "What is 455 plus 910?",
+      "target": "1365",
+      "generated": "1392",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00420",
+      "input": "What is 94 times 79?",
+      "target": "7426",
+      "generated": "7704",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00421",
+      "input": "What is 31 times 14?",
+      "target": "434",
+      "generated": "417.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00422",
+      "input": "What is 6006 divided by 77?",
+      "target": "78",
+      "generated": "56.77",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00423",
+      "input": "What is 842 plus 798?",
+      "target": "1640",
+      "generated": "1623",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00424",
+      "input": "What is 558 minus 300?",
+      "target": "258",
+      "generated": "239.8",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00425",
+      "input": "What is 7954 divided by 97?",
+      "target": "82",
+      "generated": "54.12",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00426",
+      "input": "What is 811 plus 21?",
+      "target": "832",
+      "generated": "857.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00427",
+      "input": "What is 93 plus 234?",
+      "target": "327",
+      "generated": "343",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00428",
+      "input": "What is 435 minus 154?",
+      "target": "281",
+      "generated": "276",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00429",
+      "input": "What is 5742 divided by 99?",
+      "target": "58",
+      "generated": "53.92",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00430",
+      "input": "What is 760 minus 216?",
+      "target": "544",
+      "generated": "542.3",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00431",
+      "input": "What is 293 plus 496?",
+      "target": "789",
+      "generated": "803.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00432",
+      "input": "What is 1007 divided by 53?",
+      "target": "19",
+      "generated": "18.06",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00433",
+      "input": "What is 96 times 84?",
+      "target": "8064",
+      "generated": "8273",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00434",
+      "input": "What is 360 plus 519?",
+      "target": "879",
+      "generated": "883.4",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00435",
+      "input": "What is 641 plus 751?",
+      "target": "1392",
+      "generated": "1419",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00436",
+      "input": "What is 76 times 84?",
+      "target": "6384",
+      "generated": "6846",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00437",
+      "input": "What is 77 times 72?",
+      "target": "5544",
+      "generated": "5930",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00438",
+      "input": "What is 3139 divided by 43?",
+      "target": "73",
+      "generated": "68.34",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00439",
+      "input": "What is 58 times 32?",
+      "target": "1856",
+      "generated": "1691",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00440",
+      "input": "What is 20 times 90?",
+      "target": "1800",
+      "generated": "1704",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00441",
+      "input": "What is 536 plus 998?",
+      "target": "1534",
+      "generated": "1520",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00442",
+      "input": "What is 275 minus 142?",
+      "target": "133",
+      "generated": "125",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00443",
+      "input": "What is 959 plus 508?",
+      "target": "1467",
+      "generated": "1419",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00444",
+      "input": "What is 938 minus 158?",
+      "target": "780",
+      "generated": "759",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00445",
+      "input": "What is 362 plus 441?",
+      "target": "803",
+      "generated": "792",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00446",
+      "input": "What is 1 times 36?",
+      "target": "36",
+      "generated": "47.05",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00447",
+      "input": "What is 60 times 67?",
+      "target": "4020",
+      "generated": "4216",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00448",
+      "input": "What is 796 plus 474?",
+      "target": "1270",
+      "generated": "1239",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00449",
+      "input": "What is 597 minus 220?",
+      "target": "377",
+      "generated": "361.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00450",
+      "input": "What is 320 plus 437?",
+      "target": "757",
+      "generated": "756",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00451",
+      "input": "What is 97 times 69?",
+      "target": "6693",
+      "generated": "6780",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00452",
+      "input": "What is 903 minus 427?",
+      "target": "476",
+      "generated": "465.9",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00453",
+      "input": "What is 917 plus 546?",
+      "target": "1463",
+      "generated": "1422",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00454",
+      "input": "What is 836 minus 461?",
+      "target": "375",
+      "generated": "373.4",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00455",
+      "input": "What is 79 times 80?",
+      "target": "6320",
+      "generated": "6784",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00456",
+      "input": "What is 6882 divided by 74?",
+      "target": "93",
+      "generated": "57.33",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00457",
+      "input": "What is 38 times 41?",
+      "target": "1558",
+      "generated": "1434",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00458",
+      "input": "What is 99 divided by 9?",
+      "target": "11",
+      "generated": "8.509",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00459",
+      "input": "What is 305 plus 971?",
+      "target": "1276",
+      "generated": "1317",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00460",
+      "input": "What is 85 times 32?",
+      "target": "2720",
+      "generated": "2369",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00461",
+      "input": "What is 33 times 86?",
+      "target": "2838",
+      "generated": "2633",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00462",
+      "input": "What is 3 times 5?",
+      "target": "15",
+      "generated": "23.53",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00463",
+      "input": "What is 89 times 97?",
+      "target": "8633",
+      "generated": "8750",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00464",
+      "input": "What is 2730 divided by 30?",
+      "target": "91",
+      "generated": "79.97",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00465",
+      "input": "What is 702 minus 547?",
+      "target": "155",
+      "generated": "140",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00466",
+      "input": "What is 4 times 55?",
+      "target": "220",
+      "generated": "222.5",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00467",
+      "input": "What is 184 plus 797?",
+      "target": "981",
+      "generated": "1057",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00468",
+      "input": "What is 1 times 19?",
+      "target": "19",
+      "generated": "29.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00469",
+      "input": "What is 340 plus 857?",
+      "target": "1197",
+      "generated": "1253",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00470",
+      "input": "What is 464 plus 347?",
+      "target": "811",
+      "generated": "769.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00471",
+      "input": "What is 14 times 72?",
+      "target": "1008",
+      "generated": "997.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00472",
+      "input": "What is 3 times 30?",
+      "target": "90",
+      "generated": "85.17",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00473",
+      "input": "What is 447 minus 236?",
+      "target": "211",
+      "generated": "204.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00474",
+      "input": "What is 1035 divided by 23?",
+      "target": "45",
+      "generated": "44.11",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00475",
+      "input": "What is 71 times 46?",
+      "target": "3266",
+      "generated": "3124",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00476",
+      "input": "What is 898 plus 476?",
+      "target": "1374",
+      "generated": "1337",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00477",
+      "input": "What is 924 minus 156?",
+      "target": "768",
+      "generated": "752.3",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00478",
+      "input": "What is 46 times 13?",
+      "target": "598",
+      "generated": "576",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00479",
+      "input": "What is 9 times 72?",
+      "target": "648",
+      "generated": "641.8",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00480",
+      "input": "What is 922 minus 807?",
+      "target": "115",
+      "generated": "108.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00481",
+      "input": "What is 307 minus 137?",
+      "target": "170",
+      "generated": "169.1",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00482",
+      "input": "What is 424 minus 24?",
+      "target": "400",
+      "generated": "431.2",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00483",
+      "input": "What is 657 minus 38?",
+      "target": "619",
+      "generated": "634.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00484",
+      "input": "What is 4074 divided by 42?",
+      "target": "97",
+      "generated": "70.27",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00485",
+      "input": "What is 45 times 32?",
+      "target": "1440",
+      "generated": "1312",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00486",
+      "input": "What is 502 plus 571?",
+      "target": "1073",
+      "generated": "1079",
+      "exact_match": false,
+      "near_match_1pct": true
+    },
+    {
+      "id": "arith_00487",
+      "input": "What is 614 plus 332?",
+      "target": "946",
+      "generated": "907.4",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00488",
+      "input": "What is 798 minus 743?",
+      "target": "55",
+      "generated": "37.13",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00489",
+      "input": "What is 100 times 52?",
+      "target": "5200",
+      "generated": "4784",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00490",
+      "input": "What is 476 plus 825?",
+      "target": "1301",
+      "generated": "1340",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00491",
+      "input": "What is 601 minus 24?",
+      "target": "577",
+      "generated": "587",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00492",
+      "input": "What is 186 plus 747?",
+      "target": "933",
+      "generated": "1006",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00493",
+      "input": "What is 3420 divided by 38?",
+      "target": "90",
+      "generated": "73.17",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00494",
+      "input": "What is 60 times 66?",
+      "target": "3960",
+      "generated": "4149",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00495",
+      "input": "What is 87 times 77?",
+      "target": "6699",
+      "generated": "7085",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00496",
+      "input": "What is 644 minus 72?",
+      "target": "572",
+      "generated": "580.1",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00497",
+      "input": "What is 218 plus 488?",
+      "target": "706",
+      "generated": "735",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00498",
+      "input": "What is 522 divided by 87?",
+      "target": "6",
+      "generated": "5.599",
+      "exact_match": false,
+      "near_match_1pct": false
+    },
+    {
+      "id": "arith_00499",
+      "input": "What is 624 plus 983?",
+      "target": "1607",
+      "generated": "1581",
+      "exact_match": false,
+      "near_match_1pct": false
+    }
+  ]
+}

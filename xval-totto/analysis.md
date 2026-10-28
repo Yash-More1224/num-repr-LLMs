@@ -27,7 +27,7 @@
 | **FoNE** | **0.446** (44.6%) | **0.516** (51.6%) | Dedicated regression head provides strong arithmetic inductive bias |
 | **Digit** | 0.100 (10.0%) | 0.172 (17.2%) | Autoregressive digit prediction suffers from compounding errors |
 | **BPE** | 0.020 (2.0%) | 0.056 (5.6%) | Generates plausible-magnitude numbers, but cannot perform computation |
-| **xVal** | 0.002 (0.2%) | 0.022 (2.2%) | Continuous scalar output rarely lands on exact integer targets |
+| **xVal (Fixed)** | 0.000 (0.0%) | 0.116 (11.6%) | Continuous scalar output inherently struggles to hit exact integers; squashing helps near accuracy |
 
 ### 1c. Complete 2×4 Task Comparison Matrix
 
@@ -36,7 +36,29 @@
 | **BPE** | **33.41** | **0.9064** | 0.0200 | 🟢 Best at text fluency & copying; 🔴 Cannot compute arithmetic |
 | **Digit** | 25.88 | 0.7245 | 0.1000 | 🟡 Balanced middle-ground; 🔴 Longer sequence lengths & digit drift |
 | **FoNE (Fixed)** | 31.29 | 0.8388 | **0.4460** | 🟢 Dominates arithmetic & strong LM generation; 🟡 Slight representation conflict during training |
-| **xVal (Fixed)** | 22.27 | 0.0670 | *Requires Retrain* | 🟡 Text decoding fixed; 🔴 Continuous head still fails on exact integer numbers |
+| **xVal (Fixed)** | 22.27 | 0.0670 | 0.0000 | 🟡 Text decoding fixed; 🔴 Continuous head still fails on exact integer numbers |
+
+---
+
+## 2. Re-Evaluating the FoNE Hypothesis: A Negative Result
+
+Upon fixing the `generate()` autoregressive decoding bug in both the FoNE and FoNE-DP baselines, we discovered that the catastrophic hallucination loops and terrible BLEU scores were **entirely an artifact of the evaluation script**, not an architectural limitation of FoNE. 
+
+**Performance Comparison (Fixed Decoding):**
+*   **FoNE (Original):** BLEU: 31.29, Num-EM: 0.8388
+*   **FoNE-DP (Ours):** BLEU: 31.88, Num-EM: 0.8233
+
+### The "Representation Conflict" Hypothesis is Invalid
+We originally hypothesized that on small datasets (~120k examples), the FoNE transformer backbone suffered from a "Representation Conflict" between the cross-entropy language loss and the digit-wise numeric loss, tearing the hidden states apart. We built FoNE-DP (Detached Projection) with a gradient wall to isolate these losses.
+
+However, the fixed results prove this hypothesis wrong. The original FoNE backbone is fully capable of satisfying both losses simultaneously without any degradation in language modeling fluency (achieving 31.29 BLEU, near BPE's 33.41). It does not require 15 billion tokens to stabilize; it works perfectly well on a small 120k-example dataset.
+
+### Conclusion: Research Pivot Required
+Because FoNE-DP performs virtually identically to the original FoNE architecture, it does not solve any existing problem. It simply adds unnecessary parameters (`num_proj`) to do a job the backbone is already fully capable of doing. 
+
+The original FoNE paper is correct: their additive Fourier embedding approach solves the numeracy problem without harming language capabilities. The "gap" in the literature we thought we found does not exist. 
+
+This specific research thread (FoNE-DP) is a **negative result** and should be dropped. We must pivot to a different open problem in the numerical representation space.
 
 ---
 
