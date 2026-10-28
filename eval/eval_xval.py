@@ -15,14 +15,14 @@ For each dev example:
   5. Compute all the same metrics as BPE, PLUS:
      - Scalar MSE (log-normalized): how accurate is the regression head?
 
-Saves results to: results/xval_results.json
+Saves results to: results/totto/xval.json
 
 Usage:
   python eval/eval_xval.py \\
       --checkpoint checkpoints/xval/xval_epoch04_step003772.pt \\
       --config configs/model_config.yaml \\
       --train_config configs/train_config.yaml \\
-      --output results/xval_results.json \\
+      --output results/totto/xval.json \\
       --max_examples 7700
 """
 
@@ -328,7 +328,7 @@ def main():
     parser.add_argument("--checkpoint",    required=True)
     parser.add_argument("--config",        required=True,  help="model_config.yaml")
     parser.add_argument("--train_config",  required=True,  help="train_config.yaml")
-    parser.add_argument("--output",        default="results/xval_results.json")
+    parser.add_argument("--output",        default="results/totto/xval.json")
     parser.add_argument("--max_examples",  type=int, default=7700)
     parser.add_argument("--max_new_tokens",type=int, default=80)
     args = parser.parse_args()

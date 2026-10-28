@@ -17,12 +17,12 @@ Arithmetic operations covered:
 Each JSONL line:
   {"id": "arith_00001", "input": "What is 3 plus 4?", "target": "7"}
 
-Output: ../data/bigbench_arithmetic/  (parent directory of xval-totto)
+Output: data/bigbench_arithmetic/
 
 Usage
 -----
-  cd ~/numeric-eval/xval-totto
-  python data/download_bigbench.py --output_dir ../data/bigbench_arithmetic --n_examples 5000
+  cd numeric-eval
+  python data/download_bigbench.py --output_dir data/bigbench_arithmetic --n_examples 5000
 """
 
 import argparse
@@ -134,8 +134,8 @@ def main():
     )
     parser.add_argument(
         "--output_dir",
-        default="../data/bigbench_arithmetic",
-        help="Where to save the JSONL splits (default: ../data/bigbench_arithmetic)",
+        default="data/bigbench_arithmetic",
+        help="Where to save the JSONL splits (default: data/bigbench_arithmetic)",
     )
     parser.add_argument(
         "--n_examples", type=int, default=5000,

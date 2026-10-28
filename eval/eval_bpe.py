@@ -10,14 +10,14 @@ For each dev example:
   4. Extract numbers from the generated text using regex
   5. Compare against reference numbers with all numeric metrics
 
-Saves results to: results/bpe_results.json
+Saves results to: results/totto/bpe.json
 
 Usage:
   python eval/eval_bpe.py \\
       --checkpoint checkpoints/bpe/bpe_epoch05_step004715.pt \\
       --config configs/model_config.yaml \\
       --train_config configs/train_config.yaml \\
-      --output results/bpe_results.json \\
+      --output results/totto/bpe.json \\
       --max_examples 7700       # use full dev set; set lower for quick test
 """
 
@@ -212,7 +212,7 @@ def main():
     parser.add_argument("--checkpoint",    required=True)
     parser.add_argument("--config",        required=True,  help="model_config.yaml")
     parser.add_argument("--train_config",  required=True,  help="train_config.yaml")
-    parser.add_argument("--output",        default="results/bpe_results.json")
+    parser.add_argument("--output",        default="results/totto/bpe.json")
     parser.add_argument("--split",         default="dev", choices=["train", "dev"],
                         help="Which split to evaluate on: 'train' or 'dev' (default: dev)")
     parser.add_argument("--max_examples",  type=int, default=7700,

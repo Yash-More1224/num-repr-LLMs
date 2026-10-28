@@ -25,7 +25,7 @@ Usage
 
   tokenizer = Tokenizer.from_file("tokenizer/totto_bpe/tokenizer.json")
   dataset = BigBenchArithmeticDataset(
-      data_path  = "../data/bigbench_arithmetic/train.jsonl",
+      data_path  = "data/bigbench_arithmetic/train.jsonl",
       tokenizer  = tokenizer,
       model_type = "bpe",   # one of: "bpe", "xval", "fone", "digit"
       max_seq_len = 128,

@@ -1,3 +1,16 @@
-totto_data/
+# Python
 __pycache__/
+*.pyc
+
+# Editor
 .vscode/
+
+# Data (download / generate locally, see README)
+totto_data/
+processed/
+data/bigbench_arithmetic/
+
+# Trained artifacts
+tokenizer/totto_bpe/
+tokenizer/totto_digit/
+checkpoints/

@@ -32,7 +32,7 @@ Each output JSON line has:
 Usage
 -----
   python data/preprocess.py \\
-      --data_dir ../totto_data \\
+      --data_dir totto_data \\
       --output_dir processed
 """
 
@@ -281,7 +281,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--data_dir",
         type=str,
-        default="../totto_data",
+        default="totto_data",
         help="Directory containing totto_train_data.jsonl and totto_dev_data.jsonl",
     )
     parser.add_argument(

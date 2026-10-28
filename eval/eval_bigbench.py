@@ -21,8 +21,8 @@ Usage:
       --checkpoint checkpoints/bpe_bigbench/bpe_best.pt \\
       --config configs/model_config.yaml \\
       --train_config configs/bigbench_train_config.yaml \\
-      --test_data ../data/bigbench_arithmetic/test.jsonl \\
-      --output results/bigbench_bpe.json
+      --test_data data/bigbench_arithmetic/test.jsonl \\
+      --output results/bigbench/bpe.json
 
   # xVal
   python eval/eval_bigbench.py \\

@@ -1,24 +1,27 @@
 """
-eval/eval_fone.py
-=================
-Evaluate the FoNE-GPT2 model on the ToTTo dev set.
+eval/eval_fone_dp.py
+====================
+Evaluate the FoNE-DP model on the ToTTo dev set.
 
-Mirrors eval_bpe.py exactly, with two differences:
-  1. Uses GPT2FoNE and ToTToDatasetFoNE (raw number values, number_mask)
-  2. At [NUM] positions in the generated output, decodes the number value
-     from the FoNE hidden state via the inverse transform (atan2-based decoding)
+Mirrors eval_fone.py exactly, with the following differences:
+  1. Loads GPT2FoNeDP instead of GPT2FoNE
+  2. At [NUM] positions in the generated output, value is decoded via:
+       num_proj(last_hidden) → fone.decode()   (digit-by-digit argmax)
+     instead of:
+       fone.decode(last_hidden)                (standard FoNE — no projection)
+  3. Model name tag "fone_dp" in output JSON
 
 Usage:
-  python eval/eval_fone.py \\
-      --checkpoint checkpoints/fone/fone_best_epoch*.pt \\
-      --config configs/model_config.yaml \\
+  python eval/eval_fone_dp.py \\
+      --checkpoint checkpoints/fone_dp/fone_dp_best_epoch*.pt \\
+      --config configs/model_config_fone_dp.yaml \\
       --train_config configs/train_config.yaml \\
-      --output results/fone_results.json
+      --output results/totto/fone_dp.json \\
+      --max_examples 200
 """
 
 import json
 import argparse
-import re
 from pathlib import Path
 from tqdm import tqdm
 
@@ -27,17 +30,18 @@ import yaml
 from tokenizers import Tokenizer
 
 from model.gpt2 import GPT2Config
-from model.gpt2_fone import GPT2FoNE
-from data.dataset_xval import NUMBER_RE, parse_number
+from model.gpt2_fone_dp import GPT2FoNeDP
 from eval.metrics import (extract_numbers, numeric_exact_match, numeric_mae,
                            numeric_mape, hallucination_rate, aggregate_metrics)
 
 
-def build_fone_prompt(example: dict, sep_id: int, num_id: int,
-                      tokenizer: Tokenizer, max_seq_len: int) -> tuple:
+def build_fone_dp_prompt(example: dict, sep_id: int, num_id: int,
+                         tokenizer: Tokenizer, max_seq_len: int) -> tuple:
     """
-    Build the prompt tensor and associated number_values / number_mask
-    for the FoNE model.
+    Build the prompt tensors for the FoNE-DP model.
+
+    Identical to build_fone_prompt() in eval_fone.py — we use the same
+    ToTTo FoNE preprocessing (raw number values, not log-normalized).
 
     Returns: (prompt_ids (1,T), number_values (1,T), number_mask (1,T))
     """
@@ -58,11 +62,8 @@ def build_fone_prompt(example: dict, sep_id: int, num_id: int,
     if len(prompt_ids) > max_prompt_len:
         prompt_ids = prompt_ids[-max_prompt_len:]
 
-    T = len(prompt_ids)
-    # Build number_values and number_mask for prompt
     num_iter = iter(raw_values)
-    vals     = []
-    mask     = []
+    vals, mask = [], []
     for tid in prompt_ids:
         if tid == num_id:
             vals.append(float(next(num_iter, 0.0)))
@@ -71,9 +72,9 @@ def build_fone_prompt(example: dict, sep_id: int, num_id: int,
             vals.append(0.0)
             mask.append(False)
 
-    prompt_ids_t = torch.tensor([prompt_ids],     dtype=torch.long)
-    values_t     = torch.tensor([vals],            dtype=torch.float32)
-    mask_t       = torch.tensor([mask],            dtype=torch.bool)
+    prompt_ids_t = torch.tensor([prompt_ids], dtype=torch.long)
+    values_t     = torch.tensor([vals],       dtype=torch.float32)
+    mask_t       = torch.tensor([mask],       dtype=torch.bool)
     return prompt_ids_t, values_t, mask_t
 
 
@@ -88,18 +89,24 @@ def run_evaluation(args):
         train_cfg = yaml.safe_load(f)
 
     tokenizer = Tokenizer.from_file(train_cfg["tokenizer"])
-    eos_id    = tokenizer.token_to_id("[EOS]")
-    sep_id    = tokenizer.token_to_id("[SEP]")
-    num_id    = tokenizer.token_to_id("[NUM]")
+    if tokenizer.decoder is None:
+        from tokenizers.decoders import Metaspace as MetaspaceDecoder
+        tokenizer.decoder = MetaspaceDecoder(replacement=" ")
+
+    eos_id = tokenizer.token_to_id("[EOS]")
+    sep_id = tokenizer.token_to_id("[SEP]")
+    num_id = tokenizer.token_to_id("[NUM]")
     print(f"Tokenizer loaded. EOS={eos_id}, SEP={sep_id}, NUM={num_id}")
 
     config = GPT2Config(**{k: v for k, v in model_cfg.items()
                            if k in GPT2Config.__dataclass_fields__})
-    model = GPT2FoNE(
-        config         = config,
-        num_token_id   = model_cfg.get("num_token_id", 8),
-        int_digit_len  = model_cfg.get("fone_int_digits", 7),
-        frac_digit_len = model_cfg.get("fone_frac_digits", 2),
+    model = GPT2FoNeDP(
+        config          = config,
+        num_token_id    = model_cfg.get("num_token_id", 8),
+        int_digit_len   = model_cfg.get("fone_int_digits", 7),
+        frac_digit_len  = model_cfg.get("fone_frac_digits", 2),
+        num_proj_hidden = model_cfg.get("num_proj_hidden", 64),
+        num_loss_weight = model_cfg.get("num_loss_weight", 1.0),
     )
 
     ckpt = torch.load(args.checkpoint, map_location=device)
@@ -107,7 +114,11 @@ def run_evaluation(args):
     model = model.to(device)
     model.eval()
     print(f"Model loaded from: {args.checkpoint}")
+    print(f"  FoNE dim         : {model.fone.fone_dim}")
+    proj_params = sum(p.numel() for p in model.num_proj.parameters())
+    print(f"  num_proj params  : {proj_params:,}")
 
+    # Load eval examples
     data_path = train_cfg["train_data"] if args.split == "train" else train_cfg["dev_data"]
     examples = []
     with open(data_path) as f:
@@ -120,15 +131,17 @@ def run_evaluation(args):
 
     per_example_results = []
 
-    for example in tqdm(examples, desc="FoNE eval"):
+    for example in tqdm(examples, desc="FoNE-DP eval"):
         reference = example["target"]
         ref_nums  = extract_numbers(reference)
 
-        prompt_ids, values_t, mask_t = build_fone_prompt(
+        prompt_ids, values_t, mask_t = build_fone_dp_prompt(
             example, sep_id, num_id, tokenizer, train_cfg["max_seq_len"]
         )
         prompt_len = prompt_ids.size(1)
 
+        # Generation: model.generate() internally calls num_proj(last_hidden)
+        # then fone.decode() for each [NUM] token produced.
         gen_ids, pred_values = model.generate(
             prompt_ids.to(device),
             values_t.to(device),
@@ -139,7 +152,7 @@ def run_evaluation(args):
             repetition_penalty=1.0,
         )
 
-        # Decode generated portion: decode full string with special tokens to preserve spaces around [NUM]
+        # Reconstruct output string
         gen_token_list = gen_ids[0, prompt_len:].tolist()
         if eos_id in gen_token_list:
             gen_token_list = gen_token_list[:gen_token_list.index(eos_id)]
@@ -151,10 +164,11 @@ def run_evaluation(args):
 
         gen_nums = extract_numbers(generated)
 
-        em     = numeric_exact_match(ref_nums, gen_nums)
-        mae    = numeric_mae(ref_nums, gen_nums)
-        mape   = numeric_mape(ref_nums, gen_nums)
-        halluc = hallucination_rate(ref_nums, gen_nums)
+        em          = numeric_exact_match(ref_nums, gen_nums)
+        mae         = numeric_mae(ref_nums, gen_nums)
+        mape        = numeric_mape(ref_nums, gen_nums)
+        halluc      = hallucination_rate(ref_nums, gen_nums)
+        count_match = len(gen_nums) == len(ref_nums)
 
         per_example_results.append({
             "example_id":  example.get("example_id", ""),
@@ -166,7 +180,7 @@ def run_evaluation(args):
             "num_mae":     mae,
             "num_mape":    mape,
             "halluc":      halluc,
-            "count_match": len(gen_nums) == len(ref_nums),
+            "count_match": count_match,
             "n_ref_nums":  len(ref_nums),
             "bleu_ref":    reference,
             "bleu_hyp":    generated,
@@ -175,9 +189,10 @@ def run_evaluation(args):
     summary = aggregate_metrics(per_example_results)
 
     print(f"\n{'='*60}")
-    print(f"FoNE-GPT2 Evaluation Results")
+    print(f"FoNE-DP Evaluation Results")
     print(f"{'='*60}")
     print(f"  Examples evaluated    : {summary['n_examples']}")
+    print(f"  Examples with numbers : {summary['n_with_numbers']}")
     print(f"  BLEU                  : {summary['bleu']:.2f}")
     print(f"  Numeric Exact Match   : {summary['num_em']:.4f}  ({summary['num_em']*100:.1f}%)")
     print(f"  Hallucination Rate    : {summary['halluc_rate']:.4f}  ({summary['halluc_rate']*100:.1f}%)")
@@ -189,19 +204,23 @@ def run_evaluation(args):
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
-        json.dump({"model": "fone", "checkpoint": args.checkpoint,
-                   "summary": summary, "examples": per_example_results}, f, indent=2)
+        json.dump({
+            "model":      "fone_dp",
+            "checkpoint": args.checkpoint,
+            "summary":    summary,
+            "examples":   per_example_results,
+        }, f, indent=2)
     print(f"\nResults saved to: {output_path}")
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--checkpoint",     required=True)
-    parser.add_argument("--config",         required=True,  help="model_config.yaml")
+    parser.add_argument("--config",         required=True,  help="model_config_fone_dp.yaml")
     parser.add_argument("--train_config",   required=True,  help="train_config.yaml")
-    parser.add_argument("--output",         default="results/fone_results.json")
-    parser.add_argument("--split",          default="dev", choices=["train", "dev"])
-    parser.add_argument("--max_examples",   type=int, default=7700)
+    parser.add_argument("--output",         default="results/totto/fone_dp.json")
+    parser.add_argument("--split",          default="dev",  choices=["train", "dev"])
+    parser.add_argument("--max_examples",   type=int, default=200)
     parser.add_argument("--max_new_tokens", type=int, default=80)
     args = parser.parse_args()
     run_evaluation(args)

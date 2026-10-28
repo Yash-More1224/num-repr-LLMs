@@ -80,10 +80,10 @@ RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
 @st.cache_data
 def load_all_results():
     files = {
-        "bpe": os.path.join(RESULTS_DIR, "bpe_totto-200.json"),
-        "digit": os.path.join(RESULTS_DIR, "digit_totto-200.json"),
-        "fone": os.path.join(RESULTS_DIR, "fone_totto-fixed-200.json"),
-        "xval": os.path.join(RESULTS_DIR, "xval_totto-200-fixed-gen.json"),
+        "bpe": os.path.join(RESULTS_DIR, "totto", "bpe.json"),
+        "digit": os.path.join(RESULTS_DIR, "totto", "digit.json"),
+        "fone": os.path.join(RESULTS_DIR, "totto", "fone.json"),
+        "xval": os.path.join(RESULTS_DIR, "totto", "xval.json"),
     }
     
     data = {}

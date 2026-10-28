@@ -8,9 +8,9 @@
 # The model_type is specified at the command line (--model_type bpe/xval/fone/digit).
 
 # ── Data ──────────────────────────────────────────────────────────────────────
-train_data: "../data/bigbench_arithmetic/train.jsonl"
-dev_data:   "../data/bigbench_arithmetic/dev.jsonl"
-test_data:  "../data/bigbench_arithmetic/test.jsonl"
+train_data: "data/bigbench_arithmetic/train.jsonl"
+dev_data:   "data/bigbench_arithmetic/dev.jsonl"
+test_data:  "data/bigbench_arithmetic/test.jsonl"
 
 # BPE tokenizer (default; digit model overrides via `digit_tokenizer` below)
 tokenizer:       "tokenizer/totto_bpe/tokenizer.json"

@@ -16,7 +16,7 @@ Usage:
       --checkpoint checkpoints/digit/digit_best.pt \\
       --config configs/model_config.yaml \\
       --train_config configs/train_config.yaml \\
-      --output results/digit_results.json
+      --output results/totto/digit.json
 """
 
 import json
@@ -254,7 +254,7 @@ def main():
     parser.add_argument("--checkpoint",     required=True)
     parser.add_argument("--config",         required=True,  help="model_config.yaml")
     parser.add_argument("--train_config",   required=True,  help="train_config.yaml")
-    parser.add_argument("--output",         default="results/digit_results.json")
+    parser.add_argument("--output",         default="results/totto/digit.json")
     parser.add_argument("--split",          default="dev", choices=["train", "dev"])
     parser.add_argument("--max_examples",   type=int, default=7700)
     parser.add_argument("--max_new_tokens", type=int, default=120,
